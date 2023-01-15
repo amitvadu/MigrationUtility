@@ -1,0 +1,16 @@
+{
+  "countryName": "Nepal1",
+  "name": "amit123",
+  "status": "Active",
+  "countryId": 123,
+  "statePojo": {
+    "name": "Bagmati Province11",
+    "id": 52,
+    "status": "Active",
+    "countryPojo": {
+      "name": "Nepal1",
+      "id": 123,
+      "status": "Active"
+    }
+  }
+}

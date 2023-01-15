@@ -1,0 +1,16 @@
+{
+  "name": "Amit_Rejected_Master_1",
+  "status": "Active",
+  "rejectSubReasonDtoList": [
+    {
+      "id": null,
+      "name": "Amit_Rejected_Master_1",
+      "rejectReasonId": null
+    },
+    {
+      "id": null,
+      "name": "Amit_Rejected_Master_1",
+      "rejectReasonId": null
+    }
+  ]
+}

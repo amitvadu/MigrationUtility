@@ -1,0 +1,19 @@
+{
+  "id": null,
+  "productId": 20,
+  "qty": null,
+  "outwardDateTime": "2023-01-10T06:31:48.239Z",
+  "sourceId": 12,
+  "sourceType": "Warehouse",
+  "status": "ACTIVE",
+  "outwardNumber": "",
+  "destinationId": 2,
+  "destinationType": "Staff",
+  "mvnoId": null,
+  "inwardId": 149,
+  "usedQty": null,
+  "unusedQty": null,
+  "inTransitQty": "1",
+  "outTransitQty": null,
+  "rejectedQty": null
+}

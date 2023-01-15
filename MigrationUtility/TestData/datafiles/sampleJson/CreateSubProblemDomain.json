@@ -1,0 +1,14 @@
+{
+  "subCategoryName": "Amit_SubProblemDomain_1",
+  "status": "Active",
+  "parentCategory": {
+    "id": 19
+  },
+  "ticketSubCategoryGroupReasonMappingList": [
+    {
+      "reason": "Amit_SubProblemDomain_1",
+      "ticketReasonSubCategoryId": ""
+    }
+  ],
+  "ticketSubCategoryTatMappingList": []
+}

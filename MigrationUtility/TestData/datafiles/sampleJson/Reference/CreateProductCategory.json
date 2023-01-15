@@ -1,0 +1,12 @@
+{
+  "id": null,
+  "name": "Amit_Product_Category_1",
+  "productId": null,
+  "unit": "numbers",
+  "type": "CustomerBind",
+  "status": "ACTIVE",
+  "hasMac": true,
+  "hasSerial": true,
+  "expiryTime": null,
+  "expiryTimeUnit": null
+}

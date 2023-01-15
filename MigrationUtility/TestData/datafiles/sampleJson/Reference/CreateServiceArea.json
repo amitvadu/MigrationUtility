@@ -1,0 +1,18 @@
+{
+  "id": "",
+  "name": "Amit_ServiceArea_1",
+  "lastModifiedById": "",
+  "status": "Active",
+  "isDeleted": false,
+  "latitude": "",
+  "longitude": "",
+  "areaid": "",
+  "pincodes": [
+    30,
+    31,
+    32,
+    40
+  ],
+  "cityid": 20,
+  "mvnoId": 2
+}

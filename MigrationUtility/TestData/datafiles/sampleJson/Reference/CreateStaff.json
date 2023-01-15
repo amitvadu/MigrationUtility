@@ -1,0 +1,27 @@
+{
+  "username": "Amit_Staff_1",
+  "password": "admin",
+  "email": "a@b.com",
+  "roleIds": [
+    1
+  ],
+  "serviceAreaIdsList": [
+    32
+  ],
+  "firstname": "Amit",
+  "lastname": "Prajapati",
+  "teamIds": [
+    29
+  ],
+  "status": "ACTIVE",
+  "parentStaffId": 2,
+  "partnerid": 1,
+  "phone": 9898098981,
+  "businessUnitIdsList": [
+    26
+  ],
+  "mvnoid": null,
+  "countryCode": "+91",
+  "branchId": null,
+  "staffUserServiceMappingList": null
+}

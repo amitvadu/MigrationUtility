@@ -1,0 +1,39 @@
+{
+  "bccemail": "",
+  "collagencyemail": "subisu@gmail.com",
+  "commemail": "Y",
+  "commsms": "Y",
+  "creditclass": "Silver",
+  "delete": false,
+  "escstaffemail": "subisu@gmail.com",
+  "fromemail": "subisu@gmail.com",
+  "id": null,
+  "internalpayemail": "subisu@gmail.com",
+  "name": "Amit_Dunning_Rule_2",
+  "status": "Y",
+  "customerType": "Prepaid",
+  "dunningRuleActionPojoList": [
+    {
+      "action": "Email",
+      "days": 1,
+      "emailsub": "subisu@gmail.com",
+      "dunningRuleId": "",
+      "id": ""
+    },
+    {
+      "action": "SMS",
+      "days": 2,
+      "emailsub": "subisu@gmail.com",
+      "dunningRuleId": "",
+      "id": ""
+    },
+    {
+      "action": "DeActivation",
+      "days": 3,
+      "emailsub": "subisu@gmail.com",
+      "dunningRuleId": "",
+      "id": ""
+    }
+  ],
+  "dunningType": "Payment"
+}

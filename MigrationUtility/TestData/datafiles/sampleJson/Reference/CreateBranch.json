@@ -1,0 +1,11 @@
+{
+  "name": "Amit_Branch_3",
+  "serviceAreaIdsList": [
+    32
+  ],
+  "status": "Active",
+  "branch_code": "",
+  "revenue_sharing": false,
+  "sharing_percentage": "",
+  "dunningDays": ""
+}

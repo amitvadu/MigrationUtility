@@ -1,0 +1,4294 @@
+Request URL: http://143.198.140.196:30080/api/v1/staffuser/allActive
+
+
+{
+  "staffUserlist": [
+    {
+      "id": 2,
+      "createdate": "03-10-2021 06:53 PM",
+      "updatedate": "16-12-2022 07:19 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "admin",
+      "password": null,
+      "firstname": "admin",
+      "lastname": "admin",
+      "email": "admin@admin.com",
+      "phone": "9999999999",
+      "countryCode": null,
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [],
+      "teamNameList": [],
+      "isDelete": false,
+      "fullName": "admin admin",
+      "sysstaff": true,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        1,
+        5,
+        7,
+        11,
+        13,
+        19,
+        25,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        48
+      ],
+      "businessunitid": null,
+      "businessunitids": [],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        1,
+        5,
+        7,
+        11,
+        13,
+        19,
+        25,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        48
+      ],
+      "businessUnitIdsList": [],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "subisu",
+        "NavaNaroda",
+        "VarunServiceArea",
+        "Yogesh",
+        "LeadSA",
+        "sonm1212",
+        "Darshan_Service_Area123",
+        "VAarunServiceArea",
+        "Amit_ServiceArea_1",
+        "Amit_ServiceArea_2",
+        "Amit_SA2",
+        "Kalanki",
+        "Pepsicola",
+        "Balaju",
+        "Baluwatar,Baneshwor",
+        "Jorpati",
+        "Kaushaltar",
+        "Jhamsikhel",
+        "Gongabu",
+        "Imadole",
+        "Chapagaun",
+        "Suryabinayak",
+        "Narayanthan",
+        "lcopartnerSA"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "03-10-2021 18:53 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 9,
+      "createdate": "03-10-2021 06:53 PM",
+      "updatedate": "03-10-2021 06:53 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "pguser",
+      "password": null,
+      "firstname": "PG",
+      "lastname": "USER",
+      "email": "pguser@gmail.com",
+      "phone": "9876543210",
+      "countryCode": null,
+      "failcount": null,
+      "status": "Active",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": null,
+      "teamIds": [],
+      "teamNameList": [],
+      "isDelete": false,
+      "fullName": "PG USER",
+      "sysstaff": true,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [],
+      "businessunitid": null,
+      "businessunitids": [],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [],
+      "businessUnitIdsList": [],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": null,
+      "regDate": "03-10-2021 18:53 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 11,
+      "createdate": "07-12-2022 11:12 PM",
+      "updatedate": "16-12-2022 05:54 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "Parth1",
+      "password": null,
+      "firstname": "Parth1",
+      "lastname": "Parth1",
+      "email": "Parth1@gmial.com",
+      "phone": "1234567890",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [],
+      "teamNameList": [],
+      "isDelete": false,
+      "fullName": "Parth1 Parth1",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        2
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        1
+      ],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        2
+      ],
+      "businessUnitIdsList": [
+        1
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "ServiceParth1"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "businessParth1"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "07-12-2022 23:12 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 13,
+      "createdate": "07-12-2022 11:15 PM",
+      "updatedate": "07-12-2022 11:15 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "P1",
+      "password": null,
+      "firstname": "P1",
+      "lastname": "P1",
+      "email": "P1@gmial.com",
+      "phone": "1234567890",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        1
+      ],
+      "teamNameList": [
+        "TeamP1"
+      ],
+      "isDelete": false,
+      "fullName": "P1 P1",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        2
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        1
+      ],
+      "parentStaffId": 11,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        2
+      ],
+      "businessUnitIdsList": [
+        1
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "ServiceParth1"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "businessParth1"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "07-12-2022 23:15 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 14,
+      "createdate": "07-12-2022 11:16 PM",
+      "updatedate": "07-12-2022 11:16 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "P11",
+      "password": null,
+      "firstname": "P11",
+      "lastname": "P11",
+      "email": "P11@gmail.com",
+      "phone": "1234567890",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        1
+      ],
+      "teamNameList": [
+        "TeamP1"
+      ],
+      "isDelete": false,
+      "fullName": "P11 P11",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        2
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        1
+      ],
+      "parentStaffId": 13,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        2
+      ],
+      "businessUnitIdsList": [
+        1
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "ServiceParth1"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "businessParth1"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "07-12-2022 23:16 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 15,
+      "createdate": "07-12-2022 11:16 PM",
+      "updatedate": "07-12-2022 11:16 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "P111",
+      "password": null,
+      "firstname": "P111",
+      "lastname": "P111",
+      "email": "P111@gmail.com",
+      "phone": "1234567890",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        1
+      ],
+      "teamNameList": [
+        "TeamP1"
+      ],
+      "isDelete": false,
+      "fullName": "P111 P111",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        2
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        1
+      ],
+      "parentStaffId": 14,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        2
+      ],
+      "businessUnitIdsList": [
+        1
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "ServiceParth1"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "businessParth1"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "07-12-2022 23:16 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 16,
+      "createdate": "07-12-2022 11:17 PM",
+      "updatedate": "07-12-2022 11:17 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "P2",
+      "password": null,
+      "firstname": "P2",
+      "lastname": "P2",
+      "email": "P2@gmail.com",
+      "phone": "1234567890",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        2
+      ],
+      "teamNameList": [
+        "TeamP2"
+      ],
+      "isDelete": false,
+      "fullName": "P2 P2",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        2
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        1
+      ],
+      "parentStaffId": 11,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        2
+      ],
+      "businessUnitIdsList": [
+        1
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "ServiceParth1"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "businessParth1"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "07-12-2022 23:17 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 17,
+      "createdate": "07-12-2022 11:18 PM",
+      "updatedate": "07-12-2022 11:18 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "P22",
+      "password": null,
+      "firstname": "P22",
+      "lastname": "P22",
+      "email": "P22@gmail.com",
+      "phone": "1234567890",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        2
+      ],
+      "teamNameList": [
+        "TeamP2"
+      ],
+      "isDelete": false,
+      "fullName": "P22 P22",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        2
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        1
+      ],
+      "parentStaffId": 16,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        2
+      ],
+      "businessUnitIdsList": [
+        1
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "ServiceParth1"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "businessParth1"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "07-12-2022 23:18 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 18,
+      "createdate": "07-12-2022 11:18 PM",
+      "updatedate": "07-12-2022 11:18 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "P222",
+      "password": null,
+      "firstname": "P222",
+      "lastname": "P222",
+      "email": "P222@gmail.com",
+      "phone": "1234567890",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        2
+      ],
+      "teamNameList": [
+        "TeamP2"
+      ],
+      "isDelete": false,
+      "fullName": "P222 P222",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        2
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        1
+      ],
+      "parentStaffId": 17,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        2
+      ],
+      "businessUnitIdsList": [
+        1
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "ServiceParth1"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "businessParth1"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "07-12-2022 23:18 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 19,
+      "createdate": "07-12-2022 11:21 PM",
+      "updatedate": "07-12-2022 11:21 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "P3",
+      "password": null,
+      "firstname": "P3",
+      "lastname": "P3",
+      "email": "P3@gmail.com",
+      "phone": "1234567890",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        3
+      ],
+      "teamNameList": [
+        "TeamP3"
+      ],
+      "isDelete": false,
+      "fullName": "P3 P3",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        2
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        1
+      ],
+      "parentStaffId": 11,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        2
+      ],
+      "businessUnitIdsList": [
+        1
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "ServiceParth1"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "businessParth1"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "07-12-2022 23:21 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 20,
+      "createdate": "07-12-2022 11:21 PM",
+      "updatedate": "07-12-2022 11:21 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "P33",
+      "password": null,
+      "firstname": "P33",
+      "lastname": "P33",
+      "email": "P33@gmail.com",
+      "phone": "1234567890",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        3
+      ],
+      "teamNameList": [
+        "TeamP3"
+      ],
+      "isDelete": false,
+      "fullName": "P33 P33",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        2
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        1
+      ],
+      "parentStaffId": 19,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        2
+      ],
+      "businessUnitIdsList": [
+        1
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "ServiceParth1"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "businessParth1"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "07-12-2022 23:21 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 21,
+      "createdate": "07-12-2022 11:22 PM",
+      "updatedate": "07-12-2022 11:22 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "P333",
+      "password": null,
+      "firstname": "P333",
+      "lastname": "P333",
+      "email": "P333@gmail.com",
+      "phone": "1234567890",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        3
+      ],
+      "teamNameList": [
+        "TeamP3"
+      ],
+      "isDelete": false,
+      "fullName": "P333 P333",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        2
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        1
+      ],
+      "parentStaffId": 20,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        2
+      ],
+      "businessUnitIdsList": [
+        1
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "ServiceParth1"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "businessParth1"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "07-12-2022 23:22 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 22,
+      "createdate": "07-12-2022 11:22 PM",
+      "updatedate": "07-12-2022 11:22 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "Chetan",
+      "password": null,
+      "firstname": "Chetan",
+      "lastname": "Chetan",
+      "email": "aaa@gmail.com",
+      "phone": "987654321",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [],
+      "teamNameList": [],
+      "isDelete": false,
+      "fullName": "Chetan Chetan",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        4
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        3
+      ],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        4
+      ],
+      "businessUnitIdsList": [
+        3
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "Kanhaiyalal nagar"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "Chetan"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "07-12-2022 23:22 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 23,
+      "createdate": "07-12-2022 11:23 PM",
+      "updatedate": "07-12-2022 11:23 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "P4",
+      "password": null,
+      "firstname": "P4",
+      "lastname": "P4",
+      "email": "P4@gmail.com",
+      "phone": "1234567890",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        4
+      ],
+      "teamNameList": [
+        "TeamP4"
+      ],
+      "isDelete": false,
+      "fullName": "P4 P4",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        2
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        1
+      ],
+      "parentStaffId": 11,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        2
+      ],
+      "businessUnitIdsList": [
+        1
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "ServiceParth1"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "businessParth1"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "07-12-2022 23:23 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 24,
+      "createdate": "07-12-2022 11:23 PM",
+      "updatedate": "07-12-2022 11:23 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "P44",
+      "password": null,
+      "firstname": "P44",
+      "lastname": "P44",
+      "email": "P44@gmail.com",
+      "phone": "1234567890",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        4
+      ],
+      "teamNameList": [
+        "TeamP4"
+      ],
+      "isDelete": false,
+      "fullName": "P44 P44",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        2
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        1
+      ],
+      "parentStaffId": 23,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        2
+      ],
+      "businessUnitIdsList": [
+        1
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "ServiceParth1"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "businessParth1"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "07-12-2022 23:23 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 25,
+      "createdate": "07-12-2022 11:24 PM",
+      "updatedate": "07-12-2022 11:24 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "P444",
+      "password": null,
+      "firstname": "P444",
+      "lastname": "P444",
+      "email": "P444@gmail.com",
+      "phone": "1234567890",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        4
+      ],
+      "teamNameList": [
+        "TeamP4"
+      ],
+      "isDelete": false,
+      "fullName": "P444 P444",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        2
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        1
+      ],
+      "parentStaffId": 24,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        2
+      ],
+      "businessUnitIdsList": [
+        1
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "ServiceParth1"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "businessParth1"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "07-12-2022 23:24 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 26,
+      "createdate": "07-12-2022 11:25 PM",
+      "updatedate": "07-12-2022 11:25 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "P5",
+      "password": null,
+      "firstname": "P5",
+      "lastname": "P5",
+      "email": "P5@gmial.com",
+      "phone": "1234567890",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        5
+      ],
+      "teamNameList": [
+        "TeamP5"
+      ],
+      "isDelete": false,
+      "fullName": "P5 P5",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        2
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        1
+      ],
+      "parentStaffId": 11,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        2
+      ],
+      "businessUnitIdsList": [
+        1
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "ServiceParth1"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "businessParth1"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "07-12-2022 23:25 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 27,
+      "createdate": "07-12-2022 11:26 PM",
+      "updatedate": "07-12-2022 11:26 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "P55",
+      "password": null,
+      "firstname": "P55",
+      "lastname": "P55",
+      "email": "P55@gmail.com",
+      "phone": "1234567890",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        5
+      ],
+      "teamNameList": [
+        "TeamP5"
+      ],
+      "isDelete": false,
+      "fullName": "P55 P55",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        2
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        1
+      ],
+      "parentStaffId": 26,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        2
+      ],
+      "businessUnitIdsList": [
+        1
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "ServiceParth1"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "businessParth1"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "07-12-2022 23:26 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 28,
+      "createdate": "07-12-2022 11:26 PM",
+      "updatedate": "07-12-2022 11:26 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "P555",
+      "password": null,
+      "firstname": "P555",
+      "lastname": "P555",
+      "email": "P555@gmail.com",
+      "phone": "1234567890",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        5
+      ],
+      "teamNameList": [
+        "TeamP5"
+      ],
+      "isDelete": false,
+      "fullName": "P555 P555",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        2
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        1
+      ],
+      "parentStaffId": 27,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        2
+      ],
+      "businessUnitIdsList": [
+        1
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "ServiceParth1"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "businessParth1"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "07-12-2022 23:26 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 30,
+      "createdate": "08-12-2022 12:08 AM",
+      "updatedate": "08-12-2022 10:55 AM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "chakradharpatil",
+      "password": null,
+      "firstname": "chakradhar",
+      "lastname": "londhe",
+      "email": "chakradharlondhe@gmail.com",
+      "phone": "8087110396",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [],
+      "teamNameList": [],
+      "isDelete": false,
+      "fullName": "chakradhar londhe",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        6
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        5
+      ],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        6
+      ],
+      "businessUnitIdsList": [
+        5
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "chaksSA"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "chaksBU"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "08-12-2022 00:08 AM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": 1
+    },
+    {
+      "id": 31,
+      "createdate": "08-12-2022 10:37 AM",
+      "updatedate": "08-12-2022 10:37 AM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "apurva",
+      "password": null,
+      "firstname": "Apurva",
+      "lastname": "Apurva",
+      "email": "Apurva@gmai.com",
+      "phone": "1234567890",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        1,
+        2,
+        3
+      ],
+      "teamNameList": [
+        "TeamP3",
+        "TeamP2",
+        "TeamP1"
+      ],
+      "isDelete": false,
+      "fullName": "Apurva Apurva",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        1
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        6
+      ],
+      "parentStaffId": 2,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        1
+      ],
+      "businessUnitIdsList": [
+        6
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "subisu"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "apurvaGER"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "08-12-2022 10:37 AM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": 1
+    },
+    {
+      "id": 32,
+      "createdate": "08-12-2022 10:43 AM",
+      "updatedate": "08-12-2022 10:43 AM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "sonam",
+      "password": null,
+      "firstname": "sonam",
+      "lastname": "gupta",
+      "email": "sonam.gupta@adoptnet.tech",
+      "phone": "9399890042",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [],
+      "teamNameList": [],
+      "isDelete": false,
+      "fullName": "sonam gupta",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        9,
+        14,
+        15,
+        18,
+        23,
+        26,
+        27,
+        28,
+        47
+      ],
+      "businessunitid": null,
+      "businessunitids": [],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        9,
+        14,
+        15,
+        18,
+        23,
+        26,
+        27,
+        28,
+        47
+      ],
+      "businessUnitIdsList": [],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "sonam service area",
+        "sg service",
+        "sonamSA",
+        "new sonam123",
+        "sonam",
+        "sonam14",
+        "sonam service 1412",
+        "SA today",
+        "african service area"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "08-12-2022 10:43 AM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 33,
+      "createdate": "08-12-2022 10:49 AM",
+      "updatedate": "08-12-2022 10:49 AM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "Aditya",
+      "password": null,
+      "firstname": "Aditya",
+      "lastname": "Kumar",
+      "email": "aditya@gmail.com",
+      "phone": "1234567891",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [],
+      "teamNameList": [],
+      "isDelete": false,
+      "fullName": "Aditya Kumar",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        10
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        8
+      ],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        10
+      ],
+      "businessUnitIdsList": [
+        8
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "adityaSA"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "AdityaBun"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "08-12-2022 10:49 AM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 34,
+      "createdate": "08-12-2022 10:51 AM",
+      "updatedate": "08-12-2022 10:51 AM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "Mayur",
+      "password": null,
+      "firstname": "Mayur",
+      "lastname": "Mayur",
+      "email": "mayur.solanki@adoptnet.tech",
+      "phone": "8866569394",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [],
+      "teamNameList": [],
+      "isDelete": false,
+      "fullName": "Mayur Mayur",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        8
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        10
+      ],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        8
+      ],
+      "businessUnitIdsList": [
+        10
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "MS_ServiceArea"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "Mayur_BU"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "08-12-2022 10:51 AM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 35,
+      "createdate": "08-12-2022 10:54 AM",
+      "updatedate": "12-12-2022 03:37 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "MS_Staff1",
+      "password": null,
+      "firstname": "MS_Staff1",
+      "lastname": "MS_Staff1",
+      "email": "mayur.solanki@adoptnet.tech",
+      "phone": "8866569394",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        6
+      ],
+      "teamNameList": [
+        "MS_Team1"
+      ],
+      "isDelete": false,
+      "fullName": "MS_Staff1 MS_Staff1",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        8
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        10
+      ],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        8
+      ],
+      "businessUnitIdsList": [
+        10
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "MS_ServiceArea"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "Mayur_BU"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "08-12-2022 10:54 AM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 36,
+      "createdate": "08-12-2022 10:55 AM",
+      "updatedate": "12-12-2022 03:37 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "MS_Staff2",
+      "password": null,
+      "firstname": "MS_Staff2",
+      "lastname": "MS_Staff2",
+      "email": "mayur.solanki@adoptnet.tech",
+      "phone": "8866569394",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        7
+      ],
+      "teamNameList": [
+        "MS_Team2"
+      ],
+      "isDelete": false,
+      "fullName": "MS_Staff2 MS_Staff2",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        8
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        10
+      ],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        8
+      ],
+      "businessUnitIdsList": [
+        10
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "MS_ServiceArea"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "Mayur_BU"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "08-12-2022 10:55 AM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 37,
+      "createdate": "08-12-2022 10:56 AM",
+      "updatedate": "12-12-2022 03:37 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "MS_Staff3",
+      "password": null,
+      "firstname": "MS_Staff3",
+      "lastname": "MS_Staff3",
+      "email": "mayur.solanki@adoptnet.tech",
+      "phone": "8866569394",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        8
+      ],
+      "teamNameList": [
+        "MS_Team3"
+      ],
+      "isDelete": false,
+      "fullName": "MS_Staff3 MS_Staff3",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        8
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        10
+      ],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [
+        {
+          "id": 6,
+          "prefix": "BCD",
+          "fromreceiptnumber": 0,
+          "toreceiptnumber": 99,
+          "isActive": true,
+          "isDeleted": true,
+          "stfmappingId": 37,
+          "deleteFlag": true,
+          "primaryKey": 6
+        }
+      ],
+      "serviceAreaIdsList": [
+        8
+      ],
+      "businessUnitIdsList": [
+        10
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "MS_ServiceArea"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "Mayur_BU"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "08-12-2022 10:56 AM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 38,
+      "createdate": "08-12-2022 10:56 AM",
+      "updatedate": "12-12-2022 03:37 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "MS_Staff4",
+      "password": null,
+      "firstname": "MS_Staff4",
+      "lastname": "MS_Staff4",
+      "email": "mayur.solanki@adoptnet.tech",
+      "phone": "8866569394",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        9
+      ],
+      "teamNameList": [
+        "MS_Team4"
+      ],
+      "isDelete": false,
+      "fullName": "MS_Staff4 MS_Staff4",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        8
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        10
+      ],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [
+        {
+          "id": 5,
+          "prefix": "ACD",
+          "fromreceiptnumber": 300,
+          "toreceiptnumber": 400,
+          "isActive": true,
+          "isDeleted": true,
+          "stfmappingId": 38,
+          "deleteFlag": true,
+          "primaryKey": 5
+        }
+      ],
+      "serviceAreaIdsList": [
+        8
+      ],
+      "businessUnitIdsList": [
+        10
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "MS_ServiceArea"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "Mayur_BU"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "08-12-2022 10:56 AM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 41,
+      "createdate": "08-12-2022 11:14 AM",
+      "updatedate": "08-12-2022 01:01 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "varun12",
+      "password": null,
+      "firstname": "varun1",
+      "lastname": "varun1",
+      "email": "varunamnila@gmail.com",
+      "phone": "8951698546",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        1
+      ],
+      "teamNameList": [
+        "TeamP1"
+      ],
+      "isDelete": false,
+      "fullName": "varun1 varun1",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        7
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        9
+      ],
+      "parentStaffId": 41,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        7
+      ],
+      "businessUnitIdsList": [
+        9
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "VarunServiceArea"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "varunBu"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "08-12-2022 11:14 AM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": 2
+    },
+    {
+      "id": 42,
+      "createdate": "08-12-2022 11:18 AM",
+      "updatedate": "08-12-2022 04:00 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "varun2",
+      "password": null,
+      "firstname": "varun2",
+      "lastname": "varun2",
+      "email": "varun.kumar@adoptnet.tech",
+      "phone": "8951698546",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        2
+      ],
+      "teamNameList": [
+        "TeamP2"
+      ],
+      "isDelete": false,
+      "fullName": "varun2 varun2",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        7
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        9
+      ],
+      "parentStaffId": 41,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        7
+      ],
+      "businessUnitIdsList": [
+        9
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "VarunServiceArea"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "varunBu"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "08-12-2022 11:18 AM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": 2
+    },
+    {
+      "id": 43,
+      "createdate": "08-12-2022 12:19 PM",
+      "updatedate": "08-12-2022 12:19 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "C1",
+      "password": null,
+      "firstname": "C1",
+      "lastname": "C1",
+      "email": "aaa@gmail.com",
+      "phone": "9876",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        10
+      ],
+      "teamNameList": [
+        "TeamC1"
+      ],
+      "isDelete": false,
+      "fullName": "C1 C1",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        4
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        3
+      ],
+      "parentStaffId": 22,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        4
+      ],
+      "businessUnitIdsList": [
+        3
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "Kanhaiyalal nagar"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "Chetan"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "08-12-2022 12:19 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 44,
+      "createdate": "08-12-2022 12:21 PM",
+      "updatedate": "08-12-2022 12:21 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "C2",
+      "password": null,
+      "firstname": "C2",
+      "lastname": "C2",
+      "email": "aaa@gmail.com",
+      "phone": "963",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        11
+      ],
+      "teamNameList": [
+        "TeamC2"
+      ],
+      "isDelete": false,
+      "fullName": "C2 C2",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        4
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        3
+      ],
+      "parentStaffId": 43,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        4
+      ],
+      "businessUnitIdsList": [
+        3
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "Kanhaiyalal nagar"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "Chetan"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "08-12-2022 12:21 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 45,
+      "createdate": "08-12-2022 12:21 PM",
+      "updatedate": "08-12-2022 01:01 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "varun3",
+      "password": null,
+      "firstname": "varun3",
+      "lastname": "varun3",
+      "email": "varunmanila89@gmail.com",
+      "phone": "8951698546",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        3
+      ],
+      "teamNameList": [
+        "TeamP3"
+      ],
+      "isDelete": false,
+      "fullName": "varun3 varun3",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        7
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        9
+      ],
+      "parentStaffId": 45,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        7
+      ],
+      "businessUnitIdsList": [
+        9
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "VarunServiceArea"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "varunBu"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "08-12-2022 12:21 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 46,
+      "createdate": "08-12-2022 12:23 PM",
+      "updatedate": "08-12-2022 01:01 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "varun4",
+      "password": null,
+      "firstname": "varun",
+      "lastname": "varun",
+      "email": "varunmanila89@gmail.com",
+      "phone": "8951698546",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        4
+      ],
+      "teamNameList": [
+        "TeamP4"
+      ],
+      "isDelete": false,
+      "fullName": "varun varun",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        7
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        9
+      ],
+      "parentStaffId": 2,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        7
+      ],
+      "businessUnitIdsList": [
+        9
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "VarunServiceArea"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "varunBu"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "08-12-2022 12:23 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 47,
+      "createdate": "08-12-2022 12:24 PM",
+      "updatedate": "08-12-2022 01:00 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "varun5",
+      "password": null,
+      "firstname": "varun5",
+      "lastname": "varun5",
+      "email": "varunmanila@gmail.com",
+      "phone": "8951698546",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        5
+      ],
+      "teamNameList": [
+        "TeamP5"
+      ],
+      "isDelete": false,
+      "fullName": "varun5 varun5",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        7
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        9
+      ],
+      "parentStaffId": 2,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        7
+      ],
+      "businessUnitIdsList": [
+        9
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "VarunServiceArea"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "varunBu"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "08-12-2022 12:24 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": 8
+    },
+    {
+      "id": 48,
+      "createdate": "08-12-2022 12:34 PM",
+      "updatedate": "12-12-2022 07:03 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "C3",
+      "password": null,
+      "firstname": "C3",
+      "lastname": "C3",
+      "email": "aaa@gmail.com",
+      "phone": "963258",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        12
+      ],
+      "teamNameList": [
+        "TeamC3"
+      ],
+      "isDelete": false,
+      "fullName": "C3 C3",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        4
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        3
+      ],
+      "parentStaffId": 44,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        4
+      ],
+      "businessUnitIdsList": [
+        3
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "Kanhaiyalal nagar"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "Chetan"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "08-12-2022 12:34 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 50,
+      "createdate": "08-12-2022 02:24 PM",
+      "updatedate": "19-12-2022 06:44 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "leadteam1",
+      "password": null,
+      "firstname": "leadteam1",
+      "lastname": "leadteam1",
+      "email": "leadteam1@gmail.com",
+      "phone": "8484848484",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [],
+      "teamNameList": [],
+      "isDelete": false,
+      "fullName": "leadteam1 leadteam1",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        13
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        11
+      ],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        13
+      ],
+      "businessUnitIdsList": [
+        11
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "LeadSA"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "LeadBU"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "08-12-2022 14:24 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": 9
+    },
+    {
+      "id": 51,
+      "createdate": "08-12-2022 02:30 PM",
+      "updatedate": "08-12-2022 02:30 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "leadteam2",
+      "password": null,
+      "firstname": "leadteam2",
+      "lastname": "leadteam2",
+      "email": "leadteam2@gmail.com",
+      "phone": "7878787878",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        14
+      ],
+      "teamNameList": [
+        "LeadTeam2"
+      ],
+      "isDelete": false,
+      "fullName": "leadteam2 leadteam2",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        13
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        11
+      ],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        13
+      ],
+      "businessUnitIdsList": [
+        11
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "LeadSA"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "LeadBU"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "08-12-2022 14:30 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": 9
+    },
+    {
+      "id": 52,
+      "createdate": "08-12-2022 02:31 PM",
+      "updatedate": "08-12-2022 02:31 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "leadteam3",
+      "password": null,
+      "firstname": "leadteam3",
+      "lastname": "leadteam3",
+      "email": "leadteam3@gmail.com",
+      "phone": "1212121278",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        15
+      ],
+      "teamNameList": [
+        "LeadTeam3"
+      ],
+      "isDelete": false,
+      "fullName": "leadteam3 leadteam3",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        13
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        11
+      ],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [
+        {
+          "id": 4,
+          "prefix": "A",
+          "fromreceiptnumber": 200,
+          "toreceiptnumber": 300,
+          "isActive": true,
+          "isDeleted": true,
+          "stfmappingId": 52,
+          "deleteFlag": true,
+          "primaryKey": 4
+        }
+      ],
+      "serviceAreaIdsList": [
+        13
+      ],
+      "businessUnitIdsList": [
+        11
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "LeadSA"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "LeadBU"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "08-12-2022 14:31 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": 9
+    },
+    {
+      "id": 53,
+      "createdate": "08-12-2022 03:04 PM",
+      "updatedate": "08-12-2022 03:11 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "Shailendrasir",
+      "password": null,
+      "firstname": "Shailendra sir",
+      "lastname": "Shailendra sir",
+      "email": "shailendra.raol@adoptnet.tech",
+      "phone": "8087110396",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        3
+      ],
+      "teamIds": [
+        16
+      ],
+      "teamNameList": [
+        "chaksteam1"
+      ],
+      "isDelete": false,
+      "fullName": "Shailendra sir Shailendra sir",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [],
+      "businessunitid": null,
+      "businessunitids": [
+        5
+      ],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [
+        {
+          "id": 3,
+          "prefix": "A",
+          "fromreceiptnumber": 200,
+          "toreceiptnumber": 300,
+          "isActive": true,
+          "isDeleted": true,
+          "stfmappingId": 53,
+          "deleteFlag": true,
+          "primaryKey": 3
+        }
+      ],
+      "serviceAreaIdsList": [],
+      "businessUnitIdsList": [
+        5
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "chaksBU"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Partner"
+      ],
+      "regDate": "08-12-2022 15:04 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": 1
+    },
+    {
+      "id": 54,
+      "createdate": "08-12-2022 03:13 PM",
+      "updatedate": "08-12-2022 03:13 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "yogesh",
+      "password": null,
+      "firstname": "yogesh",
+      "lastname": "yogesh",
+      "email": "yogesh.patil@adoptnet.tech",
+      "phone": "4567890",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        3
+      ],
+      "teamIds": [
+        17
+      ],
+      "teamNameList": [
+        "chaksteam2"
+      ],
+      "isDelete": false,
+      "fullName": "yogesh yogesh",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [],
+      "businessunitid": null,
+      "businessunitids": [
+        5
+      ],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [
+        {
+          "id": 2,
+          "prefix": "B",
+          "fromreceiptnumber": 200,
+          "toreceiptnumber": 300,
+          "isActive": true,
+          "isDeleted": true,
+          "stfmappingId": 54,
+          "deleteFlag": true,
+          "primaryKey": 2
+        }
+      ],
+      "serviceAreaIdsList": [],
+      "businessUnitIdsList": [
+        5
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "chaksBU"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Partner"
+      ],
+      "regDate": "08-12-2022 15:13 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 55,
+      "createdate": "08-12-2022 04:42 PM",
+      "updatedate": "08-12-2022 04:42 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "J_Yadav",
+      "password": null,
+      "firstname": "J_Yadav",
+      "lastname": "J_Yadav",
+      "email": "J_Yadav@gmail.com",
+      "phone": "1234567890",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [],
+      "teamNameList": [],
+      "isDelete": false,
+      "fullName": "J_Yadav J_Yadav",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        16,
+        17
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        12
+      ],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [
+        {
+          "id": 1,
+          "prefix": "A",
+          "fromreceiptnumber": 200,
+          "toreceiptnumber": 300,
+          "isActive": true,
+          "isDeleted": true,
+          "stfmappingId": 55,
+          "deleteFlag": true,
+          "primaryKey": 1
+        }
+      ],
+      "serviceAreaIdsList": [
+        16,
+        17
+      ],
+      "businessUnitIdsList": [
+        12
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "Jyoti",
+        "Jyo"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "J_Yadav_BU"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "08-12-2022 16:42 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 56,
+      "createdate": "09-12-2022 01:32 AM",
+      "updatedate": "09-12-2022 01:32 AM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "demo ",
+      "password": null,
+      "firstname": "demo ",
+      "lastname": "demo ",
+      "email": "aaa@gmail.com",
+      "phone": "987654321",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [],
+      "teamNameList": [],
+      "isDelete": false,
+      "fullName": "demo  demo ",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [],
+      "businessunitid": null,
+      "businessunitids": [],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [],
+      "businessUnitIdsList": [],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "09-12-2022 01:32 AM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 57,
+      "createdate": "09-12-2022 12:48 PM",
+      "updatedate": "09-12-2022 12:48 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "sonam.gupta@adoptnet.tech",
+      "password": null,
+      "firstname": "sonam parter bundle",
+      "lastname": "sonam parter bundle",
+      "email": "sonam.gupta@adoptnet.tech",
+      "phone": "9399890042",
+      "countryCode": null,
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 2,
+      "newpassword": null,
+      "roleIds": [
+        3
+      ],
+      "teamIds": [],
+      "teamNameList": [],
+      "isDelete": false,
+      "fullName": "sonam parter bundle sonam parter bundle",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        9,
+        15
+      ],
+      "businessunitid": null,
+      "businessunitids": [],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        9,
+        15
+      ],
+      "businessUnitIdsList": [],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "sonam service area",
+        "sonamSA"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Partner"
+      ],
+      "regDate": "09-12-2022 12:48 PM",
+      "partnerName": "sonam parter bundle",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 61,
+      "createdate": "12-12-2022 12:12 PM",
+      "updatedate": "15-12-2022 03:16 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "sg1",
+      "password": null,
+      "firstname": "sg1",
+      "lastname": "sg1",
+      "email": "a@gmail.com",
+      "phone": "3423234543",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        25
+      ],
+      "teamNameList": [
+        "Team sg1"
+      ],
+      "isDelete": false,
+      "fullName": "sg1 sg1",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        27,
+        29,
+        30
+      ],
+      "businessunitid": null,
+      "businessunitids": [],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        27,
+        29,
+        30
+      ],
+      "businessUnitIdsList": [],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "sonam service 1412",
+        "sfs",
+        "dubai service area"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "12-12-2022 12:12 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 63,
+      "createdate": "12-12-2022 12:16 PM",
+      "updatedate": "12-12-2022 12:25 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "S2",
+      "password": null,
+      "firstname": "S2",
+      "lastname": "S2",
+      "email": "ommangrulkar558@gmail.com",
+      "phone": "9999999999",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        20
+      ],
+      "teamNameList": [
+        "TeamSG2"
+      ],
+      "isDelete": false,
+      "fullName": "S2 S2",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [],
+      "businessunitid": null,
+      "businessunitids": [],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [],
+      "businessUnitIdsList": [],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "12-12-2022 12:16 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 64,
+      "createdate": "12-12-2022 12:17 PM",
+      "updatedate": "15-12-2022 03:21 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "S3",
+      "password": null,
+      "firstname": "S3",
+      "lastname": "S3",
+      "email": "b@gmail.com",
+      "phone": "8765432123",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        27
+      ],
+      "teamNameList": [
+        "Team sg3"
+      ],
+      "isDelete": false,
+      "fullName": "S3 S3",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        27
+      ],
+      "businessunitid": null,
+      "businessunitids": [],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        27
+      ],
+      "businessUnitIdsList": [],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "sonam service 1412"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "12-12-2022 12:17 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 65,
+      "createdate": "12-12-2022 01:33 PM",
+      "updatedate": "12-12-2022 02:33 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "amit",
+      "password": null,
+      "firstname": "Amit",
+      "lastname": "Prajapati",
+      "email": "amitvadu@gmail.com",
+      "phone": "9974740117",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [],
+      "teamNameList": [],
+      "isDelete": false,
+      "fullName": "Amit Prajapati",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        22
+      ],
+      "businessunitid": null,
+      "businessunitids": [],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        22
+      ],
+      "businessUnitIdsList": [],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "Amit_Service_Area"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "12-12-2022 13:33 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 66,
+      "createdate": "13-12-2022 04:35 PM",
+      "updatedate": "13-12-2022 04:35 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "aa@aa11.com",
+      "password": null,
+      "firstname": "partnerAA",
+      "lastname": "partnerAA",
+      "email": "aa@aa11.com",
+      "phone": "1234567890",
+      "countryCode": null,
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 3,
+      "newpassword": null,
+      "roleIds": [
+        3
+      ],
+      "teamIds": [],
+      "teamNameList": [],
+      "isDelete": false,
+      "fullName": "partnerAA partnerAA",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        13,
+        14,
+        16,
+        17,
+        18,
+        19,
+        22,
+        23
+      ],
+      "businessunitid": null,
+      "businessunitids": [],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        13,
+        14,
+        16,
+        17,
+        18,
+        19,
+        22,
+        23
+      ],
+      "businessUnitIdsList": [],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "subisu",
+        "ServiceParth1",
+        "Kanhaiyalal nagar",
+        "NavaNaroda",
+        "chaksSA",
+        "VarunServiceArea",
+        "MS_ServiceArea",
+        "adityaSA",
+        "LeadSA",
+        "sg service",
+        "Jyoti",
+        "Jyo",
+        "new sonam123",
+        "sonm1212",
+        "Amit_Service_Area",
+        "sonam"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Partner"
+      ],
+      "regDate": "13-12-2022 16:35 PM",
+      "partnerName": "partnerAA",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 67,
+      "createdate": "13-12-2022 04:42 PM",
+      "updatedate": "13-12-2022 04:42 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "aa12n@aa.com",
+      "password": null,
+      "firstname": "partner1234A",
+      "lastname": "partner1234A",
+      "email": "aa12n@aa.com",
+      "phone": "1234567890",
+      "countryCode": null,
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 4,
+      "newpassword": null,
+      "roleIds": [
+        3
+      ],
+      "teamIds": [],
+      "teamNameList": [],
+      "isDelete": false,
+      "fullName": "partner1234A partner1234A",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        2
+      ],
+      "businessunitid": null,
+      "businessunitids": [],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        2
+      ],
+      "businessUnitIdsList": [],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "ServiceParth1"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Partner"
+      ],
+      "regDate": "13-12-2022 16:42 PM",
+      "partnerName": "partner1234A",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 68,
+      "createdate": "13-12-2022 05:51 PM",
+      "updatedate": "14-12-2022 12:04 AM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "subisujk",
+      "password": null,
+      "firstname": "subisujk",
+      "lastname": "subisujk",
+      "email": "subisujk@subisujk.com",
+      "phone": "9879390876",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [],
+      "teamNameList": [],
+      "isDelete": false,
+      "fullName": "subisujk subisujk",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        1
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        20
+      ],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        1
+      ],
+      "businessUnitIdsList": [
+        20
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "subisu"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "SUBISUJK"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "13-12-2022 17:51 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 69,
+      "createdate": "13-12-2022 06:48 PM",
+      "updatedate": "13-12-2022 06:48 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "RTStaff",
+      "password": null,
+      "firstname": "RTStaff",
+      "lastname": "RTStaff",
+      "email": "pm@adoptnet.tech",
+      "phone": "1234567890",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        1
+      ],
+      "teamNameList": [
+        "TeamP1"
+      ],
+      "isDelete": false,
+      "fullName": "RTStaff RTStaff",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        19,
+        24
+      ],
+      "businessunitid": null,
+      "businessunitids": [],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        19,
+        24
+      ],
+      "businessUnitIdsList": [],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "sonm1212",
+        "RTserviceArea"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "13-12-2022 18:48 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 70,
+      "createdate": "13-12-2022 07:21 PM",
+      "updatedate": "13-12-2022 07:44 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "aj",
+      "password": null,
+      "firstname": "Ajay",
+      "lastname": "SHukla",
+      "email": "ajayshukla@gmail.com",
+      "phone": "1111111111",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [],
+      "teamNameList": [],
+      "isDelete": false,
+      "fullName": "Ajay SHukla",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        1,
+        5,
+        7,
+        13,
+        19
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        21
+      ],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        1,
+        5,
+        7,
+        13,
+        19
+      ],
+      "businessUnitIdsList": [
+        21
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "subisu",
+        "NavaNaroda",
+        "VarunServiceArea",
+        "LeadSA",
+        "sonm1212"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "AJBU"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "13-12-2022 19:21 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 71,
+      "createdate": "13-12-2022 08:16 PM",
+      "updatedate": "13-12-2022 08:16 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "NewBUForChetan",
+      "password": null,
+      "firstname": "NewBUForChetan",
+      "lastname": "NewBUForChetan",
+      "email": "aaa@gmail.com",
+      "phone": "345678",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [],
+      "teamNameList": [],
+      "isDelete": false,
+      "fullName": "NewBUForChetan NewBUForChetan",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [],
+      "businessunitid": null,
+      "businessunitids": [
+        22
+      ],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [],
+      "businessUnitIdsList": [
+        22
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "NewBUForChetan"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "13-12-2022 20:16 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 72,
+      "createdate": "14-12-2022 12:02 AM",
+      "updatedate": "14-12-2022 12:02 AM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "franchies@franchies.com",
+      "password": null,
+      "firstname": "franchies",
+      "lastname": "franchies",
+      "email": "franchies@franchies.com",
+      "phone": "9879390876",
+      "countryCode": null,
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 5,
+      "newpassword": null,
+      "roleIds": [
+        3
+      ],
+      "teamIds": [],
+      "teamNameList": [],
+      "isDelete": false,
+      "fullName": "franchies franchies",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        1
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        20
+      ],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        1
+      ],
+      "businessUnitIdsList": [
+        20
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "subisu"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "SUBISUJK"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Partner"
+      ],
+      "regDate": "14-12-2022 00:02 AM",
+      "partnerName": "franchies",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 73,
+      "createdate": "15-12-2022 03:18 PM",
+      "updatedate": "15-12-2022 03:18 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "SG2",
+      "password": null,
+      "firstname": "SG2",
+      "lastname": "SG2",
+      "email": "WW@gmail.com",
+      "phone": "4562347865",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [
+        26
+      ],
+      "teamNameList": [
+        "Team sg2"
+      ],
+      "isDelete": false,
+      "fullName": "SG2 SG2",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        27
+      ],
+      "businessunitid": null,
+      "businessunitids": [],
+      "parentStaffId": 61,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        27
+      ],
+      "businessUnitIdsList": [],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "sonam service 1412"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "15-12-2022 15:18 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 74,
+      "createdate": "16-12-2022 03:39 PM",
+      "updatedate": "16-12-2022 03:39 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "one@gmail.com",
+      "password": null,
+      "firstname": "dec16 Partner ",
+      "lastname": "dec16 Partner ",
+      "email": "one@gmail.com",
+      "phone": "7894561230",
+      "countryCode": null,
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 6,
+      "newpassword": null,
+      "roleIds": [
+        3
+      ],
+      "teamIds": [],
+      "teamNameList": [],
+      "isDelete": false,
+      "fullName": "dec16 Partner  dec16 Partner ",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        2
+      ],
+      "businessunitid": null,
+      "businessunitids": [
+        1
+      ],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        2
+      ],
+      "businessUnitIdsList": [
+        1
+      ],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "ServiceParth1"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [
+        "businessParth1"
+      ],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Partner"
+      ],
+      "regDate": "16-12-2022 15:39 PM",
+      "partnerName": "dec16 Partner ",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 75,
+      "createdate": "16-12-2022 06:30 PM",
+      "updatedate": "16-12-2022 06:30 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "servicelevelcommission@fff.com",
+      "password": null,
+      "firstname": "varunPartner",
+      "lastname": "varunPartner",
+      "email": "servicelevelcommission@fff.com",
+      "phone": "09876544",
+      "countryCode": null,
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 7,
+      "newpassword": null,
+      "roleIds": [
+        3
+      ],
+      "teamIds": [],
+      "teamNameList": [],
+      "isDelete": false,
+      "fullName": "varunPartner varunPartner",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        31
+      ],
+      "businessunitid": null,
+      "businessunitids": [],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        31
+      ],
+      "businessUnitIdsList": [],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "VAarunServiceArea"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Partner"
+      ],
+      "regDate": "16-12-2022 18:30 PM",
+      "partnerName": "varunPartner",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 76,
+      "createdate": "19-12-2022 02:22 PM",
+      "updatedate": "19-12-2022 02:23 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "lcopartner@test.com",
+      "password": null,
+      "firstname": "lcopartner",
+      "lastname": "lcopartner",
+      "email": "lcopartner@test.com",
+      "phone": "9898989898",
+      "countryCode": null,
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 8,
+      "newpassword": null,
+      "roleIds": [
+        1
+      ],
+      "teamIds": [],
+      "teamNameList": [],
+      "isDelete": false,
+      "fullName": "lcopartner lcopartner",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        48
+      ],
+      "businessunitid": null,
+      "businessunitids": [],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        48
+      ],
+      "businessUnitIdsList": [],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "lcopartnerSA"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Admin"
+      ],
+      "regDate": "19-12-2022 14:22 PM",
+      "partnerName": "lcopartner",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 77,
+      "createdate": "20-12-2022 11:03 AM",
+      "updatedate": "20-12-2022 11:03 AM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "ss@gmail.com",
+      "password": null,
+      "firstname": "mm",
+      "lastname": "mm",
+      "email": "ss@gmail.com",
+      "phone": "9785957511",
+      "countryCode": null,
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 9,
+      "newpassword": null,
+      "roleIds": [
+        3
+      ],
+      "teamIds": [],
+      "teamNameList": [],
+      "isDelete": false,
+      "fullName": "mm mm",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        32
+      ],
+      "businessunitid": null,
+      "businessunitids": [],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        32
+      ],
+      "businessUnitIdsList": [],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "Amit_ServiceArea_1"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "Partner"
+      ],
+      "regDate": "20-12-2022 11:03 AM",
+      "partnerName": "mm",
+      "updatedatestring": null,
+      "branchId": null
+    },
+    {
+      "id": 78,
+      "createdate": "20-12-2022 12:02 PM",
+      "updatedate": "20-12-2022 12:02 PM",
+      "createdByName": null,
+      "lastModifiedByName": null,
+      "createdById": null,
+      "lastModifiedById": null,
+      "username": "CF",
+      "password": null,
+      "firstname": "CF",
+      "lastname": "C",
+      "email": "cf@gmail.com",
+      "phone": "8460845009",
+      "countryCode": "+91",
+      "failcount": 0,
+      "status": "ACTIVE",
+      "last_login_time": null,
+      "partnerid": 1,
+      "newpassword": null,
+      "roleIds": [
+        11
+      ],
+      "teamIds": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "teamNameList": [
+        "TeamP3",
+        "TeamP5",
+        "TeamP2",
+        "TeamP1",
+        "TeamP4"
+      ],
+      "isDelete": false,
+      "fullName": "CF C",
+      "sysstaff": false,
+      "servicearea": null,
+      "businessUnit": null,
+      "serviceAreaId": null,
+      "serviceAreasId": [
+        1
+      ],
+      "businessunitid": null,
+      "businessunitids": [],
+      "parentStaffId": null,
+      "mvnoId": 2,
+      "staffUserServiceMappingList": [],
+      "serviceAreaIdsList": [
+        1
+      ],
+      "businessUnitIdsList": [],
+      "serviceAreaNameList": [],
+      "serviceAreasNameList": [
+        "subisu"
+      ],
+      "businessUnitNameList": [],
+      "businessUnitNamesList": [],
+      "totalCollected": null,
+      "totalTransferred": null,
+      "availableAmount": null,
+      "roleName": [
+        "CF"
+      ],
+      "regDate": "20-12-2022 12:02 PM",
+      "partnerName": "Default",
+      "updatedatestring": null,
+      "branchId": null
+    }
+  ],
+  "timestamp": "2022-12-20 13:46:31:7290",
+  "status": 200
+}

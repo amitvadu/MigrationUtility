@@ -1,0 +1,16 @@
+{
+  "name": "200 MBPS",
+  "thpolicyname": "200 MBPS",
+  "thdownloadspeed": "200",
+  "thuploadspeed": "200",
+  "thparam1": "200",
+  "thparam2": "200",
+  "thparam3": "200",
+  "description": "200 MBPS",
+  "basepolicyname": "200 MBPS",
+  "baseuploadspeed": "200",
+  "basedownloadspeed": "200",
+  "baseparam1": "200",
+  "baseparam2": "200",
+  "baseparam3": "200"
+}

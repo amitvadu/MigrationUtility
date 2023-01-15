@@ -1,0 +1,14 @@
+{
+  "name": "Test_Ward1",
+  "countryId": 1,
+  "stateId": 1,
+  "cityId": 1,
+  "pincodeId": 1,
+  "status": "Active",
+  "pincode": {
+    "pincodeid": 1,
+    "pincode": "Kathmandu",
+    "status": "Active",
+    "isDeleted": false
+  }
+}

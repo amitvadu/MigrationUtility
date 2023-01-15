@@ -1,0 +1,15 @@
+{
+  "id": "",
+  "name": "Amit_Charge_1",
+  "createdById": "",
+  "lastModifiedById": "",
+  "serviceAreaIdsList": [
+    1,
+    5
+  ],
+  "status": "Active",
+  "isDeleted": false,
+  "latitude": "23.2418° N",
+  "longitude": "72.4920° E",
+  "mvnoId": 2
+}

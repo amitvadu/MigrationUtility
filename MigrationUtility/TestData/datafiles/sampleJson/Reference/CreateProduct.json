@@ -1,0 +1,17 @@
+{
+  "id": null,
+  "name": "Amit_Product_123",
+  "productId": "",
+  "navLedgerId": "",
+  "description": "",
+  "productCategory": 2,
+  "status": "ACTIVE",
+  "chargeId": "",
+  "expiryTime": 365,
+  "expiryTimeUnit": "Day",
+  "refundAmount": 0,
+  "totalInPorts": 2,
+  "totalOutPorts": 4,
+  "availableInPorts": 2,
+  "availableOutPorts": 4
+}

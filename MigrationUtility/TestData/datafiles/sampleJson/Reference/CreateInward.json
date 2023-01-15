@@ -1,0 +1,18 @@
+{
+  "id": null,
+  "productId": 43,
+  "qty": null,
+  "inwardDateTime": "2023-01-09T08:39:24.582Z",
+  "destinationId": 1,
+  "destinationType": "Warehouse",
+  "type": "New",
+  "status": "ACTIVE",
+  "inwardNumber": "",
+  "inTransitQty": "5",
+  "mvnoId": null,
+  "usedQty": null,
+  "unusedQty": null,
+  "outTransitQty": null,
+  "rejectedQty": null,
+  "totalMacSerial": null
+}

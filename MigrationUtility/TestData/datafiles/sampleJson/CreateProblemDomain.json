@@ -1,0 +1,27 @@
+{
+  "categoryName": "Amit_Problem_Domain_1",
+  "status": "Active",
+  "service": {
+    "id": 50
+  },
+  "department": "",
+  "slaTimeP1": 1,
+  "slaTimeP2": 1,
+  "slaTimeP3": 1,
+  "slaUnitP1": "Day",
+  "slaUnitP2": "Day",
+  "slaUnitP3": "Day",
+  "ticketReasonCategoryTATMappingList": [
+    {
+      "orderNumber": 1,
+      "teamId": null,
+      "time": 1,
+      "timeUnit": "Day",
+      "action": "Notification",
+      "mappingId": "",
+      "escalatedTime": 1,
+      "mediumTime": 1,
+      "level": "Level 1"
+    }
+  ]
+}

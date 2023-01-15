@@ -1,0 +1,11 @@
+{
+  "name": "Amit_RC1",
+  "status": "ACTIVE",
+  "rootCauseResolutionMappingList": [
+    {
+      "rootCauseReason": "Amit_1",
+      "resolutionId": ""
+    }
+  ],
+  "isDeleted": false
+}

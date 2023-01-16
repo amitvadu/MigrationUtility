@@ -54,7 +54,8 @@ public class BusinessUnit extends RestExecution {
 			String value = map.get(key);
 			String ans[] = value.split(":");
 
-			String businessUnit = ans[0];						
+			String businessUnit = ans[0];	
+			Utility.printLog(logFileName, logModuleName, "Sheet Data", value);	
 			createBusinessUnit(businessUnit);
 		}
 	}
@@ -91,8 +92,8 @@ public class BusinessUnit extends RestExecution {
 			
 			org.json.simple.JSONObject districtJsonObject = new org.json.simple.JSONObject();
 			
-			ReadData readData = new ReadData();			
-			districtJsonObject = readData.readJSONFile("CreateBusinessUnit.json");
+			//ReadData readData = new ReadData();			
+			//districtJsonObject = readData.readJSONFile("CreateBusinessUnit.json");
 			
 			districtJsonObject.put("buname", businessUnitName);
 			districtJsonObject.put("bucode", businessUnitName);

@@ -66,7 +66,7 @@ public class District extends RestExecution {
 			Province province = new Province();
 			int countryId = province.getCountryId(countryName);			
 			int provinceId = getProvinceId(provinceName);
-			Utility.printLog(logFileName, logModuleName, "Sheet Data", map.toString());
+			Utility.printLog(logFileName, logModuleName, "Sheet Data", value);
 			createDistrict(districtName, provinceName, provinceId, countryName, countryId);
 		}
 	}

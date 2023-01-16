@@ -70,7 +70,7 @@ public class Ward extends RestExecution {
 			
 			for(int i=1;i<=totalWard;i++) {
 				String wardName=String.valueOf(i);
-				Utility.printLog(logFileName, logModuleName, "Sheet Data", map.toString());	
+				Utility.printLog(logFileName, logModuleName, "Sheet Data", value);	
 				createWard(wardName,municipalityName,municipalityId,cityId,stateId,countryId);
 			}
 		}

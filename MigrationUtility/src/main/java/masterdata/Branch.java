@@ -63,6 +63,7 @@ public class Branch extends RestExecution {
 			List<Integer> serviceAreaIdList = new ArrayList<Integer>();
 			CommonGetAPI commonGetAPI = new CommonGetAPI();
 			serviceAreaIdList.addAll(commonGetAPI.getServiceAreaIdList(serviceAreaName));
+			Utility.printLog(logFileName, logModuleName, "Sheet Data", value);
 			createBranch(branchName, serviceAreaIdList);
 		}
 	}
@@ -100,8 +101,8 @@ public class Branch extends RestExecution {
 
 			org.json.simple.JSONObject branchJsonObject = new org.json.simple.JSONObject();
 
-			ReadData readData = new ReadData();
-			branchJsonObject = readData.readJSONFile("CreateBranch.json");
+			//ReadData readData = new ReadData();
+			//branchJsonObject = readData.readJSONFile("CreateBranch.json");
 
 			branchJsonObject.put("name", branchName);
 			branchJsonObject.put("serviceAreaIdsList", serviceAreaIdList);

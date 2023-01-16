@@ -66,7 +66,7 @@ public class ServiceArea extends RestExecution {
 				Municipality municipality = new Municipality();
 				int districtId = municipality.getDistrictId(districtName);
 				List<Integer> pincodes = getPincodefromCity(districtId);
-				Utility.printLog(logFileName, logModuleName, "Sheet Data", map.toString());
+				Utility.printLog(logFileName, logModuleName, "Sheet Data", value);
 				createServiceArea(serviceAreaName, districtId, pincodes);
 			}
 		}
@@ -106,8 +106,8 @@ public class ServiceArea extends RestExecution {
 
 			org.json.simple.JSONObject serviceAreaJsonObject = new org.json.simple.JSONObject();
 
-			ReadData readData = new ReadData();
-			serviceAreaJsonObject = readData.readJSONFile("CreateServiceArea.json");
+			//ReadData readData = new ReadData();
+			//serviceAreaJsonObject = readData.readJSONFile("CreateServiceArea.json");
 
 			serviceAreaJsonObject.put("name", serviceAreaName);
 			serviceAreaJsonObject.put("cityid", cityId);

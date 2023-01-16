@@ -66,7 +66,7 @@ public class Municipality extends RestExecution {
 			District district = new District(); 
 			int provinceId = district.getProvinceId(provinceName);
 			int districtId = getDistrictId(districtName);
-			Utility.printLog(logFileName, logModuleName, "Sheet Data", map.toString());		
+			Utility.printLog(logFileName, logModuleName, "Sheet Data", value);		
 			createMunicipality(municipalityName,districtId,provinceId,countryId);
 		}
 	}
@@ -107,8 +107,8 @@ public class Municipality extends RestExecution {
 			
 			org.json.simple.JSONObject municipalityJsonObject = new org.json.simple.JSONObject();
 			
-			ReadData readData = new ReadData();			
-			municipalityJsonObject = readData.readJSONFile("CreateMunicipality.json");
+			//ReadData readData = new ReadData();			
+			//municipalityJsonObject = readData.readJSONFile("CreateMunicipality.json");
 			
 			municipalityJsonObject.put("pincode", municipalityName);
 			municipalityJsonObject.put("cityId", cityId);
@@ -119,6 +119,7 @@ public class Municipality extends RestExecution {
 			jsonString = municipalityJsonObject.toJSONString();
 			
 		} catch (Exception e) {
+			jsonString = null;
 			e.printStackTrace();
 		}
 		

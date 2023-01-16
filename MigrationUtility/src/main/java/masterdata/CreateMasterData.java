@@ -104,16 +104,16 @@ public class CreateMasterData {
 		db.executeQuery(query);
 		
 		createCountry();
-	//	createProvince();
-	//	createDistrict();
-	//	createMuncipility();
-	//	createServiceArea();
-	//	createWard();
-	//	createBusinessUnit();
-	//	createBranch();
-	//	createRegion();
-	//	createBusinessVertical();
-	//	createSubBusinessUnit();
+		createProvince();
+		createDistrict();
+		createMuncipility();
+		createServiceArea();
+		createWard();
+		createBusinessUnit();
+		createBranch();
+		createRegion();
+		createBusinessVertical();
+		createSubBusinessUnit();
 		
 		System.out.println("Ended to generate MasterData ...!");
 	}

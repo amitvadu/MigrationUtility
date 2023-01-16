@@ -61,7 +61,7 @@ public class Province extends RestExecution{
 	        String provinceName = ans[1];
 	        
 	        int id = getCountryId(countryName);
-	        Utility.printLog(logFileName, logModuleName, "Sheet Data", map.toString());
+	        Utility.printLog(logFileName, logModuleName, "Sheet Data", value);
 	        createProvince(provinceName,countryName,id);
 	    }		
 	}

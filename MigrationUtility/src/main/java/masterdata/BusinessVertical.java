@@ -59,7 +59,7 @@ public class BusinessVertical extends RestExecution {
 
 			String businessVertical = ans[0];
 			String region = ans[1];
-
+			Utility.printLog(logFileName, logModuleName, "Sheet Data", value);
 			createBusinessVertical(businessVertical,region);
 		}
 	}

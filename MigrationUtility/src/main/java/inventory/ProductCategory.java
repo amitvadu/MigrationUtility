@@ -12,11 +12,11 @@ import api.RestExecution;
 import utility.Utility;
 
 public class ProductCategory extends RestExecution {
+	
+	private String logFileName = "inventory.log";
+	private String logModuleName = "CreateProductCategory";
 
 	private void createProductCategory(Map<String, String> productCategoryDetails) {
-
-		String logFileName = "inventory.log";
-		String logModuleName = "CreateProductCategory";
 
 		String apiURL = "productCategory/save";
 		apiURL = getAPIURL(apiURL);
@@ -53,6 +53,7 @@ public class ProductCategory extends RestExecution {
 
 			Map<String, String> map = new HashMap<String, String>();
 			map = productCategoryMapList.get(i);
+			Utility.printLog(logFileName, logModuleName, "Sheet Data", map.toString());
 			createProductCategory(map);
 		}
 	}
@@ -63,7 +64,8 @@ public class ProductCategory extends RestExecution {
 		List<Map<String, String>> sheetMap = new ArrayList<Map<String, String>>();
 		ReadData readData = new ReadData();
 		sheetMap = readData.getInventoryDataSheet(sheetName);
-
+		Utility.printLog(logFileName, logModuleName, "Whole Sheet Data", sheetMap.toString());
+		
 		Map<String, String> cellValue = new HashMap<String, String>();
 		List<Map<String, String>> productCategoryMapList = new ArrayList<Map<String, String>>();
 
@@ -72,7 +74,8 @@ public class ProductCategory extends RestExecution {
 			Map<String, String> valuemap = new HashMap<String, String>();
 			cellValue = sheetMap.get(i);
 
-			if (!"".equals(cellValue.get("Name"))) {
+			String name = cellValue.get("Name");
+			if ((!"".equals(name)) && (name != null)) {
 
 				valuemap.put("Name", cellValue.get("Name"));
 				valuemap.put("ProductId", cellValue.get("ProductId"));
@@ -96,10 +99,6 @@ public class ProductCategory extends RestExecution {
 
 			org.json.simple.JSONObject productCategoryJsonObject = new org.json.simple.JSONObject();
 
-			// ReadData readData = new ReadData();
-			// productCategoryJsonObject =
-			// readData.readJSONFile("CreateProductCategory.json");
-
 			productCategoryJsonObject.put("id", null);
 			productCategoryJsonObject.put("name", productCategoryDetails.get("Name"));
 			productCategoryJsonObject.put("productId", productCategoryDetails.get("ProductId"));
@@ -112,6 +111,7 @@ public class ProductCategory extends RestExecution {
 			jsonString = productCategoryJsonObject.toJSONString();
 
 		} catch (Exception e) {
+			jsonString = null;
 			e.printStackTrace();
 		}
 		return jsonString;

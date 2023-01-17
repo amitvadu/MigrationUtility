@@ -123,7 +123,9 @@ public class ReadWriteExcelFile {
 					
 					map.put(firstHeaderRow,rowValue.trim());
 				}
-				containerList.add(map);
+				if(!map.isEmpty()) {
+					containerList.add(map);
+				}
 			}
 			
 			containerList.remove(0);			

@@ -38,16 +38,17 @@ public class Outward extends RestExecution {
 
 		if (status == 0) {
 			
-			String inwardNumber = JSONResponseBody .getJSONObject("data").getString("outwardNumber");
+			String outwardNumber = JSONResponseBody .getJSONObject("data").getString("outwardNumber");
 			
-			String message = "New Outward is added successfully - " + inwardNumber;
+			String message = "New Outward is added successfully - " + outwardNumber;
 			System.out.println(message);
 			Utility.printLog("execution.log", logModuleName, "Success", message);
 			
 			int outwardId = JSONResponseBody .getJSONObject("data").getInt("id");
+			int outwardsInwardId = JSONResponseBody .getJSONObject("data").getInt("outwardsInwardId");
 						
 			outwardMacMapping(outwardId,outwardDetails);			
-			//outwardApproval(outwardId);
+			outwardGeneratedInwardApproval(outwardsInwardId);
 
 		} else if (status == 406) {
 			String error = JSONResponseBody.getString("responseMessage") + " - " + outwardDetails.get("Product");
@@ -73,7 +74,8 @@ public class Outward extends RestExecution {
 		List<Map<String, String>> sheetMap = new ArrayList<Map<String, String>>();
 		ReadData readData = new ReadData();
 		sheetMap = readData.getInventoryDataSheet(sheetName);
-
+		Utility.printLog(logFileName, logModuleName, "Whole Sheet Data", sheetMap.toString());
+		
 		Map<String, String> cellValue = new HashMap<String, String>();
 		List<Map<String, String>> outwardMapList = new ArrayList<Map<String, String>>();
 
@@ -82,7 +84,8 @@ public class Outward extends RestExecution {
 			Map<String, String> valuemap = new HashMap<String, String>();
 			cellValue = sheetMap.get(i);
 
-			if (!"".equals(cellValue.get("Product"))) {
+			String product = cellValue.get("Product");
+			if ((!"".equals(product)) && (product != null)) {
 
 				valuemap.put("Product", cellValue.get("Product"));
 				valuemap.put("SourceType", cellValue.get("SourceType"));
@@ -226,7 +229,7 @@ public class Outward extends RestExecution {
 	}
 	
 	@SuppressWarnings("unchecked")
- 	private String outwardApproval(int inwardNumber) {
+ 	private String outwardGeneratedInwardApproval(int outwardsInwardId) {
 		
 		String jsonString = null;
 
@@ -234,9 +237,9 @@ public class Outward extends RestExecution {
 
 			org.json.simple.JSONObject macMappingJsonObject = new org.json.simple.JSONObject();
 			
-			if(inwardNumber!=0){
+			if(outwardsInwardId!=0){
 				
-				macMappingJsonObject.put("id", inwardNumber);
+				macMappingJsonObject.put("id", outwardsInwardId);
 				macMappingJsonObject.put("approvalStatus", "Approve");
 				macMappingJsonObject.put("approvalRemark", "Approved by migration");
 				
@@ -257,14 +260,14 @@ public class Outward extends RestExecution {
 
 				if (status == 200) {
 					
-					String inwardNumber1 = JSONResponseBody .getJSONObject("data").getString("inwardNumber");					
-					String message = "New Inward is approved successfully - " + inwardNumber1;
+					//String inwardNumber1 = JSONResponseBody .getJSONObject("data").getString("inwardNumber");					
+					String message = "New Outward Generated-Inward is approved successfully - IN-" + outwardsInwardId;
 					
 					System.out.println(message);
 					Utility.printLog("execution.log", logModuleName, "Success", message);
 
 				} else {
-					String error = JSONResponseBody.getString("responseMessage") + " - IN-" + inwardNumber ;
+					String error = JSONResponseBody.getString("responseMessage") + " - IN-" + outwardsInwardId ;
 					System.out.println(error);
 					Utility.printLog("execution.log", logModuleName, "Inward Approval", error);
 				}
@@ -296,8 +299,8 @@ public class Outward extends RestExecution {
 				String mac = null;
 				if(serial.contains("#")) {
 					String macSerial[] = serial.split("#");					
-					mac = macSerial[0];
-					serial = macSerial[1];
+					serial = macSerial[0];
+					mac = macSerial[1];
 				}
 				
 				JSONArray jsonArray = jsonResponse.getJSONArray("dataList");
@@ -359,7 +362,7 @@ public class Outward extends RestExecution {
 
 			if (status == 200) {
 				
-				String message = "New MAC/Serials are added in outward successfully - " + outwardId;
+				String message = "New MAC/Serials are added in outward successfully - OUT-" + outwardId;
 				System.out.println(message);
 				Utility.printLog("execution.log", logModuleName, "Success", message);
 

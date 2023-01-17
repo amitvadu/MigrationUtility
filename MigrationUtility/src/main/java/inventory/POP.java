@@ -72,7 +72,8 @@ public class POP extends RestExecution {
 			Map<String, String> valuemap = new HashMap<String, String>();
 			cellValue = sheetMap.get(i);
 
-			if (!"".equals(cellValue.get("Name"))) {
+			String name = cellValue.get("Name");
+			if ((!"".equals(name)) && (name != null)) {
 				
 				valuemap.put("Name", cellValue.get("Name"));
 				valuemap.put("Latitude", cellValue.get("Latitude"));

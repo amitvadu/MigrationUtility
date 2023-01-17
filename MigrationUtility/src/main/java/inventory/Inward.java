@@ -51,7 +51,8 @@ public class Inward extends RestExecution {
 			DBOperations dbo = new DBOperations();
 			dbo.setAPIData(type, name, inwardId, status);
 
-			inwardMacMappingTemp(inwardId, inwardDetails);
+			//inwardMacMappingTemp(inwardId, inwardDetails);
+			inwardMacMapping(inwardId, inwardDetails);
 			inwardApproval(inwardId);
 
 		} else if (status == 406) {
@@ -78,7 +79,8 @@ public class Inward extends RestExecution {
 		List<Map<String, String>> sheetMap = new ArrayList<Map<String, String>>();
 		ReadData readData = new ReadData();
 		sheetMap = readData.getInventoryDataSheet(sheetName);
-
+		Utility.printLog(logFileName, logModuleName, "Whole Sheet Data", sheetMap.toString());
+		
 		Map<String, String> cellValue = new HashMap<String, String>();
 		List<Map<String, String>> inwardMapList = new ArrayList<Map<String, String>>();
 
@@ -86,8 +88,9 @@ public class Inward extends RestExecution {
 
 			Map<String, String> valuemap = new HashMap<String, String>();
 			cellValue = sheetMap.get(i);
-
-			if (!"".equals(cellValue.get("Product"))) {
+			
+			String product = cellValue.get("Product");
+			if ((!"".equals(product)) && (product != null)) {
 
 				valuemap.put("Product", cellValue.get("Product"));
 				valuemap.put("Warehouse", cellValue.get("Warehouse"));

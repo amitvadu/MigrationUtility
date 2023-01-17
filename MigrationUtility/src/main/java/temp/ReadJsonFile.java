@@ -1,6 +1,8 @@
 package temp;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import commons.CommonGetAPI;
 import commons.CommonList;
@@ -14,7 +16,7 @@ public class ReadJsonFile {
 
 	public static void main(String args[]) throws IOException {
 		
-		Login login = new Login();
+	/*	Login login = new Login();
 		login.setAuthBearer();
 		
 	/*	Outward outward = new Outward();
@@ -30,11 +32,7 @@ public class ReadJsonFile {
 		System.out.println("Done");
 	*/	
 		
-		CommonGetAPI commonGetAPI = new CommonGetAPI();
-		for(int i=0;i<20;i++) {
-			System.out.println("Warehouse_" + i + " = " + commonGetAPI.getWarehouseId("Warehouse_" + i));
-		}
-		
+		macGenerate();
 		
 		
 	}

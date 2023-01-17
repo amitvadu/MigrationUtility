@@ -56,7 +56,7 @@ public class CreateInventoryData {
 	//	createProduct();
 	//	createPop();
 	//	createWarehouse();
-	//	createInward();
+		createInward();
 		createOutward();
 		
 		System.out.println("Ended to generate Inventory Data ...!");

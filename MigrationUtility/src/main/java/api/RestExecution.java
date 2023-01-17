@@ -19,7 +19,6 @@ public class RestExecution {
 	
 	public String getAPIURL(String apiName) {
 		//Initializing Rest API's URL
-		//String apiURL = "http://143.198.140.196:30080/api/v1/" + apiName;
 		String apiURL =Constant.API_URL + apiName;
 		return apiURL;
 	}

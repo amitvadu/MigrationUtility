@@ -72,9 +72,10 @@ public class Product extends RestExecution {
 
 			Map<String, String> valuemap = new HashMap<String, String>();
 			cellValue = sheetMap.get(i);
+			
+			String name = cellValue.get("Name");
+			if ((!"".equals(name)) && (name != null)) {
 
-			if (!"".equals(cellValue.get("Name"))) {
-				
 				valuemap.put("Name", cellValue.get("Name"));
 				valuemap.put("ProductId", cellValue.get("ProductId"));
 				valuemap.put("LedgerId", cellValue.get("LedgerId"));

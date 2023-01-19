@@ -91,7 +91,7 @@ public class ReadWriteExcelFile {
 		
 		try { 
 	
-			File file = new File(filePath +fileName);    		 
+			File file = new File(filePath + fileName);    		 
 		    FileInputStream fis = new FileInputStream(file); 
 		       		
 		    XSSFWorkbook workbook = new XSSFWorkbook(fis);

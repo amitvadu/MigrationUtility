@@ -1,0 +1,44 @@
+{
+  "planMode": "NORMAL",
+  "mvnoId": "2",
+  "planGroupId": null,
+  "planGroupName": "Amit_Plan_Bundle_1",
+  "serviceAreaId": 2,
+  "status": "NewActivation",
+  "planType": "Prepaid",
+  "planGroupType": "Registration and Renewal",
+  "category": "Normal",
+  "allowdiscount": false,
+  "planMappingList": [
+    {
+      "service": "Pbrodservicemidn",
+      "planId": 3,
+      "validity": 1,
+      "amount": 1276.9,
+      "validityUnit": "Months",
+      "planGroupId": "",
+      "planGroupMappingId": "",
+      "newOfferPrice": 0
+    },
+    {
+      "service": "Pbrodservicemidn",
+      "planId": 4,
+      "validity": 1,
+      "amount": 2553.8,
+      "validityUnit": "Months",
+      "planGroupId": "",
+      "planGroupMappingId": "",
+      "newOfferPrice": 0
+    },
+    {
+      "service": "Pbrodservicemidn",
+      "planId": 298,
+      "validity": 1,
+      "amount": 1276.9,
+      "validityUnit": "Months",
+      "planGroupId": "",
+      "planGroupMappingId": "",
+      "newOfferPrice": 0
+    }
+  ]
+}

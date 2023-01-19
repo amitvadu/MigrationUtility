@@ -32,8 +32,24 @@ public class ReadJsonFile {
 		System.out.println("Done");
 	*/	
 		
-		macGenerate();
+	//	macGenerate();
 		
+		String servicesAndPlans = "[FTTH:Plan_4],[DTV:Plan_5],[FTTH:Plan_6],[DTV:Plan_7]";
+		servicesAndPlans = servicesAndPlans.replaceAll("[\\[\\]]", "");
+		
+		String ans[] = servicesAndPlans.split(",");
+		
+		for(int i=0;i<ans.length;i++) {
+			System.out.println("ans[" +i+"] = " + ans[i]);
+			
+			String temp[] = ans[i].split(":");
+			String service = temp[0];
+			String plan = temp[1];
+			
+			System.out.println("service = " + service);
+			System.out.println("plan = " + plan);
+		
+		}
 		
 	}
 	

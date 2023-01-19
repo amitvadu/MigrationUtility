@@ -49,9 +49,16 @@ public class CreatePrepaidPlanData {
 
 		PrepaidCustomer prepaidCustomer = new PrepaidCustomer();
 		List<Map<String, String>> customerMapList = prepaidCustomer.readUniquePrepaidCustomerList();
-		//System.out.println("customerMapList = " +customerMapList.toString());
 		prepaidCustomer.createPrepaidCustomer(customerMapList);		
 	}
+	
+	private void createPlanBundle() {
+
+		PlanBundle planBundle = new PlanBundle();
+		List<Map<String, String>> planBundleMapList = planBundle.readPlanBundleList();
+		planBundle.createPlanBundle(planBundleMapList);		
+	}
+
 	
 	public void generatePrepaidPlanData() {
 		
@@ -61,7 +68,8 @@ public class CreatePrepaidPlanData {
 	//	createPlanTax();
 	//	createPlanCharge();
 	//	createPlanQos();
-		createPrepaidPlan();
+	//	createPrepaidPlan();
+		createPlanBundle();
 		
 		System.out.println("Ended Generting PrepaidPlan Data...!");
 	}

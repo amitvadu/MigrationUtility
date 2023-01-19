@@ -39,8 +39,8 @@ public class PrepaidCustomer extends RestExecution {
 			int status = JSONResponseBody.getInt("status");
 
 			if (status == 200) {
-				System.out
-						.println("New Prepaid-Customer is added successfully - " + customerDetailsMap.get("Username"));
+				String message = "New Prepaid-Customer is added successfully - " + customerDetailsMap.get("Username");
+				System.out.println(message);
 
 				String type = "PrepaidCustomer";
 				JSONObject cityJSONObject = JSONResponseBody.getJSONObject("customer");
@@ -218,8 +218,8 @@ public class PrepaidCustomer extends RestExecution {
 			customerJsonObject.put("billTo", billTo);
 			customerJsonObject.put("discount", 0);
 
-			int planId = getPlanId(customerDetails.get("Plan"));
-			String planDetails[] = getPlanDetails(planId).split(":");
+			int planId = commonGetAPI.getPlanId(customerDetails.get("Plan"));
+			String planDetails[] = commonGetAPI.getPlanDetails(planId).split(":");
 
 			String serviceName = planDetails[0];
 			float offerPrice = Float.valueOf(planDetails[1]);
@@ -377,60 +377,8 @@ public class PrepaidCustomer extends RestExecution {
 	}
 
 
-	public int getPlanId(String planName) {
-
-		String apiURL = getAPIURL("postpaidplan/all");
-
-		JSONObject jsonResponse = httpGet(apiURL);
-		// String ans = jsonResponse.toString(4);
-
-		// Fetching the desired value of a parameter
-		int status = jsonResponse.getInt("status");
-		int planId = 0;
-
-		if (status == 200) {
-			JSONArray jsonArray = jsonResponse.getJSONArray("postpaidplanList");
-			for (int i = 0; i < jsonArray.length(); i++) {
-				String receivedpartnerName = jsonArray.getJSONObject(i).getString("name");
-				if (receivedpartnerName.equalsIgnoreCase(planName)) {
-					planId = jsonArray.getJSONObject(i).getInt("id");
-					break;
-				}
-			}
-		}
-
-		if (planId == 0) {
-			System.out.println("Plan details not found - " + planName);
-			Utility.printLog(logFileName, logModuleName, "Plan details not found - ", planName);
-		}
-
-		return planId;
-	}
-
-	public String getPlanDetails(int planId) {
-
-		String apiURL = "postpaidplan/" + planId;
-		apiURL = getAPIURL(apiURL);
-
-		JSONObject jsonResponse = httpGet(apiURL);
-		int status = jsonResponse.getInt("status");
-
-		String ans = "";
-		if (status == 200) {
-
-			JSONObject picodeJSONObject = jsonResponse.getJSONObject("postPaidPlan");
-			String serviceName = picodeJSONObject.getString("serviceName");
-			float offerprice = picodeJSONObject.getFloat("offerprice");
-			int validity = picodeJSONObject.getInt("validity");
-			String unitsOfValidity = picodeJSONObject.getString("unitsOfValidity");
-
-			ans = serviceName + ":" + offerprice + ":" + validity + ":" + unitsOfValidity;
-		}
-
-		return ans;
-	}
-
-	public boolean checkcustomerUsernameIsAlreadyExists(String customerName) {
+	
+		public boolean checkcustomerUsernameIsAlreadyExists(String customerName) {
 
 		String apiURL = "customer/customerUsernameIsAlreadyExists/" + customerName;
 		apiURL = getAPIURL(apiURL);

@@ -61,7 +61,7 @@ public class Country extends RestExecution {
 
 	public Map<String, String> readUniqueCountryList() {
 		
-		String sheetName = "Geogaraphical Areas";
+		String sheetName = "Country";
 		List<Map<String, String>> sheetMap = new ArrayList<Map<String, String>>();
 		ReadData readData = new ReadData();
 		sheetMap = readData.getDemographicDataSheet(sheetName);

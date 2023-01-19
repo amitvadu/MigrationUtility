@@ -15,6 +15,62 @@ public class CommonGetAPI extends RestExecution {
 	private String logModuleName = "CommonGetAPI";
 	
 	
+	public String getPlanDetails(int planId) {
+
+		String apiURL = "postpaidplan/" + planId;
+		apiURL = getAPIURL(apiURL);
+
+		JSONObject jsonResponse = httpGet(apiURL);
+		int status = jsonResponse.getInt("status");
+
+		String ans = "";
+		if (status == 200) {
+
+			JSONObject picodeJSONObject = jsonResponse.getJSONObject("postPaidPlan");
+			String serviceName = picodeJSONObject.getString("serviceName");
+			float offerprice = picodeJSONObject.getFloat("offerprice");
+			int validity = picodeJSONObject.getInt("validity");
+			String unitsOfValidity = picodeJSONObject.getString("unitsOfValidity");
+			float newOfferPrice = picodeJSONObject.getFloat("newOfferPrice");
+			
+			ans = serviceName +":"+ offerprice +":"+ validity +":"+ unitsOfValidity +":"+ newOfferPrice;
+		}
+
+		return ans;
+	}
+
+	
+	public int getPlanId(String planName) {
+
+		String apiURL = getAPIURL("postpaidplan/all");
+
+		JSONObject jsonResponse = httpGet(apiURL);
+		// String ans = jsonResponse.toString(4);
+
+		// Fetching the desired value of a parameter
+		int status = jsonResponse.getInt("status");
+		int planId = 0;
+
+		if (status == 200) {
+			JSONArray jsonArray = jsonResponse.getJSONArray("postpaidplanList");
+			for (int i = 0; i < jsonArray.length(); i++) {
+				String receivedpartnerName = jsonArray.getJSONObject(i).getString("name");
+				if (receivedpartnerName.equalsIgnoreCase(planName)) {
+					planId = jsonArray.getJSONObject(i).getInt("id");
+					break;
+				}
+			}
+		}
+
+		if (planId == 0) {
+			System.out.println("Plan details not found - " + planName);
+			Utility.printLog(logFileName, logModuleName, "Plan details not found - ", planName);
+		}
+
+		return planId;
+	}
+
+	
 	public int getStaffId(String staffUserName) {
 
 		String apiURL = getAPIURL("staffuser/allActive");

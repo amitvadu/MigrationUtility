@@ -1,0 +1,47 @@
+{
+  "name": "Amit_Tax_1A",
+  "taxtype": "TIER",
+  "status": "Y",
+  "desc": "Amit_Tax_1A",
+  "ledgerId": "Test123",
+  "tieredList": [
+    {
+      "name": "TSC",
+      "rate": 12,
+      "taxGroup": "TIER1",
+      "id": "",
+      "beforeDiscount": true
+    },
+    {
+      "name": "TSC1",
+      "rate": 21,
+      "taxGroup": "TIER2",
+      "id": "",
+      "beforeDiscount": false
+    },
+    {
+      "name": "VAT",
+      "rate": 11,
+      "taxGroup": "TIER1",
+      "id": "",
+      "beforeDiscount": true
+    }
+  ]
+}
+
+{
+  "name": "Amit_Tax_1B",
+  "taxtype": "TIER",
+  "status": "N",
+  "desc": "Amit_Tax_1B",
+  "ledgerId": null,
+  "tieredList": [
+    {
+      "name": "VAT",
+      "rate": 21,
+      "taxGroup": "TIER2",
+      "id": "",
+      "beforeDiscount": false
+    }
+  ]
+}

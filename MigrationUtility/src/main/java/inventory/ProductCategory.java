@@ -64,7 +64,6 @@ public class ProductCategory extends RestExecution {
 		List<Map<String, String>> sheetMap = new ArrayList<Map<String, String>>();
 		ReadData readData = new ReadData();
 		sheetMap = readData.getInventoryDataSheet(sheetName);
-		Utility.printLog(logFileName, logModuleName, "Whole Sheet Data", sheetMap.toString());
 		
 		Map<String, String> cellValue = new HashMap<String, String>();
 		List<Map<String, String>> productCategoryMapList = new ArrayList<Map<String, String>>();

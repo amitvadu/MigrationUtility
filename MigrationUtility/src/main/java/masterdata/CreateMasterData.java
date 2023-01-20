@@ -1,6 +1,7 @@
 package masterdata;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import utility.DBConnect;
@@ -8,93 +9,72 @@ import utility.DBConnect;
 public class CreateMasterData {
 
 	private void createCountry() {
-
 		Country country = new Country();
-		Map<String, String> map = new HashMap<String, String>();
-		map = country.readUniqueCountryList();
-		country.createCountry(map);
+		List<Map<String, String>> countryMapList = country.readCountryList();
+		country.createCountry(countryMapList);
 	}
 
 	private void createProvince() {
-
 		Province province = new Province();
-		Map<String, String> map = new HashMap<String, String>();
-		map = province.readUniqueProvisionList();
-		province.createProvince(map);		
+		List<Map<String, String>> provinceMapList = province.readProvinceList();
+		province.createProvince(provinceMapList);		
 	}
 	
 	private void createDistrict() {
-
 		District district = new District();
-		Map<String, String> map = new HashMap<String, String>();
-		map = district.readUniqueDistrictList();
-		district.createDistrict(map);		
+		List<Map<String, String>> districtMapList = district.readDistrictList();
+		district.createDistrict(districtMapList);		
 	}
 
 	private void createMuncipility() {
-
 		Municipality municipality = new Municipality();
-		Map<String, String> map = new HashMap<String, String>();
-		map = municipality.readUniqueMunicipalityList();
-		municipality.createMunicipality(map);		
+		List<Map<String, String>> municipalitiesMapList = municipality.readMunicipalityList();
+		municipality.createMunicipality(municipalitiesMapList);		
 	}
 	
 	private void createServiceArea() {
-
 		ServiceArea serviceArea = new ServiceArea();
-		Map<String, String> map = new HashMap<String, String>();
-		map = serviceArea.readUniqueServiceAreaList();
-		serviceArea.createServiceArea(map);		
+		List<Map<String, String>> serviceAreaMapList = serviceArea.readServiceAreaList();
+		serviceArea.createServiceArea(serviceAreaMapList);		
 	}
-	
 	
 	private void createWard() {
-
 		Ward ward = new Ward();
-		Map<String, String> map = new HashMap<String, String>();
-		map = ward.readUniqueWardList();
-		ward.createWard(map);		
-	}
-	
-	private void createBusinessUnit() {
-
-		BusinessUnit businessUnit = new BusinessUnit();
-		Map<String, String> map = new HashMap<String, String>();
-		map = businessUnit.readUniqueBusinessUnitList();
-		businessUnit.createBusinessUnit(map);		
+		List<Map<String, String>> wardMapList = ward.readWardList();
+		ward.createWard(wardMapList);
 	}
 	
 	private void createBranch() {
-
 		Branch branch = new Branch();
-		Map<String, String> map = new HashMap<String, String>();
-		map = branch.readUniqueBranchList();
-		branch.createBranch(map);		
+		List<Map<String, String>> branchMapList = branch.readBranchList();
+		branch.createBranch(branchMapList);
 	}
 	
-	private void createRegion() {
-
-		Region region = new Region();
-		Map<String, String> map = new HashMap<String, String>();
-		map = region.readUniqueRegionList();
-		region.createRegion(map);		
-	}
-	
-	private void createBusinessVertical() {
-
-		BusinessVertical businessVertical = new BusinessVertical();
-		Map<String, String> map = new HashMap<String, String>();
-		map = businessVertical.readUniqueBusinessVerticalList();
-		businessVertical.createBusinessVertical(map);		
+	private void createBusinessUnit() {
+		BusinessUnit businessUnit = new BusinessUnit();
+		List<Map<String, String>> businessUnitMapList = businessUnit.readBusinessUnitList();
+		businessUnit.createBusinessUnit(businessUnitMapList);
 	}
 	
 	private void createSubBusinessUnit() {
-
 		SubBusinessUnit subBusinessUnit = new SubBusinessUnit();
-		Map<String, String> map = new HashMap<String, String>();
-		map = subBusinessUnit.readUniqueSubBusinessUnitList();
-		subBusinessUnit.createSubBusinessUnit(map);		
+		List<Map<String, String>> SubBUMapList = subBusinessUnit.readSubBusinessUnitList();
+		subBusinessUnit.createSubBusinessUnit(SubBUMapList);
 	}
+		
+	private void createRegion() {
+
+		Region region = new Region();
+		List<Map<String, String>> regionMapList = region.readRegionList();
+		region.createRegion(regionMapList);		
+	}
+	
+	private void createBusinessVertical() {
+		BusinessVertical businessVertical = new BusinessVertical();
+		List<Map<String, String>> regionMapList = businessVertical.readBusinessVerticalList();
+		businessVertical.createBusinessVertical(regionMapList);
+	}
+	
 	
 	public void generateMasterData() {
 		System.out.println("Started to generate Master Data ...!");
@@ -109,11 +89,11 @@ public class CreateMasterData {
 		createMuncipility();
 		createServiceArea();
 		createWard();
-		createBusinessUnit();
 		createBranch();
+		createBusinessUnit();
+		createSubBusinessUnit();
 		createRegion();
 		createBusinessVertical();
-		createSubBusinessUnit();
 		
 		System.out.println("Ended to generate MasterData ...!");
 	}

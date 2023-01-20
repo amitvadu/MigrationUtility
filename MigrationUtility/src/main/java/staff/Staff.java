@@ -57,8 +57,7 @@ public class Staff extends RestExecution {
 		}
 	}
 
-	public List<Map<String, String>> readUniqueStaffList() {
-		
+	public List<Map<String, String>> readStaffList() {
 		
 		String sheetName = "Staff";
 		List<Map<String, String>> sheetMap = new ArrayList<Map<String, String>>();
@@ -68,14 +67,15 @@ public class Staff extends RestExecution {
 		Map<String, String> cellValue = new HashMap<String, String>();
 		List<Map<String, String>> staffMapList = new ArrayList<Map<String, String>>();
 		
-		
 		for (int i = 0; i < sheetMap.size(); i++) {
 			
 			Map<String, String> valuemap = new HashMap<String, String>();
 			cellValue = sheetMap.get(i);
 			
-			if (!"".equals(cellValue.get("Usrername"))) {
-				
+			String staffUsername = cellValue.get("Usrername");
+			if ((!"".equals(staffUsername)) && (staffUsername != null)) {
+			
+				valuemap.put("RowIndex", cellValue.get("RowIndex"));
 				valuemap.put("UsrerName", cellValue.get("Username"));
 				valuemap.put("Password", cellValue.get("Password"));
 				valuemap.put("Email", cellValue.get("Email"));
@@ -92,13 +92,11 @@ public class Staff extends RestExecution {
 				valuemap.put("Branch", cellValue.get("Branch"));
 				
 				staffMapList.add(valuemap);
-
 			}
 		}
 		return staffMapList;
 	}
 
-	@SuppressWarnings("unchecked")
 	private String getStaffJson(Map<String, String> staffDetails) {
 
 		String jsonString = null;
@@ -106,10 +104,7 @@ public class Staff extends RestExecution {
 		try {
 			
 			CommonGetAPI commonGetAPI = new CommonGetAPI();			
-			org.json.simple.JSONObject staffJsonObject = new org.json.simple.JSONObject();
-			
-			//ReadData readData = new ReadData();
-			//staffJsonObject = readData.readJSONFile("CreateStaff.json");
+			JSONObject staffJsonObject = new JSONObject();
 			
 			staffJsonObject.put("username", staffDetails.get("UsrerName"));
 			staffJsonObject.put("password", staffDetails.get("Password"));
@@ -127,19 +122,22 @@ public class Staff extends RestExecution {
 			staffJsonObject.put("serviceAreaIdsList",commonGetAPI.getServiceAreaIdList(staffDetails.get("ServiceArea")));
 			staffJsonObject.put("businessUnitIdsList",commonGetAPI.getBusinessUnitIdList(staffDetails.get("BusinessUnit")));
 			staffJsonObject.put("partnerid", commonGetAPI.getPartnerId(staffDetails.get("Partner")));
-			
-			staffJsonObject.put("branchId", null);
+			String branchId = null;
+			staffJsonObject.put("branchId", branchId);
 			
 			String branch = staffDetails.get("Branch");
 			if(!"".equals(branch)) {
 				staffJsonObject.put("branchId", commonGetAPI.getBranchId(staffDetails.get("Branch")));
 			}
 			
-			staffJsonObject.put("parentStaffId", 2);
-			staffJsonObject.put("mvnoid", null);			
-			staffJsonObject.put("staffUserServiceMappingList", null);
+			String mvnoid = null;
+			String staffUserServiceMappingList = null;
 			
-			jsonString = staffJsonObject.toJSONString();
+			staffJsonObject.put("parentStaffId", 2);
+			staffJsonObject.put("mvnoid", mvnoid);			
+			staffJsonObject.put("staffUserServiceMappingList", staffUserServiceMappingList);
+			
+			jsonString = staffJsonObject.toString();
 
 		} catch (Exception e) {
 			jsonString = null;
@@ -172,7 +170,7 @@ public class Staff extends RestExecution {
 		return list;
 	}
 	
-	private List<Integer> getRoleId(String teamName) {
+	private List<Integer> getRoleId(String roleName) {
 
 		String apiURL = getAPIURL( "role/all");
 
@@ -184,13 +182,13 @@ public class Staff extends RestExecution {
 		if (status == 200) {
 			JSONArray jsonArray = jsonResponse.getJSONArray("dataList");
 			for (int i = 0; i < jsonArray.length(); i++) {
-				String receivedTeamName = jsonArray.getJSONObject(i).getString("rolename");
-				if(teamName.equalsIgnoreCase(receivedTeamName)) {
+				String receivedRoleName = jsonArray.getJSONObject(i).getString("rolename");
+				if(roleName.equalsIgnoreCase(receivedRoleName)) {
 					list.add(jsonArray.getJSONObject(i).getInt("id"));
+					break; // role is always single
 				}
 			}
 		}
-			
 		return list;
 	}
 	

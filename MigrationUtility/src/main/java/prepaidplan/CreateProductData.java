@@ -6,22 +6,20 @@ import java.util.Map;
 
 import customer.PrepaidCustomer;
 
-public class CreatePrepaidPlanData {
+public class CreateProductData {
 
 	public void createPlanService() {
 
-		PlanService prepaidPlanService = new PlanService();
-		Map<String, String> map = new HashMap<String, String>();
-		map = prepaidPlanService.readUniquePlanServiceList();
-		prepaidPlanService.createPlanService(map);
+		PlanService planService = new PlanService();
+		List<Map<String, String>> serviceMapList = planService.readPlanServiceList();
+		planService.createPlanService(serviceMapList);
 	}
 
 	private void createPlanTax() {
 
-		PlanTax planTax = new PlanTax();
-		Map<String, String> map = new HashMap<String, String>();
-		map = planTax.readUniquePlanTaxList();
-		planTax.createPlanTax(map);
+		PlanTaxNew planTax = new PlanTaxNew();
+		List<Map<String, String>> taxMapList = planTax.readPlanTaxList();
+		planTax.createPlanTax(taxMapList);
 	}
 	
 	private void createPlanCharge() {
@@ -60,18 +58,18 @@ public class CreatePrepaidPlanData {
 	}
 
 	
-	public void generatePrepaidPlanData() {
+	public void generateProductData() {
 		
-		System.out.println("Started Generting PrepaidPlan Data...!");
+		System.out.println("Started Generting Product Data...!");
 		
 	//	createPlanService();
 	//	createPlanTax();
-	//	createPlanCharge();
+		createPlanCharge();
 	//	createPlanQos();
 	//	createPrepaidPlan();
-		createPlanBundle();
+	//	createPlanBundle();
 		
-		System.out.println("Ended Generting PrepaidPlan Data...!");
+		System.out.println("Ended Generting Product Data...!");
 	}
 
 }

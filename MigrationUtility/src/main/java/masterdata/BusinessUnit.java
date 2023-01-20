@@ -2,10 +2,8 @@ package masterdata;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.json.JSONObject;
 
@@ -18,13 +16,13 @@ public class BusinessUnit extends RestExecution {
 	private static String logFileName = "masterdata.log";
 	private static String logModuleName = "CreateBusinessUnit";
 	
-	private void createBusinessUnit(String businessUnitName){
+	private void createBusinessUnit(Map<String, String> businessUnit){
 		
 		String apiURL=getAPIURL("businessUnit/save");
 		Utility.printLog(logFileName,logModuleName , "Request URL", apiURL);
 		
 		//Initializing payload or API body		  
-		 String APIBody = getBusinessUnitJson(businessUnitName);
+		 String APIBody = getBusinessUnitJson(businessUnit);
 		 Utility.printLog(logFileName,logModuleName , "Request Body", APIBody);
 		
 		 JSONObject JSONResponseBody = httpPost(apiURL,APIBody);
@@ -32,74 +30,71 @@ public class BusinessUnit extends RestExecution {
 		 Utility.printLog(logFileName,logModuleName , "Response", response);
 		 		 
 		 int status = JSONResponseBody.getInt("responseCode");
-
+		 String buName = businessUnit.get("BusinessUnitName");
+		 
 		 if(status==200) {
-			String message = "New BusinessUnit is added successfully - " + businessUnitName;
+			String message = "New BusinessUnit is added successfully - " + buName;
 			System.out.println(message);
 			Utility.printLog("execution.log", logModuleName, "Success", message);			
 		} else if (status == 406) {
-			String error = JSONResponseBody.getString("responseMessage") + " - " + businessUnitName;
+			String error = JSONResponseBody.getString("responseMessage") + " - " + buName;
 			System.out.println(error);
 			Utility.printLog("execution.log", logModuleName, "Already Exist", error);
 		}
 	}
 	
-	public void createBusinessUnit(Map<String, String> map) {
+	public void createBusinessUnit(List<Map<String, String>> businessUnitMapList) {
+		
+		for (int i = 0; i < businessUnitMapList.size(); i++) {
 
-		Set<String> keys = map.keySet();
-		Iterator<String> keyIter = keys.iterator();
-
-		while (keyIter.hasNext()) {
-			String key = keyIter.next();
-			String value = map.get(key);
-			String ans[] = value.split(":");
-
-			String businessUnit = ans[0];	
-			Utility.printLog(logFileName, logModuleName, "Sheet Data", value);	
-			createBusinessUnit(businessUnit);
+			Map<String, String> map = new HashMap<String, String>();
+			map = businessUnitMapList.get(i);
+			Utility.printLog(logFileName, logModuleName, "Sheet Data", map.toString());
+			createBusinessUnit(map);
 		}
 	}
 
-	public Map<String, String> readUniqueBusinessUnitList() {
+	public List<Map<String, String>> readBusinessUnitList() {
 
-		String sheetName = "Geogaraphical Areas";
+		String sheetName = "BusinessUnit";
 		List<Map<String, String>> sheetMap = new ArrayList<Map<String, String>>();
 		ReadData readData = new ReadData();
 		sheetMap = readData.getDemographicDataSheet(sheetName);
 
 		Map<String, String> cellValue = new HashMap<String, String>();
-		Map<String, String> valuemap = new HashMap<String, String>();
-		
+		List<Map<String, String>> businessUnitMapList = new ArrayList<Map<String, String>>();
+
 		for (int i = 0; i < sheetMap.size(); i++) {
 
+			Map<String, String> valuemap = new HashMap<String, String>();
 			cellValue = sheetMap.get(i);
-			if (!"".equals(cellValue.get("BusinessUnit"))) {
+
+			String businessUnit = cellValue.get("BusinessUnitName");
+			if ((!"".equals(businessUnit)) && (businessUnit != null)) {
 				
-				String businessUnit = cellValue.get("BusinessUnit");
-				String ans = businessUnit;
-				valuemap.putIfAbsent(ans, ans);
+				valuemap.put("RowIndex", cellValue.get("RowIndex"));
+				valuemap.put("BusinessUnitName", cellValue.get("BusinessUnitName"));
+				valuemap.put("BusinessUnitCode", cellValue.get("BusinessUnitCode"));
+				valuemap.put("Status", cellValue.get("Status"));
+				businessUnitMapList.add(valuemap);
 			}
 		}
-		return valuemap;
+		return businessUnitMapList;
 	}
 
-	@SuppressWarnings("unchecked")
-	private String getBusinessUnitJson(String businessUnitName) {
+	private String getBusinessUnitJson(Map<String, String> businessUnit) {
 		
 		String jsonString = null;
 		
 		try {
 			
-			org.json.simple.JSONObject districtJsonObject = new org.json.simple.JSONObject();
+			JSONObject districtJsonObject = new JSONObject();
 			
-			//ReadData readData = new ReadData();			
-			//districtJsonObject = readData.readJSONFile("CreateBusinessUnit.json");
+			districtJsonObject.put("buname", businessUnit.get("BusinessUnitName"));
+			districtJsonObject.put("bucode", businessUnit.get("BusinessUnitCode"));
+			districtJsonObject.put("status", businessUnit.get("Status"));
 			
-			districtJsonObject.put("buname", businessUnitName);
-			districtJsonObject.put("bucode", businessUnitName);
-			districtJsonObject.put("status", "Active");
-			
-			jsonString = districtJsonObject.toJSONString();
+			jsonString = districtJsonObject.toString();
 			
 		} catch (Exception e) {
 			jsonString = null;

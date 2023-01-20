@@ -60,6 +60,7 @@ public class PrepaidPlan extends RestExecution {
 			
 			Map<String, String> map = new HashMap<String, String>();
 			map = planMapList.get(i);
+			Utility.printLog(logFileName, logModuleName, "Sheet Data", map.toString());
 			createPrepaidPlan(map);
 		}
 	}

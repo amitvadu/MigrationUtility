@@ -2,10 +2,8 @@ package masterdata;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.json.JSONObject;
 
@@ -19,13 +17,13 @@ public class Ward extends RestExecution {
 	private static String logFileName = "masterdata.log";
 	private static String logModuleName = "CreateWard";
 	
-	private void createWard(String wardName, String municipalityName, int pincodeId,int cityId,int stateId,int countryId) {
+	private void createWard(Map<String, String> ward) {
 		
 		String apiURL = getAPIURL("area/save");
 		Utility.printLog(logFileName,logModuleName , "Request URL", apiURL);
 		
 		// Initializing payload or API body
-		String APIBody = getWardJson(wardName,municipalityName,pincodeId,cityId,stateId,countryId);
+		String APIBody = getWardJson(ward);
 		Utility.printLog(logFileName,logModuleName , "Request Body", APIBody);
 		
 		JSONObject JSONResponseBody = httpPost(apiURL, APIBody);
@@ -33,7 +31,9 @@ public class Ward extends RestExecution {
 		Utility.printLog(logFileName,logModuleName , "Response", response);
 		
 		int status = JSONResponseBody.getInt("responseCode");
-
+		String wardName = ward.get("WardName");
+		String municipalityName = ward.get("Municipalties");
+				
 		if (status == 200) {
 			String message = "New Ward is added successfully - " + wardName + " (" + municipalityName + ")";
 			System.out.println(message);
@@ -46,71 +46,72 @@ public class Ward extends RestExecution {
 		}
 	}
 
-	public void createWard(Map<String, String> map) {
+	public void createWard(List<Map<String, String>> wardMapList) {
 		
-		CommonGetAPI commonGetAPI = new CommonGetAPI();
-		Set<String> keys = map.keySet();
-		Iterator<String> keyIter = keys.iterator();
+		for (int i = 0; i < wardMapList.size(); i++) {
 
-		while (keyIter.hasNext()) {
-			String key = keyIter.next();
-			String value = map.get(key);
-			String ans[] = value.split(":");
-
-			int totalWard = Integer.parseInt(ans[0]);
-			String municipalityName = ans[1];
+			Map<String, String> map = new HashMap<String, String>();
+			map = wardMapList.get(i);
 			
-			int municipalityId = commonGetAPI.getMunicipalityId(municipalityName);			
-			String temp = commonGetAPI.getMasterDetailsFromMunicipalityId(municipalityId);
+			int totalWard = Integer.parseInt(map.get("TotalWard"));			
+			for(int j=1;j<=totalWard;j++) {
+				map.put("WardName", String.valueOf(j));
+				Utility.printLog(logFileName, logModuleName, "Sheet Data", map.toString());
+				createWard(map);
+			}
+		}
+	}
+
+	public List<Map<String, String>> readWardList() {
+		
+		String sheetName = "Ward";
+		List<Map<String, String>> sheetMap = new ArrayList<Map<String, String>>();
+		ReadData readData = new ReadData();
+		sheetMap = readData.getDemographicDataSheet(sheetName);
+
+		Map<String, String> cellValue = new HashMap<String, String>();
+		List<Map<String, String>> wardMapList = new ArrayList<Map<String, String>>();
+
+		for (int i = 0; i < sheetMap.size(); i++) {
+
+			Map<String, String> valuemap = new HashMap<String, String>();
+			cellValue = sheetMap.get(i);
+
+			String ward = cellValue.get("TotalWard");
+			if ((!"".equals(ward)) && (ward != null)) {
+				
+				valuemap.put("RowIndex", cellValue.get("RowIndex"));
+				valuemap.put("TotalWard", cellValue.get("TotalWard"));
+				valuemap.put("Municipalties", cellValue.get("Municipalties"));
+				valuemap.put("Status", cellValue.get("Status"));
+				wardMapList.add(valuemap);
+			}
+		}
+		return wardMapList;
+	}
+
+	private String getWardJson(Map<String, String> ward) {
+
+		String jsonString = null;
+
+		try {
+
+			JSONObject wardJsonObject = new JSONObject();
+			JSONObject pincodeJsonObject = new JSONObject();
+			
+			String wardName = ward.get("WardName");
+			String status = ward.get("Status");
+			
+			String municipalityName = ward.get("Municipalties");
+			CommonGetAPI commonGetAPI = new CommonGetAPI();
+			int pincodeId = commonGetAPI.getMunicipalityId(municipalityName);			
+			String temp = commonGetAPI.getMasterDetailsFromMunicipalityId(pincodeId);
 			
 			String data[] = temp.split(":");
 			int countryId = Integer.parseInt(data[0]);
 			int stateId = Integer.parseInt(data[1]);
 			int cityId = Integer.parseInt(data[2]);
 			
-			for(int i=1;i<=totalWard;i++) {
-				String wardName=String.valueOf(i);
-				Utility.printLog(logFileName, logModuleName, "Sheet Data", value);	
-				createWard(wardName,municipalityName,municipalityId,cityId,stateId,countryId);
-			}
-		}
-	}
-
-	public Map<String, String> readUniqueWardList() {
-		
-		String sheetName = "Geogaraphical Areas";
-		List<Map<String, String>> sheetMap = new ArrayList<Map<String, String>>();
-		ReadData readData = new ReadData();
-		sheetMap = readData.getDemographicDataSheet(sheetName);
-
-		Map<String, String> cellValue = new HashMap<String, String>();
-		Map<String, String> valuemap = new HashMap<String, String>();
-		
-		for (int i = 0; i < sheetMap.size(); i++) {
-
-			cellValue = sheetMap.get(i);
-			if (!"".equals(cellValue.get("Total Ward"))) {
-				
-				String ward = cellValue.get("Total Ward");
-				String municipality = cellValue.get("Municipalties");
-				
-				String ans = ward + ":" + municipality;
-				valuemap.putIfAbsent(ans, ans);
-			}
-		}
-		return valuemap;
-	}
-
-	@SuppressWarnings("unchecked")
-	private String getWardJson(String wardName, String municipalityName, int pincodeId,int cityId,int stateId,int countryId) {
-
-		String jsonString = null;
-
-		try {
-
-			org.json.simple.JSONObject wardJsonObject = new org.json.simple.JSONObject();
-			org.json.simple.JSONObject pincodeJsonObject = new org.json.simple.JSONObject();
-
 			wardJsonObject.put("name", wardName);
 			wardJsonObject.put("pincodeId", pincodeId);
 			wardJsonObject.put("cityId", cityId);
@@ -120,11 +121,11 @@ public class Ward extends RestExecution {
 			
 			pincodeJsonObject.put("pincodeid", pincodeId);
 			pincodeJsonObject.put("pincode", municipalityName);
-			pincodeJsonObject.put("status", "Active");
+			pincodeJsonObject.put("status", status);
 			pincodeJsonObject.put("isDeleted", false);
 			wardJsonObject.put("pincode", pincodeJsonObject);
 			
-			jsonString = wardJsonObject.toJSONString();
+			jsonString = wardJsonObject.toString();
 
 		} catch (Exception e) {
 			e.printStackTrace();

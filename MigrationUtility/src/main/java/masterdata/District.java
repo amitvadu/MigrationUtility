@@ -2,10 +2,8 @@ package masterdata;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -19,14 +17,13 @@ public class District extends RestExecution {
 	private static String logFileName = "masterdata.log";
 	private static String logModuleName = "CreateDistrict";
 
-	private void createDistrict(String districtName, String provinceName, int provinceId, String countryName,
-			int countryId) {
+	private void createDistrict(Map<String, String> district) {
 
 		String apiURL = getAPIURL("city");
 		Utility.printLog(logFileName,logModuleName , "Request URL", apiURL);
 
 		// Initializing payload or API body
-		String APIBody = getDistrictJson(districtName, provinceName, provinceId, countryName, countryId);
+		String APIBody = getDistrictJson(district);
 		Utility.printLog(logFileName,logModuleName , "Request Body", APIBody);
 		
 		JSONObject JSONResponseBody = httpPost(apiURL, APIBody);
@@ -37,81 +34,79 @@ public class District extends RestExecution {
 		int status = JSONResponseBody.getInt("status");
 
 		if (status == 200) {
-			String message = "New District is added successfully - " + districtName;
+			String message = "New District is added successfully - " + district.get("District");
 			System.out.println(message);
 			Utility.printLog("execution.log", logModuleName, "Success", message);
 			
 		} else if (status == 406) {
-			String error = JSONResponseBody.getString("ERROR") + " - " + districtName;
+			String error = JSONResponseBody.getString("ERROR") + " - " + district.get("District");
 			System.out.println(error);
 			Utility.printLog("execution.log", logModuleName, "Already Exist", error);
 
 		}
 	}
 
-	public void createDistrict(Map<String, String> map) {
+	public void createDistrict(List<Map<String, String>> districtMapList) {
+		
+		for (int i = 0; i < districtMapList.size(); i++) {
 
-		Set<String> keys = map.keySet();
-		Iterator<String> keyIter = keys.iterator();
-
-		while (keyIter.hasNext()) {
-			String key = keyIter.next();
-			String value = map.get(key);
-			String ans[] = value.split(":");
-
-			String countryName = ans[0];
-			String provinceName = ans[1];
-			String districtName = ans[2];
-			
-			Province province = new Province();
-			int countryId = province.getCountryId(countryName);			
-			int provinceId = getProvinceId(provinceName);
-			Utility.printLog(logFileName, logModuleName, "Sheet Data", value);
-			createDistrict(districtName, provinceName, provinceId, countryName, countryId);
+			Map<String, String> map = new HashMap<String, String>();
+			map = districtMapList.get(i);
+			Utility.printLog(logFileName, logModuleName, "Sheet Data", map.toString());
+			createDistrict(map);
 		}
 	}
 
-	public Map<String, String> readUniqueDistrictList() {
+	public List<Map<String, String>> readDistrictList() {
 		
-		String sheetName = "Geogaraphical Areas";
+		String sheetName = "District";
 		List<Map<String, String>> sheetMap = new ArrayList<Map<String, String>>();
 		ReadData readData = new ReadData();
 		sheetMap = readData.getDemographicDataSheet(sheetName);
 
 		Map<String, String> cellValue = new HashMap<String, String>();
-		Map<String, String> valuemap = new HashMap<String, String>();
-		
+		List<Map<String, String>> districtMapList = new ArrayList<Map<String, String>>();
+
 		for (int i = 0; i < sheetMap.size(); i++) {
 
+			Map<String, String> valuemap = new HashMap<String, String>();
 			cellValue = sheetMap.get(i);
-			if (!"".equals(cellValue.get("Province"))) {
+
+			String district = cellValue.get("District");
+			if ((!"".equals(district)) && (district != null)) {
 				
-				String country = cellValue.get("Country");
-				String province = cellValue.get("Province");
-				String district = cellValue.get("District");
-				String ans = country + ":" + province + ":" + district;
-				valuemap.putIfAbsent(ans, ans);
+				valuemap.put("RowIndex", cellValue.get("RowIndex"));
+				valuemap.put("District", cellValue.get("District"));
+				valuemap.put("Province", cellValue.get("Province"));
+				valuemap.put("Country", cellValue.get("Country"));
+				valuemap.put("Status", cellValue.get("Status"));
+				districtMapList.add(valuemap);
 			}
 		}
-		return valuemap;
+		return districtMapList;
 	}
 
-	@SuppressWarnings("unchecked")
-	private String getDistrictJson(String districtName, String provinceName, int provinceId, String countryName,
-			int countryId) {
+	private String getDistrictJson(Map<String, String> district) {
 
 		String jsonString = null;
 
 		try {
+			
+			String provinceName = district.get("Province");
+			int provinceId = getProvinceId(provinceName);
+						
+			Province province = new Province();
+			String countryName = district.get("Country");
+			int countryId = province.getCountryId(countryName);	
+			
+			JSONObject districtJsonObject = new JSONObject();
+			JSONObject statePojoJsonObject = new JSONObject();
+			JSONObject countryPojoJsonObject = new JSONObject();
 
-			org.json.simple.JSONObject districtJsonObject = new org.json.simple.JSONObject();
-			org.json.simple.JSONObject statePojoJsonObject = new org.json.simple.JSONObject();
-			org.json.simple.JSONObject countryPojoJsonObject = new org.json.simple.JSONObject();
-
-			districtJsonObject.put("name", districtName);
+			districtJsonObject.put("name", district.get("District"));
 			districtJsonObject.put("countryName", countryName);
 			districtJsonObject.put("countryId", countryId);
-			districtJsonObject.put("status", "Active");
+			districtJsonObject.put("status", district.get("Status"));
 
 			statePojoJsonObject.put("name", provinceName);
 			statePojoJsonObject.put("id", provinceId);
@@ -124,7 +119,7 @@ public class District extends RestExecution {
 			statePojoJsonObject.put("countryPojo", countryPojoJsonObject);
 			districtJsonObject.put("statePojo", statePojoJsonObject);
 			
-			jsonString = districtJsonObject.toJSONString();
+			jsonString = districtJsonObject.toString();
 
 		} catch (Exception e) {
 			jsonString = null;
@@ -148,6 +143,7 @@ public class District extends RestExecution {
 				String receivedProvinceName = jsonArray.getJSONObject(i).getString("name");
 				if(provinceName.equalsIgnoreCase(receivedProvinceName)) {
 					provinceId = jsonArray.getJSONObject(i).getInt("id");
+					break;
 				}
 			}
 		}

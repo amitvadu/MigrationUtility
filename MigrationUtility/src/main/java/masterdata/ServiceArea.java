@@ -2,10 +2,8 @@ package masterdata;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -19,13 +17,13 @@ public class ServiceArea extends RestExecution {
 	private static String logFileName = "masterdata.log";
 	private static String logModuleName = "CreateServiceArea";
 
-	private void createServiceArea(String serviceAreaName, int cityId, List<Integer> pincodes) {
+	private void createServiceArea(Map<String, String> serviceArea) {
 
 		String apiURL = getAPIURL("serviceArea/save");
 		Utility.printLog(logFileName,logModuleName , "Request URL", apiURL);
 		
 		// Initializing payload or API body
-		String apiBody = getServiceAreaJson(serviceAreaName, cityId, pincodes);
+		String apiBody = getServiceAreaJson(serviceArea);
 		Utility.printLog(logFileName,logModuleName , "Request Body", apiBody);
 		
 		JSONObject JSONResponseBody = httpPost(apiURL, apiBody);
@@ -33,7 +31,8 @@ public class ServiceArea extends RestExecution {
 		Utility.printLog(logFileName,logModuleName , "Response", response);
 		
 		int status = JSONResponseBody.getInt("responseCode");
-
+		String serviceAreaName = serviceArea.get("ServiceArea");
+		
 		if (status == 200) {
 			String message = "New serviceArea is added successfully - " + serviceAreaName;
 			System.out.println(message);
@@ -46,83 +45,74 @@ public class ServiceArea extends RestExecution {
 		}
 	}
 
-	public void createServiceArea(Map<String, String> map) {
+	public void createServiceArea(List<Map<String, String>> serviceAreaMapList) {
+		
+		for (int i = 0; i < serviceAreaMapList.size(); i++) {
 
-		Set<String> keys = map.keySet();
-		Iterator<String> keyIter = keys.iterator();
-
-		while (keyIter.hasNext()) {
-			String key = keyIter.next();
-			String value = map.get(key);
-			String ans[] = value.split(":");
-
-			String tempSA[] = ans[0].split(",");
-			
-			for(int i=0;i<tempSA.length;i++) {
-				
-				String serviceAreaName = tempSA[i];
-				String districtName = ans[1];
-
-				Municipality municipality = new Municipality();
-				int districtId = municipality.getDistrictId(districtName);
-				List<Integer> pincodes = getPincodefromCity(districtId);
-				Utility.printLog(logFileName, logModuleName, "Sheet Data", value);
-				createServiceArea(serviceAreaName, districtId, pincodes);
-			}
+			Map<String, String> map = new HashMap<String, String>();
+			map = serviceAreaMapList.get(i);
+			Utility.printLog(logFileName, logModuleName, "Sheet Data", map.toString());
+			createServiceArea(map);
 		}
 	}
 
-	public Map<String, String> readUniqueServiceAreaList() {
+	public List<Map<String, String>> readServiceAreaList() {
 
-		String sheetName = "Geogaraphical Areas";
+		String sheetName = "ServiceArea";
 		List<Map<String, String>> sheetMap = new ArrayList<Map<String, String>>();
 		ReadData readData = new ReadData();
 		sheetMap = readData.getDemographicDataSheet(sheetName);
 
 		Map<String, String> cellValue = new HashMap<String, String>();
-		Map<String, String> valuemap = new HashMap<String, String>();
-		
+		List<Map<String, String>> serviceAreaMapList = new ArrayList<Map<String, String>>();
+
 		for (int i = 0; i < sheetMap.size(); i++) {
 
+			Map<String, String> valuemap = new HashMap<String, String>();
 			cellValue = sheetMap.get(i);
-			if (!"".equals(cellValue.get("ServiceArea"))) {
-				
-				String serviceArea = cellValue.get("ServiceArea");
-				String district = cellValue.get("District");
 
-				String ans = serviceArea + ":" + district;
-				valuemap.putIfAbsent(ans, ans);
+			String serviceArea = cellValue.get("ServiceArea");
+			if ((!"".equals(serviceArea)) && (serviceArea != null)) {
+				
+				valuemap.put("RowIndex", cellValue.get("RowIndex"));
+				valuemap.put("ServiceArea", cellValue.get("ServiceArea"));
+				valuemap.put("District", cellValue.get("District"));
+				valuemap.put("Latitude", cellValue.get("Latitude"));
+				valuemap.put("Longitude", cellValue.get("Longitude"));
+				valuemap.put("Status", cellValue.get("Status"));
+				serviceAreaMapList.add(valuemap);
 			}
 		}
-		return valuemap;
+		return serviceAreaMapList;
 	}
 
-	@SuppressWarnings("unchecked")
-	private String getServiceAreaJson(String serviceAreaName, int cityId, List<Integer> pincodes) {
+	private String getServiceAreaJson(Map<String, String> serviceArea) {
 
 		String jsonString = null;
 
 		try {
 
-			org.json.simple.JSONObject serviceAreaJsonObject = new org.json.simple.JSONObject();
-
-			//ReadData readData = new ReadData();
-			//serviceAreaJsonObject = readData.readJSONFile("CreateServiceArea.json");
-
-			serviceAreaJsonObject.put("name", serviceAreaName);
-			serviceAreaJsonObject.put("cityid", cityId);
+			JSONObject serviceAreaJsonObject = new JSONObject();
+			
+			Municipality municipality = new Municipality();
+			int districtId = municipality.getDistrictId(serviceArea.get("District"));
+			
+			List<Integer> pincodes = getPincodefromCity(districtId);
+			
+			serviceAreaJsonObject.put("name", serviceArea.get("ServiceArea"));
+			serviceAreaJsonObject.put("cityid", districtId);
 			serviceAreaJsonObject.put("pincodes", pincodes);
+			serviceAreaJsonObject.put("latitude", serviceArea.get("Latitude"));
+			serviceAreaJsonObject.put("longitude", serviceArea.get("Longitude"));
+			serviceAreaJsonObject.put("status", serviceArea.get("Status"));
 			
 			serviceAreaJsonObject.put("id", "");
 			serviceAreaJsonObject.put("lastModifiedById", "");
-			serviceAreaJsonObject.put("status", "Active");
 			serviceAreaJsonObject.put("isDeleted", false);
-			serviceAreaJsonObject.put("latitude", "");
-			serviceAreaJsonObject.put("longitude", "");
 			serviceAreaJsonObject.put("areaid", "");
 			serviceAreaJsonObject.put("mvnoId", 2);
 
-			jsonString = serviceAreaJsonObject.toJSONString();
+			jsonString = serviceAreaJsonObject.toString();
 
 		} catch (Exception e) {
 			jsonString = null;

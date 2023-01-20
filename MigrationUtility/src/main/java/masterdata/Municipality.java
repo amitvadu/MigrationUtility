@@ -2,10 +2,8 @@ package masterdata;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -19,13 +17,13 @@ public class Municipality extends RestExecution {
 	private static String logFileName = "masterdata.log";
 	private static String logModuleName = "CreateMunicipality";
 	
-	private void createMunicipality(String muncipilityName,int cityId,int stateId,int countryId){
+	private void createMunicipality(Map<String, String> muncipality){
 		
 		String apiURL=getAPIURL("pincode/save");
 		Utility.printLog(logFileName,logModuleName , "Request URL", apiURL);
 		
 		//Initializing payload or API body		  
-		 String apiBody = getMunicipalityJson(muncipilityName,cityId,stateId,countryId);
+		 String apiBody = getMunicipalityJson(muncipality);
 		 Utility.printLog(logFileName,logModuleName , "Request Body", apiBody);
 		 
 		 JSONObject JSONResponseBody = httpPost(apiURL,apiBody);
@@ -35,88 +33,81 @@ public class Municipality extends RestExecution {
 		 int status = JSONResponseBody.getInt("responseCode");
 
 		 if(status==200) {
-			String message = "New Municipality is added successfully - " + muncipilityName;
+			String message = "New Municipality is added successfully - " + muncipality.get("Municipalties");
 			System.out.println(message);
 			Utility.printLog("execution.log", logModuleName, "Success", message);
 			
 		} else if (status == 406) {
-			String error = JSONResponseBody.getString("responseMessage") + " - " + muncipilityName;
+			String error = JSONResponseBody.getString("responseMessage") + " - " + muncipality.get("Municipalties");
 			System.out.println(error);
 			Utility.printLog("execution.log", logModuleName, "Already Exist", error);
 		}
 	}
 	
-	public void createMunicipality(Map<String, String> map) {
+	public void createMunicipality(List<Map<String, String>> muncipalitiesMapList) {
 
-		Set<String> keys = map.keySet();
-		Iterator<String> keyIter = keys.iterator();
+		for (int i = 0; i < muncipalitiesMapList.size(); i++) {
 
-		while (keyIter.hasNext()) {
-			String key = keyIter.next();
-			String value = map.get(key);
-			String ans[] = value.split(":");
-
-			String countryName = ans[0];
-			String provinceName = ans[1];
-			String districtName = ans[2];
-			String municipalityName = ans[3];
-			
-			Province province = new Province();
-			int countryId = province.getCountryId(countryName);			
-			District district = new District(); 
-			int provinceId = district.getProvinceId(provinceName);
-			int districtId = getDistrictId(districtName);
-			Utility.printLog(logFileName, logModuleName, "Sheet Data", value);		
-			createMunicipality(municipalityName,districtId,provinceId,countryId);
+			Map<String, String> map = new HashMap<String, String>();
+			map = muncipalitiesMapList.get(i);
+			Utility.printLog(logFileName, logModuleName, "Sheet Data", map.toString());
+			createMunicipality(map);
 		}
 	}
 
-	public Map<String, String> readUniqueMunicipalityList() {
+	public List<Map<String, String>> readMunicipalityList() {
 		
-		String sheetName = "Geogaraphical Areas";
+		String sheetName = "Municipalties";
 		List<Map<String, String>> sheetMap = new ArrayList<Map<String, String>>();
 		ReadData readData = new ReadData();
 		sheetMap = readData.getDemographicDataSheet(sheetName);
 
 		Map<String, String> cellValue = new HashMap<String, String>();
-		Map<String, String> valuemap = new HashMap<String, String>();
-		
+		List<Map<String, String>> muncipalitiesMapList = new ArrayList<Map<String, String>>();
+
 		for (int i = 0; i < sheetMap.size(); i++) {
 
+			Map<String, String> valuemap = new HashMap<String, String>();
 			cellValue = sheetMap.get(i);
-			if (!"".equals(cellValue.get("Municipalties"))) {
+
+			String municipaltiy = cellValue.get("Municipalties");
+			if ((!"".equals(municipaltiy)) && (municipaltiy != null)) {
 				
-				String country = cellValue.get("Country");
-				String province = cellValue.get("Province");
-				String district = cellValue.get("District");
-				String municipality = cellValue.get("Municipalties");
-				
-				String ans = country + ":" + province + ":" + district + ":" +  municipality;  
-				valuemap.putIfAbsent(ans, ans);
+				valuemap.put("RowIndex", cellValue.get("RowIndex"));
+				valuemap.put("Municipalties", cellValue.get("Municipalties"));
+				valuemap.put("District", cellValue.get("District"));
+				valuemap.put("Province", cellValue.get("Province"));
+				valuemap.put("Country", cellValue.get("Country"));
+				valuemap.put("Status", cellValue.get("Status"));
+				muncipalitiesMapList.add(valuemap);
 			}
 		}
-		return valuemap;
+		return muncipalitiesMapList;
 	}
 
-	@SuppressWarnings("unchecked")
-	private String getMunicipalityJson(String municipalityName,int cityId,int stateId,int countryId) {
+	private String getMunicipalityJson(Map<String, String> muncipality) {
 		
 		String jsonString = null; 
 		
 		try {
 			
-			org.json.simple.JSONObject municipalityJsonObject = new org.json.simple.JSONObject();
+			JSONObject municipalityJsonObject = new JSONObject();
 			
-			//ReadData readData = new ReadData();			
-			//municipalityJsonObject = readData.readJSONFile("CreateMunicipality.json");
+			int districtId = getDistrictId(muncipality.get("District"));
 			
-			municipalityJsonObject.put("pincode", municipalityName);
-			municipalityJsonObject.put("cityId", cityId);
-			municipalityJsonObject.put("stateId", stateId);
+			District district = new District(); 
+			int provinceId = district.getProvinceId(muncipality.get("Province"));
+			
+			Province province = new Province();
+			int countryId = province.getCountryId(muncipality.get("Country"));			
+			
+			municipalityJsonObject.put("pincode", muncipality.get("Municipalties"));
+			municipalityJsonObject.put("cityId", districtId);
+			municipalityJsonObject.put("stateId", provinceId);
 			municipalityJsonObject.put("countryId", countryId);
 			municipalityJsonObject.put("status", "Active");
 			
-			jsonString = municipalityJsonObject.toJSONString();
+			jsonString = municipalityJsonObject.toString();
 			
 		} catch (Exception e) {
 			jsonString = null;
@@ -140,6 +131,7 @@ public class Municipality extends RestExecution {
 				String receivedDistrictName = jsonArray.getJSONObject(i).getString("name");
 				if(districtName.equalsIgnoreCase(receivedDistrictName)) {
 					districtId = jsonArray.getJSONObject(i).getInt("id");
+					break;
 				}
 			}
 		}

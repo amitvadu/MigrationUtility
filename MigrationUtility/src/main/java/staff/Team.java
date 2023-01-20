@@ -2,10 +2,8 @@ package staff;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.json.JSONObject;
 
@@ -18,13 +16,13 @@ public class  Team extends RestExecution {
 	private static String logFileName = "Staff.log";
 	private static String logModuleName = "CreateTeam";
 
-	private void createTeam(String teamName) {
+	private void createTeam(Map<String, String> teamDetails) {
 
 		String apiURL = getAPIURL("teams/save");
 		Utility.printLog(logFileName, logModuleName, "Request URL", apiURL);
 
 		// Initializing payload or API body
-		String APIBody = getTeamJson(teamName);
+		String APIBody = getTeamJson(teamDetails);
 		Utility.printLog(logFileName, logModuleName, "Request Body", APIBody);
 
 		JSONObject JSONResponseBody = httpPost(apiURL, APIBody);
@@ -32,7 +30,8 @@ public class  Team extends RestExecution {
 		Utility.printLog(logFileName, logModuleName, "Response", response);
 
 		int status = JSONResponseBody.getInt("responseCode");
-
+		String teamName = teamDetails.get("TeamName");
+				
 		if (status == 200) {
 			String message = "New Team is added successfully - " + teamName;
 			System.out.println(message);
@@ -45,22 +44,18 @@ public class  Team extends RestExecution {
 		}
 	}
 
-	public void createTeam(Map<String, String> map) {
+	public void createTeam(List<Map<String, String>> teamsMapList) {
+		
+		for (int i = 0; i < teamsMapList.size(); i++) {
 
-		Set<String> keys = map.keySet();
-		Iterator<String> keyIter = keys.iterator();
-
-		while (keyIter.hasNext()) {
-			String key = keyIter.next();
-			String value = map.get(key);
-			
-			String team = value;
+			Map<String, String> map = new HashMap<String, String>();
+			map = teamsMapList.get(i);
 			Utility.printLog(logFileName, logModuleName, "Sheet Data", map.toString());
-			createTeam(team);
+			createTeam(map);
 		}
 	}
 
-	public Map<String, String> readUniqueTeamList() {
+	public List<Map<String, String>> readTeamList() {
 		
 		String sheetName = "Teams";
 		List<Map<String, String>> sheetMap = new ArrayList<Map<String, String>>();
@@ -68,37 +63,37 @@ public class  Team extends RestExecution {
 		sheetMap = readData.getDemographicDataSheet(sheetName);
 
 		Map<String, String> cellValue = new HashMap<String, String>();
-		Map<String, String> valuemap = new HashMap<String, String>();
-		
+		List<Map<String, String>> teamsMapList = new ArrayList<Map<String, String>>();
+
 		for (int i = 0; i < sheetMap.size(); i++) {
 
+			Map<String, String> valuemap = new HashMap<String, String>();
 			cellValue = sheetMap.get(i);
-			if (!"".equals(cellValue.get("Name"))) {
+
+			String teamName = cellValue.get("TeamName");
+			if ((!"".equals(teamName)) && (teamName != null)) {
 				
-				String ans = cellValue.get("Name");
-				valuemap.putIfAbsent(ans, ans);
+				valuemap.put("RowIndex", cellValue.get("RowIndex"));
+				valuemap.put("TeamName", cellValue.get("TeamName"));
+				valuemap.put("Status", cellValue.get("Status"));
+				teamsMapList.add(valuemap);
 			}
 		}
-		return valuemap;
-		
+		return teamsMapList;
 	}
 
-	@SuppressWarnings("unchecked")
-	private String getTeamJson(String teamName) {
+	private String getTeamJson(Map<String, String> teamDetails) {
 
 		String jsonString = null;
 
 		try {
 
-			org.json.simple.JSONObject teamJsonObject = new org.json.simple.JSONObject();
+			JSONObject teamJsonObject = new JSONObject();
 			
-			//ReadData readData = new ReadData();
-			//teamJsonObject = readData.readJSONFile("CreateTeam.json");
+			teamJsonObject.put("name", teamDetails.get("TeamName"));
+			teamJsonObject.put("status", teamDetails.get("TeamName").toLowerCase());
 			
-			teamJsonObject.put("name", teamName);
-			teamJsonObject.put("status", "active");
-			
-			jsonString = teamJsonObject.toJSONString();
+			jsonString = teamJsonObject.toString();
 
 		} catch (Exception e) {
 			jsonString = null;

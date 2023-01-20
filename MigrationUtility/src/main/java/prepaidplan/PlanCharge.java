@@ -19,37 +19,31 @@ public class PlanCharge extends RestExecution {
 	private String logFileName = "prepaidplan.log";
 	private String logModuleName = "CreateCharge";
 
-	private void createPlanCharge(Map<String, String> chargeDetails) {
+	private void createPlanCharge(Map<String, String> charge) {
 
 		String apiURL = getAPIURL("charge");
 		Utility.printLog(logFileName, logModuleName, "Request URL", apiURL);
 
 		// Initializing payload or API body
-		String apiBody = getPlanChargeJson(chargeDetails);
+		String apiBody = getPlanChargeJson(charge);
 		Utility.printLog(logFileName, logModuleName, "Request Body", apiBody);
 
 		JSONObject JSONResponseBody = httpPost(apiURL, apiBody);
 		String response = JSONResponseBody.toString(4);
 		Utility.printLog(logFileName, logModuleName, "Response", response);
 
-		// Fetching the desired value of a parameter
 		int status = JSONResponseBody.getInt("status");
-		// System.out.println("status = " + result1);
-
+		String chargeName = charge.get("Name");
+		
 		if (status == 200) {
-			System.out.println("New Plan-Charge is added successfully - " + chargeDetails.get("Name"));
-
-			String type = "Plan-Charge";
-			JSONObject cityJSONObject = JSONResponseBody.getJSONObject("charge");
-			String name = cityJSONObject.getString("name");
-			int id = cityJSONObject.getInt("id");
-
-			DBOperations dbo = new DBOperations();
-			dbo.setAPIData(type, name, id, status);
-
+			String message = "New Plan-Charge is added successfully - " + chargeName;
+			System.out.println(message);
+			Utility.printLog("execution.log", logModuleName, "Success", message);
+			
 		} else if (status == 406) {
-			String error = JSONResponseBody.getString("ERROR");
-			System.out.println(error + " - " + chargeDetails.get("Name"));
+			String error = JSONResponseBody.getString("ERROR") + " - " + chargeName;
+			System.out.println(error);
+			Utility.printLog("execution.log", logModuleName, "Already Exist", error);
 		}
 	}
 
@@ -82,7 +76,10 @@ public class PlanCharge extends RestExecution {
 			valuemap.put("Category", cellValue.get("Category"));
 			valuemap.put("Type", cellValue.get("Type"));
 			valuemap.put("Service", cellValue.get("Service"));
+			valuemap.put("Status", cellValue.get("Status"));
+			valuemap.put("LedgerID", cellValue.get("LedgerID"));
 			valuemap.put("Description", cellValue.get("Description"));
+			valuemap.put("RoyaltyPayable", cellValue.get("RoyaltyPayable"));			
 			valuemap.put("ActualPrice", cellValue.get("ActualPrice"));
 			valuemap.put("SACCode", cellValue.get("SACCode"));
 			valuemap.put("Tax", cellValue.get("Tax"));
@@ -92,40 +89,46 @@ public class PlanCharge extends RestExecution {
 	}
 
 	@SuppressWarnings("unchecked")
-	private String getPlanChargeJson(Map<String, String> chargeDetails) {
+	private String getPlanChargeJson(Map<String, String> charge) {
 
-		String jsonString = "";
+		String jsonString = null;
 
 		try {
 			CommonGetAPI commonGetAPI = new CommonGetAPI();
 			CommonList commonList = new CommonList();
 			
-			org.json.simple.JSONObject chargeJsonObject = null;
+			JSONObject chargeJson = new JSONObject();
 
-			ReadData readData = new ReadData();
-			chargeJsonObject = readData.readJSONFile("CreatePlanCharge.json");
+			chargeJson.put("name", charge.get("Name"));
+			String commonChargeCategory = commonList.getCommonChargeCategory(charge.get("Category"));
+			chargeJson.put("chargecategory", commonChargeCategory);
 
-			chargeJsonObject.put("name", chargeDetails.get("Name"));
-
-			String commonChargeCategory = commonList.getCommonChargeCategory(chargeDetails.get("Category"));
-			chargeJsonObject.put("chargecategory", commonChargeCategory);
-
-			String commonChargeType = commonList.getCommonChargeType(chargeDetails.get("Type"));
-			chargeJsonObject.put("chargetype", commonChargeType);
+			String commonChargeType = commonList.getCommonChargeType(charge.get("Type"));
+			chargeJson.put("chargetype", commonChargeType);
 			
-			chargeJsonObject.put("desc", chargeDetails.get("Description"));
-
-			float actualPrice = Float.valueOf(chargeDetails.get("ActualPrice"));
-
-			chargeJsonObject.put("actualprice", actualPrice);
-			chargeJsonObject.put("price", actualPrice);
-			chargeJsonObject.put("saccode", chargeDetails.get("SACCode"));
+			chargeJson.put("serviceid", commonGetAPI.getServiceIdList(charge.get("Service")));
+			chargeJson.put("status", charge.get("Status"));
 			
+			String ledgerId = charge.get("LedgerID");
+			if ("".equals(ledgerId)) {
+				ledgerId = null;
+			}
+			chargeJson.put("ledgerId", ledgerId);
 			
-			chargeJsonObject.put("serviceid", commonGetAPI.getServiceIdList(chargeDetails.get("Service")));
-			chargeJsonObject.put("taxid", commonGetAPI.getTaxId(chargeDetails.get("Tax")));
+			chargeJson.put("royalty_payable", Boolean.valueOf(charge.get("RoyaltyPayable")));
+			chargeJson.put("desc", charge.get("Description"));
+			
+			float actualPrice = Float.valueOf(charge.get("ActualPrice"));
 
-			jsonString = chargeJsonObject.toJSONString();
+			chargeJson.put("actualprice", actualPrice);
+			chargeJson.put("price", actualPrice);
+			chargeJson.put("saccode", charge.get("SACCode"));
+			chargeJson.put("taxid", commonGetAPI.getTaxId(charge.get("Tax")));
+			
+			String serviceNameList = null;
+			chargeJson.put("serviceNameList", serviceNameList);
+			
+			jsonString = chargeJson.toString();
 
 		} catch (Exception e) {
 			e.printStackTrace();

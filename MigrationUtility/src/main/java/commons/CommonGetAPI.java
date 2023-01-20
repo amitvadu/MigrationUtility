@@ -425,8 +425,6 @@ public class CommonGetAPI extends RestExecution {
 		int status = jsonResponse.getInt("responseCode");
 		List<Integer> branchList = new ArrayList<Integer>();
 		
-		//int branchId=0;
-
 		if (status == 200) {
 			
 			JSONArray jsonArray = jsonResponse.getJSONArray("dataList");

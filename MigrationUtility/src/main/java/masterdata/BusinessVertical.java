@@ -2,10 +2,8 @@ package masterdata;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.json.JSONObject;
 
@@ -19,13 +17,13 @@ public class BusinessVertical extends RestExecution {
 	private static String logFileName = "masterdata.log";
 	private static String logModuleName = "CreateBusinessVertical";
 
-	private void createBusinessVertical(String businessVertical,String region) {
+	private void createBusinessVertical(Map<String, String> businessVertical) {
 
 		String apiURL = getAPIURL("businessverticals/save");
 		Utility.printLog(logFileName, logModuleName, "Request URL", apiURL);
 
 		// Initializing payload or API body
-		String APIBody = getBusinessVerticalJson(businessVertical,region);
+		String APIBody = getBusinessVerticalJson(businessVertical);
 		Utility.printLog(logFileName, logModuleName, "Request Body", APIBody);
 
 		JSONObject JSONResponseBody = httpPost(apiURL, APIBody);
@@ -33,77 +31,78 @@ public class BusinessVertical extends RestExecution {
 		Utility.printLog(logFileName, logModuleName, "Response", response);
 
 		int status = JSONResponseBody.getInt("responseCode");
-
+		String businessVerticalName = businessVertical.get("BusinessVerticalName");
+		
 		if (status == 200) {
-			String message = "New Business Verical is added successfully - " + businessVertical;
+			String message = "New Business Verical is added successfully - " + businessVerticalName;
 			System.out.println(message);
 			Utility.printLog("execution.log", logModuleName, "Success", message);
 			
 		} else if (status == 406) {
-			String error = JSONResponseBody.getString("responseMessage") + " - " + businessVertical;
+			String error = JSONResponseBody.getString("responseMessage") + " - " + businessVerticalName;
 			System.out.println(error);
 			Utility.printLog("execution.log", logModuleName, "Already Exist", error);
 		}
 		
 	}
 
-	public void createBusinessVertical(Map<String, String> map) {
+	public void createBusinessVertical(List<Map<String, String>> businessVerticalMapList) {
 
-		Set<String> keys = map.keySet();
-		Iterator<String> keyIter = keys.iterator();
+		for (int i = 0; i < businessVerticalMapList.size(); i++) {
 
-		while (keyIter.hasNext()) {
-			String key = keyIter.next();
-			String value = map.get(key);
-			String ans[] = value.split(":");
-
-			String businessVertical = ans[0];
-			String region = ans[1];
-			Utility.printLog(logFileName, logModuleName, "Sheet Data", value);
-			createBusinessVertical(businessVertical,region);
+			Map<String, String> map = new HashMap<String, String>();
+			map = businessVerticalMapList.get(i);
+			Utility.printLog(logFileName, logModuleName, "Sheet Data", map.toString());
+			createBusinessVertical(map);
 		}
 	}
 
-	public Map<String, String> readUniqueBusinessVerticalList() {
+	public List<Map<String, String>> readBusinessVerticalList() {
 		
-		String sheetName = "Geogaraphical Areas";
+		String sheetName = "BusinessVertical";
 		List<Map<String, String>> sheetMap = new ArrayList<Map<String, String>>();
 		ReadData readData = new ReadData();
 		sheetMap = readData.getDemographicDataSheet(sheetName);
 
 		Map<String, String> cellValue = new HashMap<String, String>();
-		Map<String, String> valuemap = new HashMap<String, String>();
-		
+		List<Map<String, String>> businessVerticalMapList = new ArrayList<Map<String, String>>();
+
 		for (int i = 0; i < sheetMap.size(); i++) {
 
+			Map<String, String> valuemap = new HashMap<String, String>();
 			cellValue = sheetMap.get(i);
-			if (!"".equals(cellValue.get("BusinessVertical"))) {
+
+			String regionName = cellValue.get("BusinessVerticalName");
+			if ((!"".equals(regionName)) && (regionName != null)) {
 				
-				String businessVertical = cellValue.get("BusinessVertical");
-				String region = cellValue.get("Region");
-				String ans = businessVertical + ":" + region;
-				valuemap.putIfAbsent(ans, ans);
+				valuemap.put("RowIndex", cellValue.get("RowIndex"));
+				valuemap.put("BusinessVerticalName", cellValue.get("BusinessVerticalName"));
+				valuemap.put("Region", cellValue.get("Region"));
+				valuemap.put("Status", cellValue.get("Status"));
+				businessVerticalMapList.add(valuemap);
 			}
 		}
-		return valuemap;
+		return businessVerticalMapList;
 	}
 
-	@SuppressWarnings("unchecked")
-	private String getBusinessVerticalJson(String businessVertical,String regionName) {
+	private String getBusinessVerticalJson(Map<String, String> businessVertical) {
 
 		String jsonString = null;
 
 		try {
 
-			org.json.simple.JSONObject businessVericalJsonObject = new org.json.simple.JSONObject();
-
-			businessVericalJsonObject.put("vname", businessVertical);
+			JSONObject businessVericalJsonObject = new JSONObject();
+			
+			String regionName = businessVertical.get("Region");
+			String id = null;
+			
+			businessVericalJsonObject.put("vname", businessVertical.get("BusinessVerticalName"));
 			CommonGetAPI commonGetAPI = new CommonGetAPI();
 			businessVericalJsonObject.put("region_id", commonGetAPI.getRegionIdList(regionName));
-			businessVericalJsonObject.put("status", "Active");
-			businessVericalJsonObject.put("id", null);
+			businessVericalJsonObject.put("status", businessVertical.get("Status"));
+			businessVericalJsonObject.put("id", id);
 
-			jsonString = businessVericalJsonObject.toJSONString();
+			jsonString = businessVericalJsonObject.toString();
 
 		} catch (Exception e) {
 			jsonString = null;

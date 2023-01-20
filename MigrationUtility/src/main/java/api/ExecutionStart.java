@@ -3,7 +3,7 @@ package api;
 import customer.CreateCustomerData;
 import inventory.CreateInventoryData;
 import masterdata.CreateMasterData;
-import prepaidplan.CreatePrepaidPlanData;
+import prepaidplan.CreateProductData;
 import staff.CreateStaffData;
 import staff.Login;
 import utility.Constant;
@@ -37,8 +37,8 @@ public class ExecutionStart {
 		}
 		
 		if(Constant.PLANDATA_MIGRATION) {			
-			CreatePrepaidPlanData createPrepaidPlanData = new CreatePrepaidPlanData();
-			createPrepaidPlanData.generatePrepaidPlanData();
+			CreateProductData createProductData = new CreateProductData();
+			createProductData.generateProductData();
 		}
 		
 		if(Constant.INVENTORYDATA_MIGRATION) {

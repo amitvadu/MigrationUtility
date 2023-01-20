@@ -2,10 +2,8 @@ package masterdata;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.json.JSONObject;
 
@@ -19,13 +17,13 @@ public class Region extends RestExecution {
 	private static String logFileName = "masterdata.log";
 	private static String logModuleName = "CreateRegion";
 
-	private void createRegion(String regionName,String branchName) {
+	private void createRegion(Map<String, String> region) {
 
 		String apiURL = getAPIURL("region/save");
 		Utility.printLog(logFileName, logModuleName, "Request URL", apiURL);
 
 		// Initializing payload or API body
-		String APIBody = getRegionJson(regionName,branchName);
+		String APIBody = getRegionJson(region);
 		Utility.printLog(logFileName, logModuleName, "Request Body", APIBody);
 
 		JSONObject JSONResponseBody = httpPost(apiURL, APIBody);
@@ -33,7 +31,7 @@ public class Region extends RestExecution {
 		Utility.printLog(logFileName, logModuleName, "Response", response);
 
 		int status = JSONResponseBody.getInt("responseCode");
-
+		String regionName = region.get("RegionName");
 		if (status == 200) {
 			String message = "New Region is added successfully - " + regionName;
 			System.out.println(message);
@@ -44,66 +42,64 @@ public class Region extends RestExecution {
 			System.out.println(error);
 			Utility.printLog("execution.log", logModuleName, "Already Exist", error);
 		}
-		
 	}
 
-	public void createRegion(Map<String, String> map) {
+	public void createRegion(List<Map<String, String>> regionMapList) {
+		
+		for (int i = 0; i < regionMapList.size(); i++) {
 
-		Set<String> keys = map.keySet();
-		Iterator<String> keyIter = keys.iterator();
-
-		while (keyIter.hasNext()) {
-			String key = keyIter.next();
-			String value = map.get(key);
-			String ans[] = value.split(":");
-
-			String regionName = ans[0];
-			String branchName = ans[1];
-			Utility.printLog(logFileName, logModuleName, "Sheet Data", value);
-			createRegion(regionName,branchName);
+			Map<String, String> map = new HashMap<String, String>();
+			map = regionMapList.get(i);
+			Utility.printLog(logFileName, logModuleName, "Sheet Data", map.toString());
+			createRegion(map);
 		}
 	}
 
-	public Map<String, String> readUniqueRegionList() {
+	public List<Map<String, String>> readRegionList() {
 		
-		String sheetName = "Geogaraphical Areas";
+		String sheetName = "Region";
 		List<Map<String, String>> sheetMap = new ArrayList<Map<String, String>>();
 		ReadData readData = new ReadData();
 		sheetMap = readData.getDemographicDataSheet(sheetName);
 
 		Map<String, String> cellValue = new HashMap<String, String>();
-		Map<String, String> valuemap = new HashMap<String, String>();
-		
+		List<Map<String, String>> regionMapList = new ArrayList<Map<String, String>>();
+
 		for (int i = 0; i < sheetMap.size(); i++) {
 
+			Map<String, String> valuemap = new HashMap<String, String>();
 			cellValue = sheetMap.get(i);
-			if (!"".equals(cellValue.get("Region"))) {
+
+			String regionName = cellValue.get("RegionName");
+			if ((!"".equals(regionName)) && (regionName != null)) {
 				
-				String region = cellValue.get("Region");
-				String branch = cellValue.get("Branch");
-				String ans = region + ":" + branch;
-				valuemap.putIfAbsent(ans, ans);
+				valuemap.put("RowIndex", cellValue.get("RowIndex"));
+				valuemap.put("RegionName", cellValue.get("RegionName"));
+				valuemap.put("Branch", cellValue.get("Branch"));
+				valuemap.put("Status", cellValue.get("Status"));
+				regionMapList.add(valuemap);
 			}
 		}
-		return valuemap;
+		return regionMapList;
 	}
 
-	@SuppressWarnings("unchecked")
-	private String getRegionJson(String regionName,String branchName) {
+	private String getRegionJson(Map<String, String> region) {
 
 		String jsonString = null;
 
 		try {
 
-			org.json.simple.JSONObject regionJsonObject = new org.json.simple.JSONObject();
+			
+			String id = null;
+			JSONObject regionJsonObject = new JSONObject();
 
-			regionJsonObject.put("rname", regionName);
+			regionJsonObject.put("rname", region.get("RegionName"));
 			CommonGetAPI commonGetAPI = new CommonGetAPI();
-			regionJsonObject.put("branchid", commonGetAPI.getBranchIdList(branchName));
-			regionJsonObject.put("status", "Active");
-			regionJsonObject.put("id", null);
+			regionJsonObject.put("branchid", commonGetAPI.getBranchIdList(region.get("Branch")));
+			regionJsonObject.put("status", region.get("Status"));
+			regionJsonObject.put("id", id);
 
-			jsonString = regionJsonObject.toJSONString();
+			jsonString = regionJsonObject.toString();
 
 		} catch (Exception e) {
 			jsonString = null;

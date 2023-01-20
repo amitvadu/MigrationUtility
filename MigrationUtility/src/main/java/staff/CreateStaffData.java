@@ -1,25 +1,19 @@
 package staff;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class CreateStaffData {
 
 	private void createTeam() {
-
 		Team teams = new Team();
-		Map<String, String> map = new HashMap<String, String>();
-		map = teams.readUniqueTeamList();
-		teams.createTeam(map);
+		List<Map<String, String>> teamsMapList = teams.readTeamList();
+		teams.createTeam(teamsMapList);
 	}
 
 	private void createStaff() {
-
 		Staff staff = new Staff();
-		List<Map<String, String>> staffMapList = new ArrayList<Map<String, String>>();
-		staffMapList = staff.readUniqueStaffList();
+		List<Map<String, String>> staffMapList = staff.readStaffList();
 		staff.createStaff(staffMapList);
 	}
 

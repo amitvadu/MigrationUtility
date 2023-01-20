@@ -2,10 +2,8 @@ package masterdata;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.json.JSONObject;
 
@@ -19,13 +17,13 @@ public class SubBusinessUnit extends RestExecution {
 	private static String logFileName = "masterdata.log";
 	private static String logModuleName = "CreateSubBusinessUnit";
 
-	private void createSubBusinessUnit(String subBusinessUnit,String businessUnit) {
+	private void createSubBusinessUnit(Map<String, String> subBusinessUnit) {
 
 		String apiURL = getAPIURL("subbusinessunit/save");
 		Utility.printLog(logFileName, logModuleName, "Request URL", apiURL);
 
 		// Initializing payload or API body
-		String APIBody = getSubBusinessUnitJson(subBusinessUnit,businessUnit);
+		String APIBody = getSubBusinessUnitJson(subBusinessUnit);
 		Utility.printLog(logFileName, logModuleName, "Request Body", APIBody);
 
 		JSONObject JSONResponseBody = httpPost(apiURL, APIBody);
@@ -33,78 +31,79 @@ public class SubBusinessUnit extends RestExecution {
 		Utility.printLog(logFileName, logModuleName, "Response", response);
 
 		int status = JSONResponseBody.getInt("responseCode");
-
+		String subBUName = subBusinessUnit.get("SubBusinessUnitName");
+				
 		if (status == 200) {
-			String message = "New Sub Business Unit is added successfully - " + subBusinessUnit;
+			String message = "New Sub Business Unit is added successfully - " + subBUName;
 			System.out.println(message);
 			Utility.printLog("execution.log", logModuleName, "Success", message);
 			
 		} else if (status == 406) {
-			String error = JSONResponseBody.getString("responseMessage") + " - " + subBusinessUnit;
+			String error = JSONResponseBody.getString("responseMessage") + " - " + subBUName;
 			System.out.println(error);
 			Utility.printLog("execution.log", logModuleName, "Already Exist", error);
 		}
 		
 	}
 
-	public void createSubBusinessUnit(Map<String, String> map) {
+	public void createSubBusinessUnit(List<Map<String, String>> SubBUMapList) {
 
-		Set<String> keys = map.keySet();
-		Iterator<String> keyIter = keys.iterator();
+		for (int i = 0; i < SubBUMapList.size(); i++) {
 
-		while (keyIter.hasNext()) {
-			String key = keyIter.next();
-			String value = map.get(key);
-			String ans[] = value.split(":");
-
-			String subBusinessUnit = ans[0];
-			String businessUnit = ans[1];
-			Utility.printLog(logFileName, logModuleName, "Sheet Data", value);
-			createSubBusinessUnit(subBusinessUnit,businessUnit);
+			Map<String, String> map = new HashMap<String, String>();
+			map = SubBUMapList.get(i);
+			Utility.printLog(logFileName, logModuleName, "Sheet Data", map.toString());
+			createSubBusinessUnit(map);
 		}
 	}
 
-	public Map<String, String> readUniqueSubBusinessUnitList() {
+	public List<Map<String, String>> readSubBusinessUnitList() {
 		
-		String sheetName = "Geogaraphical Areas";
+		String sheetName = "SubBusinessUnit";
 		List<Map<String, String>> sheetMap = new ArrayList<Map<String, String>>();
 		ReadData readData = new ReadData();
 		sheetMap = readData.getDemographicDataSheet(sheetName);
 
 		Map<String, String> cellValue = new HashMap<String, String>();
-		Map<String, String> valuemap = new HashMap<String, String>();
-		
+		List<Map<String, String>> SubBUMapList = new ArrayList<Map<String, String>>();
+
 		for (int i = 0; i < sheetMap.size(); i++) {
 
+			Map<String, String> valuemap = new HashMap<String, String>();
 			cellValue = sheetMap.get(i);
-			if (!"".equals(cellValue.get("SubBusinessUnit"))) {
+
+			String subBusinessUnit = cellValue.get("SubBusinessUnitName");
+			if ((!"".equals(subBusinessUnit)) && (subBusinessUnit != null)) {
 				
-				String subBusinessUnit = cellValue.get("SubBusinessUnit");
-				String businessUnit = cellValue.get("BusinessUnit");
-				String ans = subBusinessUnit + ":" + businessUnit;
-				valuemap.putIfAbsent(ans, ans);
+				valuemap.put("RowIndex", cellValue.get("RowIndex"));
+				valuemap.put("SubBusinessUnitName", cellValue.get("SubBusinessUnitName"));
+				valuemap.put("SubBusinessUnitCode", cellValue.get("SubBusinessUnitCode"));
+				valuemap.put("BusinessUnitName", cellValue.get("BusinessUnitName"));
+				valuemap.put("Status", cellValue.get("Status"));
+				SubBUMapList.add(valuemap);
 			}
 		}
-		return valuemap;
+		return SubBUMapList;
 	}
 
-	@SuppressWarnings("unchecked")
-	private String getSubBusinessUnitJson(String subBusinessUnit,String businessUnit) {
+	private String getSubBusinessUnitJson(Map<String, String> subBusinessUnit) {
 
 		String jsonString = null;
 
 		try {
 
-			org.json.simple.JSONObject businessVericalJsonObject = new org.json.simple.JSONObject();
+			JSONObject businessVericalJsonObject = new JSONObject();
 
-			businessVericalJsonObject.put("subbuname", subBusinessUnit);
-			businessVericalJsonObject.put("subbucode", subBusinessUnit);
+			businessVericalJsonObject.put("subbuname", subBusinessUnit.get("SubBusinessUnitName"));
+			businessVericalJsonObject.put("subbucode", subBusinessUnit.get("SubBusinessUnitCode"));
 			
 			CommonGetAPI commonGetAPI = new CommonGetAPI();
-			businessVericalJsonObject.put("businessunitid", commonGetAPI.getBusinessUnitIdList(businessUnit).get(0));
-			businessVericalJsonObject.put("status", "Active");
+			
+			int businessUnitId = commonGetAPI.getBusinessUnitIdList(subBusinessUnit.get("BusinessUnitName")).get(0);
+			businessVericalJsonObject.put("businessunitid", businessUnitId);
+			businessVericalJsonObject.put("status", subBusinessUnit.get("Status"));
 
-			jsonString = businessVericalJsonObject.toJSONString();
+			jsonString = businessVericalJsonObject.toString();
 
 		} catch (Exception e) {
 			jsonString = null;

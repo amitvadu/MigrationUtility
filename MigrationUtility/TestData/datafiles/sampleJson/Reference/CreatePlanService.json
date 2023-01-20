@@ -1,0 +1,24 @@
+
+{
+  "name": "Test123",
+  "icname": "",
+  "iccode": "",
+  "isQoSV": true,
+  "ledgerId": "",
+  "expiry": "",
+  "pcategoryId": null
+}
+
+
+{
+  "name": "Test456",
+  "icname": "Test456",
+  "iccode": "Test456",
+  "isQoSV": false,
+  "ledgerId": "Test456",
+  "expiry": "at_midnight",
+  "pcategoryId": [
+    2
+  ]
+}
+

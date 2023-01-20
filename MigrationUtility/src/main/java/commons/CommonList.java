@@ -12,6 +12,33 @@ public class CommonList extends RestExecution {
 	private String logModuleName = "CommonList";
 	
 	
+	public String getCommonActualTime(String paymentMode) {
+
+		String apiURL = getAPIURL("commonList/actual_time");
+
+		JSONObject jsonResponse = httpGet(apiURL);
+		// String ans = jsonResponse.toString(4);
+
+		int status = jsonResponse.getInt("responseCode");
+		String commonPaymentMode = null;
+
+		if (status == 200) {
+			JSONArray jsonArray = jsonResponse.getJSONArray("dataList");
+			for (int i = 0; i < jsonArray.length(); i++) {
+				String receivedChargeType = jsonArray.getJSONObject(i).getString("text");
+				if (paymentMode.equalsIgnoreCase(receivedChargeType)) {
+					commonPaymentMode = jsonArray.getJSONObject(i).getString("value");
+				}
+			}
+		}
+
+		if (commonPaymentMode == null) {
+			System.out.println("Common PaymentMode details not found - " + paymentMode);
+			Utility.printLog(logFileName, logModuleName, "Common PaymentMode details not found - ", paymentMode);
+		}
+		return commonPaymentMode;
+	}
+	
 	public String getCommonChargeType(String chargeType) {
 
 		String apiURL = getAPIURL("commonList/generic/chargetype");

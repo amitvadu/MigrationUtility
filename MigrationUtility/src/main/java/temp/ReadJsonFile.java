@@ -1,13 +1,12 @@
 package temp;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
-import commons.CommonGetAPI;
 import commons.CommonList;
 import customer.CustomerPaymentDetails;
 import customer.PrepaidCustomer;
+import prepaidplan.PlanService;
 import staff.Login;
 import utility.Utility;
 
@@ -16,8 +15,15 @@ public class ReadJsonFile {
 
 	public static void main(String args[]) throws IOException {
 		
-	/*	Login login = new Login();
+		Login login = new Login();
 		login.setAuthBearer();
+		
+		PlanService planService = new PlanService();
+		//List<Integer> productCategoryList = planService.getProductCategoryIdList("Amit_CB,Setup Box,Router");
+		List<Integer> productCategoryList = planService.getProductCategoryIdList("All");
+		
+		System.out.println("list = " + productCategoryList);
+		
 		
 	/*	Outward outward = new Outward();
 		
@@ -34,23 +40,7 @@ public class ReadJsonFile {
 		
 	//	macGenerate();
 		
-		String servicesAndPlans = "[FTTH:Plan_4],[DTV:Plan_5],[FTTH:Plan_6],[DTV:Plan_7]";
-		servicesAndPlans = servicesAndPlans.replaceAll("[\\[\\]]", "");
-		
-		String ans[] = servicesAndPlans.split(",");
-		
-		for(int i=0;i<ans.length;i++) {
-			System.out.println("ans[" +i+"] = " + ans[i]);
-			
-			String temp[] = ans[i].split(":");
-			String service = temp[0];
-			String plan = temp[1];
-			
-			System.out.println("service = " + service);
-			System.out.println("plan = " + plan);
-		
-		}
-		
+				
 	}
 	
 	private static void macGenerate() {

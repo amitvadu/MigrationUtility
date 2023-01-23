@@ -11,7 +11,7 @@ import org.json.JSONObject;
 import api.ReadData;
 import api.RestExecution;
 import commons.CommonGetAPI;
-import prepaidplan.PrepaidPlan;
+import productdata.PrepaidPlan;
 import utility.DBOperations;
 import utility.Utility;
 
@@ -86,9 +86,10 @@ public class PrepaidCustomer extends RestExecution {
 
 			Map<String, String> valuemap = new HashMap<String, String>();
 			cellValue = sheetMap.get(i);
-
-			if (!"".equals(cellValue.get("Username"))) {
-
+			
+			String userName = cellValue.get("Username");
+			if ((!"".equals(userName)) && (userName != null)) {
+			
 				valuemap.put("Title", cellValue.get("Title"));
 				valuemap.put("FirstName", cellValue.get("FirstName"));
 				valuemap.put("LastName", cellValue.get("LastName"));
@@ -114,6 +115,7 @@ public class PrepaidCustomer extends RestExecution {
 
 				valuemap.put("PlanCategory", cellValue.get("PlanCategory"));
 				valuemap.put("BillTo", cellValue.get("BillTo"));
+				valuemap.put("PlanGroup", cellValue.get("PlanGroup"));
 				valuemap.put("InvoiceToOrganization", cellValue.get("InvoiceToOrganization"));
 				valuemap.put("NewOfferPrice", cellValue.get("NewOfferPrice"));
 				valuemap.put("Service", cellValue.get("Service"));
@@ -143,14 +145,21 @@ public class PrepaidCustomer extends RestExecution {
 
 			ReadData readData = new ReadData();
 			customerJsonObject = readData.readJSONFile("CreatePrepaidCustomer.json");
-
+			
+			customerJsonObject.put("custtype", "Prepaid");
+			
 			customerJsonObject.put("title", customerDetails.get("Title"));
 			customerJsonObject.put("firstname", customerDetails.get("FirstName"));
 			customerJsonObject.put("lastname", customerDetails.get("LastName"));
 			customerJsonObject.put("contactperson", customerDetails.get("ContactPerson"));
+			
+			customerJsonObject.put("cafno", null);
 			customerJsonObject.put("username", customerDetails.get("Username"));
 			customerJsonObject.put("password", customerDetails.get("Password"));
 			customerJsonObject.put("calendarType", customerDetails.get("CalendarType"));
+			
+			
+			customerJsonObject.put("branch", null);
 			customerJsonObject.put("status", customerDetails.get("Status"));
 
 			String parentCustomer = customerDetails.get("ParentCustomer");
@@ -161,11 +170,35 @@ public class PrepaidCustomer extends RestExecution {
 					customerJsonObject.put("invoiceType", customerDetails.get("InvoiceType"));
 				}
 			}
-
+			
+			customerJsonObject.put("popid", null);
+			customerJsonObject.put("valleyType", null);
+			
+			//-- Customer KYC Details --
+			
+			customerJsonObject.put("gst", "");
+			customerJsonObject.put("pan", "");
+			customerJsonObject.put("aadhar", "");
+			customerJsonObject.put("passportNo", "");
+			customerJsonObject.put("tinNo", null);
+			
+			//-- Customer Contact Details --
+			
 			customerJsonObject.put("countryCode", "+" + customerDetails.get("CountryCode"));
 			customerJsonObject.put("mobile", customerDetails.get("Mobile"));
+			customerJsonObject.put("phone", "");
 			customerJsonObject.put("email", customerDetails.get("Email"));
 			customerJsonObject.put("dunningCategory", customerDetails.get("CustomerCategory"));
+			customerJsonObject.put("dunningType", null);
+			customerJsonObject.put("dunningSector", null);
+			
+			
+			// -- Customer Subscriber connection & Network Details
+			
+			customerJsonObject.put("latitude", null);
+			customerJsonObject.put("longitude", null);
+			
+			// -- Customer Business Partner Details
 			
 			CommonGetAPI commonGetAPI = new CommonGetAPI();
 			String partner = customerDetails.get("Partner");
@@ -177,11 +210,12 @@ public class PrepaidCustomer extends RestExecution {
 				return jsonString = null;
 			}
 			customerJsonObject.put("partnerid", partnerId);
-
+			customerJsonObject.put("salesremark", "");
+			
+			// -- Customer Present Address Details --
+			
 			int serviceAreaId = commonGetAPI.getServiceAreaIdList(customerDetails.get("ServiceArea")).get(0);
 			customerJsonObject.put("serviceareaid", serviceAreaId);
-
-			// --PresentAddressDetails
 
 			List<org.json.simple.JSONObject> addressJsonObjectList = new ArrayList<org.json.simple.JSONObject>();
 			org.json.simple.JSONObject addressDetailJsonObject = new org.json.simple.JSONObject();
@@ -211,68 +245,119 @@ public class PrepaidCustomer extends RestExecution {
 			customerJsonObject.put("addressList", addressJsonObjectList);
 
 			// --PlanMappingDetails
-			String billTo = customerDetails.get("BillTo").toUpperCase();
-			String invoiceToOrganization = customerDetails.get("InvoiceToOrganization").toUpperCase();
-			boolean invoiceToOrg = false;
+			
+			String planCategory = customerDetails.get("PlanCategory");
+			
+			// --Individual Plan
+			if(planCategory.equalsIgnoreCase("Individual")) {
+				
+				String billTo = customerDetails.get("BillTo").toUpperCase();
+				String invoiceToOrganization = customerDetails.get("InvoiceToOrganization").toUpperCase();
+				boolean invoiceToOrg = false;
 
-			customerJsonObject.put("billTo", billTo);
-			customerJsonObject.put("discount", 0);
+				customerJsonObject.put("billTo", billTo);
+				customerJsonObject.put("discount", 0);
 
-			int planId = commonGetAPI.getPlanId(customerDetails.get("Plan"));
-			String planDetails[] = commonGetAPI.getPlanDetails(planId).split(":");
+				int planId = commonGetAPI.getPlanId(customerDetails.get("Plan"));
+				String planDetails[] = commonGetAPI.getPlanDetails(planId).split(":");
 
-			String serviceName = planDetails[0];
-			float offerPrice = Float.valueOf(planDetails[1]);
-			int validity = Integer.parseInt(planDetails[2]);
-			String unitsOfValidity = planDetails[3];
+				String serviceName = planDetails[0];
+				float offerPrice = Float.valueOf(planDetails[1]);
+				int validity = Integer.parseInt(planDetails[2]);
+				String unitsOfValidity = planDetails[3];
 
-			float flatAmount = offerPrice;
-			float discountPercentage = 0;
-			String tempDiscountPercentage = customerDetails.get("DiscountPercentage");
+				float flatAmount = offerPrice;
+				float discountPercentage = 0;
+				String tempDiscountPercentage = customerDetails.get("DiscountPercentage");
 
-			if ((billTo.equalsIgnoreCase("CUSTOMER")) && (!"".equals(tempDiscountPercentage))) {
-				discountPercentage = Float.valueOf(customerDetails.get("DiscountPercentage"));
-				flatAmount = offerPrice - (offerPrice * discountPercentage / 100);
-				flatAmount = Float.valueOf(Utility.formattedDecimalNumber(flatAmount));
-			}
-
-			customerJsonObject.put("flatAmount", flatAmount);
-
-			List<org.json.simple.JSONObject> planJsonObjectList = new ArrayList<org.json.simple.JSONObject>();
-			org.json.simple.JSONObject planDetailJsonObject = new org.json.simple.JSONObject();
-
-			planDetailJsonObject.put("newAmount", null);
-			float newAmount = 0;
-
-			if (billTo.equalsIgnoreCase("SUBISU")) {
-				if (invoiceToOrganization.equalsIgnoreCase("YES")) {
-					invoiceToOrg = true;
+				if ((billTo.equalsIgnoreCase("CUSTOMER")) && (!"".equals(tempDiscountPercentage))) {
+					discountPercentage = Float.valueOf(customerDetails.get("DiscountPercentage"));
+					flatAmount = offerPrice - (offerPrice * discountPercentage / 100);
+					flatAmount = Float.valueOf(Utility.formattedDecimalNumber(flatAmount));
 				}
 
-				String tempNewOfferPrice = customerDetails.get("NewOfferPrice");
-				if (!"".equals(tempNewOfferPrice)) {
-					newAmount = Float.valueOf(tempNewOfferPrice);
-					newAmount = Float.valueOf(Utility.formattedDecimalNumber(newAmount));
-					planDetailJsonObject.put("newAmount", newAmount);
+				customerJsonObject.put("flatAmount", flatAmount);
+
+				List<org.json.simple.JSONObject> planJsonObjectList = new ArrayList<org.json.simple.JSONObject>();
+				org.json.simple.JSONObject planDetailJsonObject = new org.json.simple.JSONObject();
+
+				planDetailJsonObject.put("newAmount", null);
+				float newAmount = 0;
+
+				if (billTo.equalsIgnoreCase("SUBISU")) {
+					if (invoiceToOrganization.equalsIgnoreCase("YES")) {
+						invoiceToOrg = true;
+					}
+
+					String tempNewOfferPrice = customerDetails.get("NewOfferPrice");
+					if (!"".equals(tempNewOfferPrice)) {
+						newAmount = Float.valueOf(tempNewOfferPrice);
+						newAmount = Float.valueOf(Utility.formattedDecimalNumber(newAmount));
+						planDetailJsonObject.put("newAmount", newAmount);
+					}
+
 				}
 
+				customerJsonObject.put("isInvoiceToOrg", invoiceToOrg);
+
+				planDetailJsonObject.put("planId", planId);
+				planDetailJsonObject.put("billTo", billTo);
+				planDetailJsonObject.put("service", serviceName);
+				planDetailJsonObject.put("validity", validity);
+				planDetailJsonObject.put("discount", discountPercentage);
+				// planDetailJsonObject.put("newAmount", newAmount);
+				planDetailJsonObject.put("offerPrice", offerPrice);
+				planDetailJsonObject.put("isInvoiceToOrg", invoiceToOrg);
+				planDetailJsonObject.put("istrialplan", null);
+
+				planJsonObjectList.add(planDetailJsonObject);
+				customerJsonObject.put("planMappingList", planJsonObjectList);
+
+				
 			}
+			
+						
+			// --Plan Group
+			if(planCategory.equalsIgnoreCase("Plan Group")) {
+				
+				
+				String billTo = customerDetails.get("BillTo").toUpperCase();
+				String invoiceToOrganization = customerDetails.get("InvoiceToOrganization").toUpperCase();
+				boolean invoiceToOrg = false;
 
-			customerJsonObject.put("isInvoiceToOrg", invoiceToOrg);
+				customerJsonObject.put("billTo", billTo);
+				customerJsonObject.put("discount", 0);
 
-			planDetailJsonObject.put("planId", planId);
-			planDetailJsonObject.put("billTo", billTo);
-			planDetailJsonObject.put("service", serviceName);
-			planDetailJsonObject.put("validity", validity);
-			planDetailJsonObject.put("discount", discountPercentage);
-			// planDetailJsonObject.put("newAmount", newAmount);
-			planDetailJsonObject.put("offerPrice", offerPrice);
-			planDetailJsonObject.put("isInvoiceToOrg", invoiceToOrg);
-			planDetailJsonObject.put("istrialplan", null);
+				String planGroup = customerDetails.get("PlanGroup");
+				String planGroupDetails[] = getPlanBundleDetails(planGroup).split(":");
 
-			planJsonObjectList.add(planDetailJsonObject);
-			customerJsonObject.put("planMappingList", planJsonObjectList);
+				int planGroupId = Integer.parseInt(planGroupDetails[0]);
+				float offerPrice = Float.valueOf(planGroupDetails[1]);
 
+				float flatAmount = offerPrice;
+				float discountPercentage = 0;
+				String tempDiscountPercentage = customerDetails.get("DiscountPercentage");
+
+				if ((billTo.equalsIgnoreCase("CUSTOMER")) && (!"".equals(tempDiscountPercentage))) {
+					discountPercentage = Float.valueOf(customerDetails.get("DiscountPercentage"));
+					flatAmount = offerPrice - (offerPrice * discountPercentage / 100);
+					flatAmount = Float.valueOf(Utility.formattedDecimalNumber(flatAmount));
+					customerJsonObject.put("discount", discountPercentage);
+				}
+
+				customerJsonObject.put("flatAmount", flatAmount);
+				customerJsonObject.put("plangroupid", planGroupId);
+				
+				if (billTo.equalsIgnoreCase("SUBISU")) {
+					if (invoiceToOrganization.equalsIgnoreCase("YES")) {
+						invoiceToOrg = true;
+					}
+				}
+
+				customerJsonObject.put("isInvoiceToOrg", invoiceToOrg);
+			}
+			
+			
 			// -- Over Direct Charge Mapping
 
 			List<org.json.simple.JSONObject> chargeJsonObjectList = new ArrayList<org.json.simple.JSONObject>();
@@ -281,7 +366,6 @@ public class PrepaidCustomer extends RestExecution {
 			if (!"".equals(directChargeName)) {
 
 				float directChargeNewPrice = Float.valueOf(customerDetails.get("DirectChargeNewPrice"));
-				//CommonGetAPI commonGetAPI = new CommonGetAPI();
 				int chargeId = commonGetAPI.getChargeId(directChargeName);
 
 				PrepaidPlan prepaidPlan = new PrepaidPlan();
@@ -300,11 +384,11 @@ public class PrepaidCustomer extends RestExecution {
 				chargeJsonObject.put("chargeid", chargeId);
 				chargeJsonObject.put("id", null);
 
-				chargeJsonObject.put("planid", planId);
+				//chargeJsonObject.put("planid", planId);
 				chargeJsonObject.put("price", directChargeNewPrice);
 				chargeJsonObject.put("type", "One-time");
-				chargeJsonObject.put("unitsOfValidity", unitsOfValidity);
-				chargeJsonObject.put("validity", validity);
+				//chargeJsonObject.put("unitsOfValidity", unitsOfValidity);
+				//chargeJsonObject.put("validity", validity);
 
 				chargeJsonObjectList.add(chargeJsonObject);
 			}
@@ -393,6 +477,7 @@ public class PrepaidCustomer extends RestExecution {
 		return checkCust;
 	}
 
+	@SuppressWarnings("unchecked")
 	public int getCustomerId(String userName) {
 
 		String jsonString = null;
@@ -445,6 +530,45 @@ public class PrepaidCustomer extends RestExecution {
 		return customerId;
 	}
 
-	
+	public String getPlanBundleDetails(String planGroupName) {
+
+		String apiURL = getAPIURL("findPlanGroupByName?name=" + planGroupName);
+
+		JSONObject jsonResponse = httpGet(apiURL);
+		// String ans = jsonResponse.toString(4);
+
+		int status = jsonResponse.getInt("status");
+		String detail = "";
+
+		if (status == 200) {
+			JSONArray jsonArray = jsonResponse.getJSONArray("planGroupList");
+			for (int i = 0; i < jsonArray.length(); i++) {
+
+				String receivedPlanGroupName = jsonArray.getJSONObject(i).getString("planGroupName").trim();
+				if (receivedPlanGroupName.equalsIgnoreCase(planGroupName)) {
+					int planGroupId = jsonArray.getJSONObject(i).getInt("planGroupId");
+					JSONArray planMappingListArray = jsonArray.getJSONObject(i).getJSONArray("planMappingList");
+					float planGroupOfferprice = 0.0f;
+					
+					for (int j = 0; j < planMappingListArray.length(); j++) {
+						float offerprice = planMappingListArray.getJSONObject(j).getJSONObject("plan").getFloat("offerprice");
+						planGroupOfferprice=planGroupOfferprice+offerprice;
+					}
+
+					detail = planGroupId + ":" + planGroupOfferprice;
+					break;
+				}
+			}
+		}
+
+		if ("".equals(detail)) {
+			System.out.println("Plan-Group details not found - " + planGroupName);
+			Utility.printLog(logFileName, logModuleName, "Plan-Group details not found - ", planGroupName);
+		}
+
+		return detail;
+	}
+
+
 	
 }

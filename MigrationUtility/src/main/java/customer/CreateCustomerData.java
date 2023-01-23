@@ -40,7 +40,7 @@ public class CreateCustomerData {
 		
 	//	createPrepaidCustomer();
 	//	recordPaymentDetails();
-		AssignInventoryToCustomer();
+	//	AssignInventoryToCustomer();
 		
 		System.out.println("Ended Generting PrepaidCustomer Data...!");
 	}

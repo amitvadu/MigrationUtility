@@ -3,7 +3,7 @@ package api;
 import customer.CreateCustomerData;
 import inventory.CreateInventoryData;
 import masterdata.CreateMasterData;
-import prepaidplan.CreateProductData;
+import productdata.CreateProductData;
 import staff.CreateStaffData;
 import staff.Login;
 import utility.Constant;

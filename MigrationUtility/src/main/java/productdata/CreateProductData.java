@@ -1,4 +1,4 @@
-package prepaidplan;
+package productdata;
 
 import java.util.HashMap;
 import java.util.List;
@@ -62,12 +62,12 @@ public class CreateProductData {
 		
 		System.out.println("Started Generting Product Data...!");
 		
-		createPlanService();
-		createPlanTax();
-		createPlanCharge();
-		createPlanQos();
-		createPrepaidPlan();
-	//	createPlanBundle();
+	//	createPlanService();
+	//	createPlanTax();
+	//	createPlanCharge();
+	//	createPlanQos();
+	//	createPrepaidPlan();
+		createPlanBundle();
 		
 		System.out.println("Ended Generting Product Data...!");
 	}

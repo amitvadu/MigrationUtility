@@ -3,7 +3,7 @@ package ticketsystem;
 import java.util.HashMap;
 import java.util.Map;
 
-import prepaidplan.CreateProductData;
+import productdata.CreateProductData;
 
 public class CreateTicketData {
 

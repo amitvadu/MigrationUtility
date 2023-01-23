@@ -6,7 +6,7 @@ import java.util.List;
 import commons.CommonList;
 import customer.CustomerPaymentDetails;
 import customer.PrepaidCustomer;
-import prepaidplan.PlanService;
+import productdata.PlanService;
 import staff.Login;
 import utility.Utility;
 
@@ -18,12 +18,9 @@ public class ReadJsonFile {
 		Login login = new Login();
 		login.setAuthBearer();
 		
-		PlanService planService = new PlanService();
-		//List<Integer> productCategoryList = planService.getProductCategoryIdList("Amit_CB,Setup Box,Router");
-		List<Integer> productCategoryList = planService.getProductCategoryIdList("All");
-		
-		System.out.println("list = " + productCategoryList);
-		
+		PrepaidCustomer prepaidCustomer = new PrepaidCustomer(); 
+		String ans = prepaidCustomer.getPlanBundleDetails("PlanBundle_5");
+		System.out.println("ans = " +ans);
 		
 	/*	Outward outward = new Outward();
 		

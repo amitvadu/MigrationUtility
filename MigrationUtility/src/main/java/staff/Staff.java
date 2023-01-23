@@ -32,15 +32,15 @@ public class Staff extends RestExecution {
 		Utility.printLog(logFileName, logModuleName, "Response", response);
 
 		int status = JSONResponseBody.getInt("status");
-
+		String staffUserName = staffDetails.get("UserName");
 		if (status == 200) {
 			
-			String message = "New Staff is added successfully - " + staffDetails.get("UsrerName");
+			String message = "New Staff is added successfully - " + staffUserName;
 			System.out.println(message);
 			Utility.printLog("execution.log", logModuleName, "Success", message);
 			
 		} else if (status == 406) {
-			String error = JSONResponseBody.getString("responseMessage") + " - " + staffDetails.get("UsrerName");
+			String error = JSONResponseBody.getString("responseMessage") + " - " + staffUserName;
 			System.out.println(error);
 			Utility.printLog("execution.log", logModuleName, "Already Exist", error);
 		}
@@ -72,11 +72,11 @@ public class Staff extends RestExecution {
 			Map<String, String> valuemap = new HashMap<String, String>();
 			cellValue = sheetMap.get(i);
 			
-			String staffUsername = cellValue.get("Usrername");
+			String staffUsername = cellValue.get("Username");
 			if ((!"".equals(staffUsername)) && (staffUsername != null)) {
 			
 				valuemap.put("RowIndex", cellValue.get("RowIndex"));
-				valuemap.put("UsrerName", cellValue.get("Username"));
+				valuemap.put("UserName", cellValue.get("Username"));
 				valuemap.put("Password", cellValue.get("Password"));
 				valuemap.put("Email", cellValue.get("Email"));
 				valuemap.put("FirstName", cellValue.get("FirstName"));
@@ -106,7 +106,7 @@ public class Staff extends RestExecution {
 			CommonGetAPI commonGetAPI = new CommonGetAPI();			
 			JSONObject staffJsonObject = new JSONObject();
 			
-			staffJsonObject.put("username", staffDetails.get("UsrerName"));
+			staffJsonObject.put("username", staffDetails.get("UserName"));
 			staffJsonObject.put("password", staffDetails.get("Password"));
 			staffJsonObject.put("email", staffDetails.get("Email"));
 			
@@ -146,7 +146,6 @@ public class Staff extends RestExecution {
 
 		return jsonString;
 	}
-
 	
 	private List<Integer> getTeamId(String teamName) {
 

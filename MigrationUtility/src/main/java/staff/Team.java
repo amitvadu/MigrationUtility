@@ -91,7 +91,7 @@ public class  Team extends RestExecution {
 			JSONObject teamJsonObject = new JSONObject();
 			
 			teamJsonObject.put("name", teamDetails.get("TeamName"));
-			teamJsonObject.put("status", teamDetails.get("TeamName").toLowerCase());
+			teamJsonObject.put("status", teamDetails.get("Status").toLowerCase());
 			
 			jsonString = teamJsonObject.toString();
 

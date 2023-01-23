@@ -62,11 +62,11 @@ public class CreateProductData {
 		
 		System.out.println("Started Generting Product Data...!");
 		
-	//	createPlanService();
-	//	createPlanTax();
+		createPlanService();
+		createPlanTax();
 		createPlanCharge();
-	//	createPlanQos();
-	//	createPrepaidPlan();
+		createPlanQos();
+		createPrepaidPlan();
 	//	createPlanBundle();
 		
 		System.out.println("Ended Generting Product Data...!");

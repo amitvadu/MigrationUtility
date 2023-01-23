@@ -3,7 +3,7 @@ package ticketsystem;
 import java.util.HashMap;
 import java.util.Map;
 
-import prepaidplan.CreatePrepaidPlanData;
+import prepaidplan.CreateProductData;
 
 public class CreateTicketData {
 
@@ -34,8 +34,8 @@ public class CreateTicketData {
 	public void generateTicketData() {
 		System.out.println("Started to generte TicketData...!");
 
-		CreatePrepaidPlanData createPrepaidPlanData = new CreatePrepaidPlanData();
-		createPrepaidPlanData.createPlanService();
+		CreateProductData createProductData = new CreateProductData();
+		createProductData.createPlanService();
 		
 		createRootCause();
 		createProblemDomain();

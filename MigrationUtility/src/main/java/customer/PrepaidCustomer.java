@@ -34,7 +34,7 @@ public class PrepaidCustomer extends RestExecution {
 			JSONObject JSONResponseBody = httpPost(apiURL, apiBody);
 			String response = JSONResponseBody.toString(4);
 			Utility.printLog(logFileName, logModuleName, "Response", response);
-
+			
 			// Fetching the desired value of a parameter
 			int status = JSONResponseBody.getInt("status");
 
@@ -64,8 +64,11 @@ public class PrepaidCustomer extends RestExecution {
 
 			String userName = map.get("Username");
 			if (!checkcustomerUsernameIsAlreadyExists(userName)) {
+				int no = Utility.elapsedTime(-1, logModuleName, logFileName);
 				Utility.printLog(logFileName, logModuleName, "Sheet Raw Data", map.toString());
+				
 				createPrepaidCustomer(map);
+				Utility.elapsedTime(no, logModuleName, logFileName);
 			} else {
 				System.out.println("Customer UserName is Already Exists! - " + userName);
 			}
@@ -89,7 +92,8 @@ public class PrepaidCustomer extends RestExecution {
 			
 			String userName = cellValue.get("Username");
 			if ((!"".equals(userName)) && (userName != null)) {
-			
+				
+				valuemap.put("RowIndex", cellValue.get("RowIndex"));
 				valuemap.put("Title", cellValue.get("Title"));
 				valuemap.put("FirstName", cellValue.get("FirstName"));
 				valuemap.put("LastName", cellValue.get("LastName"));
@@ -116,6 +120,7 @@ public class PrepaidCustomer extends RestExecution {
 				valuemap.put("PlanCategory", cellValue.get("PlanCategory"));
 				valuemap.put("BillTo", cellValue.get("BillTo"));
 				valuemap.put("PlanGroup", cellValue.get("PlanGroup"));
+				valuemap.put("[PlanName:NewOfferPrice]", cellValue.get("[PlanName:NewOfferPrice]"));				
 				valuemap.put("InvoiceToOrganization", cellValue.get("InvoiceToOrganization"));
 				valuemap.put("NewOfferPrice", cellValue.get("NewOfferPrice"));
 				valuemap.put("Service", cellValue.get("Service"));
@@ -141,10 +146,10 @@ public class PrepaidCustomer extends RestExecution {
 
 		try {
 
-			org.json.simple.JSONObject customerJsonObject = null;
+			org.json.simple.JSONObject customerJsonObject = new org.json.simple.JSONObject();
 
-			ReadData readData = new ReadData();
-			customerJsonObject = readData.readJSONFile("CreatePrepaidCustomer.json");
+			//ReadData readData = new ReadData();
+			//customerJsonObject = readData.readJSONFile("CreatePrepaidCustomer.json");
 			
 			customerJsonObject.put("custtype", "Prepaid");
 			
@@ -162,6 +167,12 @@ public class PrepaidCustomer extends RestExecution {
 			customerJsonObject.put("branch", null);
 			customerJsonObject.put("status", customerDetails.get("Status"));
 
+			customerJsonObject.put("failcount", 0);
+			customerJsonObject.put("isCustCaf", null);
+			customerJsonObject.put("customerArea", null);
+			customerJsonObject.put("servicetype", "");
+			customerJsonObject.put("parentCustomerId", null);
+			
 			String parentCustomer = customerDetails.get("ParentCustomer");
 			if (!"".equals(parentCustomer)) {
 				int parentCustomerId = getCustomerId(parentCustomer);
@@ -212,6 +223,15 @@ public class PrepaidCustomer extends RestExecution {
 			customerJsonObject.put("partnerid", partnerId);
 			customerJsonObject.put("salesremark", "");
 			
+			// -- Customer Payment Details --
+			org.json.simple.JSONObject paymentJson = new org.json.simple.JSONObject();
+			paymentJson.put("amount", 0);
+			paymentJson.put("paymode", null);
+			paymentJson.put("referenceno", null);
+			paymentJson.put("paymentdate", null);
+			
+			customerJsonObject.put("paymentDetails", paymentJson);
+			
 			// -- Customer Present Address Details --
 			
 			int serviceAreaId = commonGetAPI.getServiceAreaIdList(customerDetails.get("ServiceArea")).get(0);
@@ -245,7 +265,7 @@ public class PrepaidCustomer extends RestExecution {
 			customerJsonObject.put("addressList", addressJsonObjectList);
 
 			// --PlanMappingDetails
-			
+			customerJsonObject.put("istrialplan", false);
 			String planCategory = customerDetails.get("PlanCategory");
 			
 			// --Individual Plan
@@ -264,7 +284,7 @@ public class PrepaidCustomer extends RestExecution {
 				String serviceName = planDetails[0];
 				float offerPrice = Float.valueOf(planDetails[1]);
 				int validity = Integer.parseInt(planDetails[2]);
-				String unitsOfValidity = planDetails[3];
+				//String unitsOfValidity = planDetails[3];
 
 				float flatAmount = offerPrice;
 				float discountPercentage = 0;
@@ -295,10 +315,7 @@ public class PrepaidCustomer extends RestExecution {
 						newAmount = Float.valueOf(Utility.formattedDecimalNumber(newAmount));
 						planDetailJsonObject.put("newAmount", newAmount);
 					}
-
 				}
-
-				customerJsonObject.put("isInvoiceToOrg", invoiceToOrg);
 
 				planDetailJsonObject.put("planId", planId);
 				planDetailJsonObject.put("billTo", billTo);
@@ -310,20 +327,22 @@ public class PrepaidCustomer extends RestExecution {
 				planDetailJsonObject.put("isInvoiceToOrg", invoiceToOrg);
 				planDetailJsonObject.put("istrialplan", null);
 
-				planJsonObjectList.add(planDetailJsonObject);
+				planJsonObjectList.add(planDetailJsonObject);				
 				customerJsonObject.put("planMappingList", planJsonObjectList);
-
-				
+				customerJsonObject.put("isInvoiceToOrg", invoiceToOrg);
 			}
 			
 						
 			// --Plan Group
+			customerJsonObject.put("plangroupid", null);
+			
 			if(planCategory.equalsIgnoreCase("Plan Group")) {
 				
 				
 				String billTo = customerDetails.get("BillTo").toUpperCase();
 				String invoiceToOrganization = customerDetails.get("InvoiceToOrganization").toUpperCase();
 				boolean invoiceToOrg = false;
+				boolean istrialplan = false;
 
 				customerJsonObject.put("billTo", billTo);
 				customerJsonObject.put("discount", 0);
@@ -334,29 +353,86 @@ public class PrepaidCustomer extends RestExecution {
 				int planGroupId = Integer.parseInt(planGroupDetails[0]);
 				float offerPrice = Float.valueOf(planGroupDetails[1]);
 
-				float flatAmount = offerPrice;
+				float flatAmount = 0;
 				float discountPercentage = 0;
 				String tempDiscountPercentage = customerDetails.get("DiscountPercentage");
 
+				customerJsonObject.put("plangroupid", planGroupId);
+				
 				if ((billTo.equalsIgnoreCase("CUSTOMER")) && (!"".equals(tempDiscountPercentage))) {
+					flatAmount = offerPrice;
 					discountPercentage = Float.valueOf(customerDetails.get("DiscountPercentage"));
 					flatAmount = offerPrice - (offerPrice * discountPercentage / 100);
 					flatAmount = Float.valueOf(Utility.formattedDecimalNumber(flatAmount));
 					customerJsonObject.put("discount", discountPercentage);
+					customerJsonObject.put("flatAmount", flatAmount);
 				}
-
-				customerJsonObject.put("flatAmount", flatAmount);
-				customerJsonObject.put("plangroupid", planGroupId);
+				
 				
 				if (billTo.equalsIgnoreCase("SUBISU")) {
+					
 					if (invoiceToOrganization.equalsIgnoreCase("YES")) {
 						invoiceToOrg = true;
 					}
-				}
+					
+					customerJsonObject.put("discount", discountPercentage);
+					customerJsonObject.put("flatAmount", flatAmount);
+					
+					List<org.json.simple.JSONObject> planJsonObjectList = new ArrayList<org.json.simple.JSONObject>();
+					
+					String planNameNewOfferPrice = customerDetails.get("[PlanName:NewOfferPrice]");
+					planNameNewOfferPrice = planNameNewOfferPrice.replaceAll("[\\[\\]]", "");
+					
+					String ans[] = planNameNewOfferPrice.split(",");
 
+					for (int i = 0; i < ans.length; i++) {
+
+						String planNameNewOfferDetails[] = ans[i].split(":");
+						String planName = planNameNewOfferDetails[0];
+						float newOffer = Float.valueOf(planNameNewOfferDetails[1]);
+
+						org.json.simple.JSONObject planDetailJsonObject = new org.json.simple.JSONObject();
+
+						int planId = commonGetAPI.getPlanId(planName);
+						String planDetails[] = commonGetAPI.getPlanDetails(planId).split(":");
+
+						String serviceName = planDetails[0];
+						offerPrice = Float.valueOf(planDetails[1]);
+						int validity = Integer.parseInt(planDetails[2]);
+						//String unitsOfValidity = planDetails[3];
+						
+						planDetailJsonObject.put("planId", planId);
+						planDetailJsonObject.put("name", planName);
+						planDetailJsonObject.put("service", serviceName);
+						planDetailJsonObject.put("validity", validity);
+						planDetailJsonObject.put("billTo", billTo);
+						planDetailJsonObject.put("discount", discountPercentage);
+						planDetailJsonObject.put("newAmount", newOffer);
+						planDetailJsonObject.put("offerPrice", offerPrice);
+							
+						planDetailJsonObject.put("chargeName", "");
+						planDetailJsonObject.put("isInvoiceToOrg", invoiceToOrg);
+
+						
+						planJsonObjectList.add(planDetailJsonObject);
+					}
+					customerJsonObject.put("planMappingList", planJsonObjectList);
+				}
+				
+				customerJsonObject.put("istrialplan", istrialplan);
 				customerJsonObject.put("isInvoiceToOrg", invoiceToOrg);
 			}
 			
+			
+			// -- Customer Additional Service Details
+			
+			customerJsonObject.put("voicesrvtype", "");
+			customerJsonObject.put("didno", "");
+
+			// -- Radius Service Details
+			
+			customerJsonObject.put("nasPort", null);
+			customerJsonObject.put("framedIp", null);
 			
 			// -- Over Direct Charge Mapping
 
@@ -364,6 +440,16 @@ public class PrepaidCustomer extends RestExecution {
 			String directChargeName = customerDetails.get("DirectChargeName");
 
 			if (!"".equals(directChargeName)) {
+				
+				int planId = commonGetAPI.getPlanId(customerDetails.get("Plan"));
+				String planDetails[] = commonGetAPI.getPlanDetails(planId).split(":");
+
+				//String serviceName = planDetails[0];
+				//float offerPrice = Float.valueOf(planDetails[1]);
+				int validity = Integer.parseInt(planDetails[2]);
+				String unitsOfValidity = planDetails[3];
+
+				
 
 				float directChargeNewPrice = Float.valueOf(customerDetails.get("DirectChargeNewPrice"));
 				int chargeId = commonGetAPI.getChargeId(directChargeName);
@@ -384,11 +470,11 @@ public class PrepaidCustomer extends RestExecution {
 				chargeJsonObject.put("chargeid", chargeId);
 				chargeJsonObject.put("id", null);
 
-				//chargeJsonObject.put("planid", planId);
+				chargeJsonObject.put("planid", planId);
 				chargeJsonObject.put("price", directChargeNewPrice);
 				chargeJsonObject.put("type", "One-time");
-				//chargeJsonObject.put("unitsOfValidity", unitsOfValidity);
-				//chargeJsonObject.put("validity", validity);
+				chargeJsonObject.put("unitsOfValidity", unitsOfValidity);
+				chargeJsonObject.put("validity", validity);
 
 				chargeJsonObjectList.add(chargeJsonObject);
 			}
@@ -425,9 +511,6 @@ public class PrepaidCustomer extends RestExecution {
 		String apiURL = getAPIURL("area/all");
 
 		JSONObject jsonResponse = httpGet(apiURL);
-		// String ans = jsonResponse.toString(4);
-
-		// Fetching the desired value of a parameter
 		int status = jsonResponse.getInt("responseCode");
 		String detail = "";
 
@@ -481,10 +564,10 @@ public class PrepaidCustomer extends RestExecution {
 	public int getCustomerId(String userName) {
 
 		String jsonString = null;
-		org.json.simple.JSONObject searchCustomerJsonObject = null;
+		org.json.simple.JSONObject searchCustomerJson = new org.json.simple.JSONObject();
 
-		ReadData readData = new ReadData();
-		searchCustomerJsonObject = readData.readJSONFile("SearchPrepaidCustomer.json");
+		//ReadData readData = new ReadData();
+		//searchCustomerJsonObject = readData.readJSONFile("SearchPrepaidCustomer.json");
 
 		List<org.json.simple.JSONObject> customerFilterJsonObjectList = new ArrayList<org.json.simple.JSONObject>();
 		org.json.simple.JSONObject filterObject = new org.json.simple.JSONObject();
@@ -496,18 +579,17 @@ public class PrepaidCustomer extends RestExecution {
 		filterObject.put("filterCondition", "and");
 
 		customerFilterJsonObjectList.add(filterObject);
-		searchCustomerJsonObject.put("filters", customerFilterJsonObjectList);
+		searchCustomerJson.put("filters", customerFilterJsonObjectList);
+		
+		searchCustomerJson.put("page", 1);
+		searchCustomerJson.put("pageSize", 5);
 
-		jsonString = searchCustomerJsonObject.toJSONString();
+		jsonString = searchCustomerJson.toJSONString();
 
 		String apiURL = getAPIURL("customers/search/Prepaid");
 		String APIBody = jsonString;
 
 		JSONObject JSONResponseBody = httpPost(apiURL, APIBody);
-		// String response = JSONResponseBody.toString(4);
-		// Utility.printLog(logFileName, logModuleName, "Response", response);
-
-		// Fetching the desired value of a parameter
 		int status = JSONResponseBody.getInt("status");
 		int customerId = 0;
 

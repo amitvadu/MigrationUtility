@@ -41,6 +41,10 @@ public class PlanTaxNew extends RestExecution {
 			String error = JSONResponseBody.getString("ERROR") + " - " + taxName;
 			System.out.println(error);
 			Utility.printLog("execution.log", logModuleName, "Already Exist", error);
+		} else {
+			String error = JSONResponseBody.get("ERROR") + " - " + taxName;
+			System.out.println(error);
+			Utility.printLog("execution.log", logModuleName, "ERROR", error);
 		}
 	}
 

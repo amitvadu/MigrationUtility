@@ -134,16 +134,7 @@ public class Utility {
 			String timerMessage = message + " : ["+ identifier +"-StartTime: " + startTimeExecution + " | EndTime: " + endTimeExecution + " | ElapsedTime: " + hms + "]\n";
 			elapsedCounter--;
 			//System.out.println("END-TIMER" + timerMessage);
-			
-			if(fileName.equals("")) {
-				fileName = "order-execution.log";
-			} else if(fileName.equalsIgnoreCase("executed-orders-detail.log")) {
-				fileName = "executed-orders-detail.log";
-			} else if(fileName.equalsIgnoreCase("order-execution.log")) {
-					fileName = "order-execution.log";
-			} else {
-				fileName = fileName.toLowerCase() + "-order-execution.log";
-			}
+						
 			Utility.printLog(fileName,"END-TIMER",timerMessage,"");
 		}
 		

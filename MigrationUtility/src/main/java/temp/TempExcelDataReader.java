@@ -25,17 +25,17 @@ public class TempExcelDataReader {
 
 	public static void main(String args[]) throws IOException {
 		
-		//read2();
+		read2();
 		//readXLS();
 		
-		String sheetName = "Geogaraphical Areas";
+	/*	String sheetName = "Geogaraphical Areas";
 		List<Map<String, String>> sheetMap = new ArrayList<Map<String, String>>();
 		ReadData readData = new ReadData();
 		sheetMap = readData.getMaterDataSheet1(sheetName);
 		//sheetMap = readData.getPlanDataSheet(sheetName);
 		System.out.println("sheetMap = " + sheetMap.toString());
 		
-	/*	String sheetName = "Geogaraphical Areas";
+		String sheetName = "Geogaraphical Areas";
 		List<Map<String, String>> sheetMap = new ArrayList<Map<String, String>>();
 		ReadData readData = new ReadData();
 		sheetMap = readData.getMaterDataSheet(sheetName, 1, 19);
@@ -47,9 +47,9 @@ public class TempExcelDataReader {
 	
 	public static void read2() throws IOException {
 		
-		String filePath =  Constant.BASE_PATH + "\\TestData\\input\\";
-		String fileName = "Migration V3.2.xlsx";
-		String sheetName = "Geogaraphical Areas";
+		String filePath =  Constant.BASE_PATH + "\\TestData\\input\\Reference\\";
+		String fileName = "Migration V3.1.xlsx";
+		String sheetName = "Geogaraphical Areas_2";
 		DataFormatter dataFormatter = new DataFormatter();
 		
 		File myFile = new File(filePath + fileName);

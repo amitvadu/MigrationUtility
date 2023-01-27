@@ -65,9 +65,9 @@ public class CreateProductData {
 	//	createPlanService();
 	//	createPlanTax();
 	//	createPlanCharge();
-	//	createPlanQos();
+		createPlanQos();
 	//	createPrepaidPlan();
-		createPlanBundle();
+	//	createPlanBundle();
 		
 		System.out.println("Ended Generting Product Data...!");
 	}

@@ -1,16 +1,54 @@
 {
-  "name": "200 MBPS",
-  "thpolicyname": "200 MBPS",
-  "thdownloadspeed": "200",
-  "thuploadspeed": "200",
-  "thparam1": "200",
-  "thparam2": "200",
-  "thparam3": "200",
-  "description": "200 MBPS",
-  "basepolicyname": "200 MBPS",
-  "baseuploadspeed": "200",
-  "basedownloadspeed": "200",
-  "baseparam1": "200",
-  "baseparam2": "200",
-  "baseparam3": "200"
+  "name": "Amit_QoS_Policy_1",
+  "thpolicyname": "Amit_QoS_Policy_1",
+  "thparam1": "Param 1",
+  "thparam2": "Param 2",
+  "thparam3": "Param 3",
+  "description": "Amit_QoS_Policy_1",
+  "basepolicyname": "Amit_QoS_Policy_1",
+  "baseparam1": "Base Param 1",
+  "baseparam2": "Base Param 2",
+  "baseparam3": "Base Param 3",
+  "qosPolicyGatewayMappingList": [
+    {
+      "gatewayName": "Nokia",
+      "downloadSpeed": "Nokia",
+      "uploadSpeed": "Nokia",
+      "baseDownloadSpeed": "Nokia",
+      "baseUploadSpeed": "Nokia",
+      "throttleDownloadSpeed": "Nokia",
+      "throttleUploadSpeed": "Nokia",
+      "qosPolicyId": ""
+    },
+    {
+      "gatewayName": "Juniper",
+      "downloadSpeed": "Juniper",
+      "uploadSpeed": "Juniper",
+      "baseDownloadSpeed": "Juniper",
+      "baseUploadSpeed": "Juniper",
+      "throttleDownloadSpeed": "Juniper",
+      "throttleUploadSpeed": "Juniper",
+      "qosPolicyId": ""
+    },
+    {
+      "gatewayName": "MikroTik",
+      "downloadSpeed": "MikroTik",
+      "uploadSpeed": "MikroTik",
+      "baseDownloadSpeed": "MikroTik",
+      "baseUploadSpeed": "MikroTik",
+      "throttleDownloadSpeed": "MikroTik",
+      "throttleUploadSpeed": "MikroTik",
+      "qosPolicyId": ""
+    },
+    {
+      "gatewayName": "Cisco",
+      "downloadSpeed": "Cisco",
+      "uploadSpeed": "Cisco",
+      "baseDownloadSpeed": "Cisco",
+      "baseUploadSpeed": "Cisco",
+      "throttleDownloadSpeed": "Cisco",
+      "throttleUploadSpeed": "Cisco",
+      "qosPolicyId": ""
+    }
+  ]
 }

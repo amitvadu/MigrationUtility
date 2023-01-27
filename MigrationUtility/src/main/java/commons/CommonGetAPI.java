@@ -47,7 +47,6 @@ public class CommonGetAPI extends RestExecution {
 		JSONObject jsonResponse = httpGet(apiURL);
 		// String ans = jsonResponse.toString(4);
 
-		// Fetching the desired value of a parameter
 		int status = jsonResponse.getInt("status");
 		int planId = 0;
 
@@ -107,9 +106,7 @@ public class CommonGetAPI extends RestExecution {
 		JSONObject jsonResponse = httpGet(apiURL);
 		// String ans = jsonResponse.toString(4);
 
-		// Fetching the desired value of a parameter
 		int status = jsonResponse.getInt("status");
-
 		int partnerId = 0;
 
 		if (status == 200) {
@@ -202,7 +199,6 @@ public class CommonGetAPI extends RestExecution {
 
 		JSONObject jsonResponse = httpGet(apiURL);
 		int status = jsonResponse.getInt("responseCode");
-		
 		int qosPolicyId=0;
 		
 		if (status == 200) {
@@ -358,8 +354,6 @@ public class CommonGetAPI extends RestExecution {
 		int status = jsonResponse.getInt("responseCode");
 		List<Integer> regionList = new ArrayList<Integer>();
 		
-		//int branchId=0;
-
 		if (status == 200) {
 			
 			JSONArray jsonArray = jsonResponse.getJSONArray("dataList");

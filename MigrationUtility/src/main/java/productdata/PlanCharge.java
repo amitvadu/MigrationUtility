@@ -44,6 +44,10 @@ public class PlanCharge extends RestExecution {
 			String error = JSONResponseBody.getString("ERROR") + " - " + chargeName;
 			System.out.println(error);
 			Utility.printLog("execution.log", logModuleName, "Already Exist", error);
+		} else {
+			String error = JSONResponseBody.get("ERROR") + " - " + chargeName;
+			System.out.println(error);
+			Utility.printLog("execution.log", logModuleName, "ERROR", error);
 		}
 	}
 

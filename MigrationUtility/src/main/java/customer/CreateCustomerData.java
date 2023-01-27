@@ -38,7 +38,7 @@ public class CreateCustomerData {
 		
 		System.out.println("Started Generting PrepaidCustomer Data...!");
 		
-	//	createPrepaidCustomer();
+		createPrepaidCustomer();
 	//	recordPaymentDetails();
 	//	AssignInventoryToCustomer();
 		

@@ -52,10 +52,10 @@ public class CreateInventoryData {
 	public void generateInventoryData() {
 		System.out.println("Started to generate Inventory Data ...!");
 
-	//	createProductCategory();
-	//	createProduct();
-	//	createPop();
-	//	createWarehouse();
+		createProductCategory();
+		createProduct();
+		createPop();
+		createWarehouse();
 		createInward();
 		createOutward();
 		

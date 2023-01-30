@@ -7,16 +7,27 @@ import productdata.CreateProductData;
 import staff.CreateStaffData;
 import staff.Login;
 import utility.Constant;
+import utility.Utility;
 
 public class ExecutionStart {
 
 	public static void main(String args[]) {
+		
 		System.out.println("Started Migration Utility...!");
+		Utility.printLog("execution.log", "MAIN", "Started Migration Utility...!","");
+		
+		startExecution();
+		
+		System.out.println("Ended Migration Utility...!");
+		Utility.printLog("execution.log", "MAIN", "Ended Migration Utility...!","");
+	}
+	
+	private static void startExecution() {
+		
 		Login login = new Login();
 		login.setAuthBearer();
-
-						
-	/*	CreateTicketData createTicketData = new CreateTicketData();
+		
+		/*	CreateTicketData createTicketData = new CreateTicketData();
 		createTicketData.generateTicketData();
 		
 		CreateSalesCRMData createSalesCRMData = new CreateSalesCRMData();
@@ -51,7 +62,5 @@ public class ExecutionStart {
 			createCustomerData.generatePrepaidCustomerData();			
 		}
 		
-		
-		System.out.println("Ended Migration Utility...!");
 	}
 }

@@ -93,7 +93,7 @@ public class CommonList extends RestExecution {
 		return commonChargeCategory;
 	}
 	
-	public String getCommonPlanGroup(String planCategory) {
+	public String getCommonPlanGroup(String planGroup) {
 
 		String apiURL = getAPIURL("commonList/planGroup");
 
@@ -101,26 +101,51 @@ public class CommonList extends RestExecution {
 		// String ans = jsonResponse.toString(4);
 
 		int status = jsonResponse.getInt("responseCode");
-		String commonPlanCategory = null;
+		String commonPlanGroup = null;
 
 		if (status == 200) {
 			JSONArray jsonArray = jsonResponse.getJSONArray("dataList");
 			for (int i = 0; i < jsonArray.length(); i++) {
 				String receivedPlanCategory = jsonArray.getJSONObject(i).getString("text");
-				if (planCategory.equalsIgnoreCase(receivedPlanCategory)) {
-					commonPlanCategory = jsonArray.getJSONObject(i).getString("value");
+				if (planGroup.equalsIgnoreCase(receivedPlanCategory)) {
+					commonPlanGroup = jsonArray.getJSONObject(i).getString("value");
 				}
 			}
 		}
 
-		if (commonPlanCategory == null) {
-			System.out.println("Plan-Category details not found - " + planCategory);
-			Utility.printLog(logFileName, logModuleName, "Plan-Category details not found - ", planCategory);
+		if (commonPlanGroup == null) {
+			System.out.println("Common Plan-Group details not found - " + planGroup);
+			Utility.printLog(logFileName, logModuleName, "Common Plan-Group details not found - ", planGroup);
 		}
-
-		return commonPlanCategory;
+		return commonPlanGroup;
 	}
 	
+	public String getCommonPlanAccessibility(String accessibility) {
+
+		String apiURL = getAPIURL("commonList/accessibility");
+
+		JSONObject jsonResponse = httpGet(apiURL);
+		// String ans = jsonResponse.toString(4);
+
+		int status = jsonResponse.getInt("responseCode");
+		String commonPlanGroup = null;
+
+		if (status == 200) {
+			JSONArray jsonArray = jsonResponse.getJSONArray("dataList");
+			for (int i = 0; i < jsonArray.length(); i++) {
+				String receivedPlanCategory = jsonArray.getJSONObject(i).getString("text");
+				if (accessibility.equalsIgnoreCase(receivedPlanCategory)) {
+					commonPlanGroup = jsonArray.getJSONObject(i).getString("value");
+				}
+			}
+		}
+
+		if (commonPlanGroup == null) {
+			System.out.println("Common Plan-Accessibility details not found - " + accessibility);
+			Utility.printLog(logFileName, logModuleName, "Common Plan-Accessibility details not found - ", accessibility);
+		}
+		return commonPlanGroup;
+	}
 	
 	public String getCommonPaymentMode(String paymentMode) {
 

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import customer.PrepaidCustomer;
+import utility.Utility;
 
 public class CreateProductData {
 
@@ -61,15 +62,17 @@ public class CreateProductData {
 	public void generateProductData() {
 		
 		System.out.println("Started Generting Product Data...!");
+		Utility.printLog("execution.log", "ProductData", "Started Generting Product Data...!","");
 		
 	//	createPlanService();
 	//	createPlanTax();
 	//	createPlanCharge();
-		createPlanQos();
-	//	createPrepaidPlan();
+	//	createPlanQos();
+		createPrepaidPlan();
 	//	createPlanBundle();
 		
 		System.out.println("Ended Generting Product Data...!");
+		Utility.printLog("execution.log", "ProductData", "Ended Generting Product Data...!","");
 	}
 
 }

@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import api.ReadData;
 import api.RestExecution;
 import commons.CommonGetAPI;
+import commons.CommonList;
 import utility.Utility;
 
 public class PrepaidPlan extends RestExecution {
@@ -70,7 +71,7 @@ public class PrepaidPlan extends RestExecution {
 		List<Map<String, String>> sheetMap = new ArrayList<Map<String, String>>();
 		ReadData readData = new ReadData();
 		sheetMap = readData.getPlanDataSheet(sheetName);
-		Utility.printLog(logFileName, logModuleName, "Whole Sheet Data", sheetMap.toString());
+		
 		Map<String, String> cellValue = new HashMap<String, String>();
 		List<Map<String, String>> planMapList = new ArrayList<Map<String, String>>();
 
@@ -103,6 +104,7 @@ public class PrepaidPlan extends RestExecution {
 
 				valuemap.put("AllowOverUsage", cellValue.get("AllowOverUsage"));
 				valuemap.put("MaxCurrentSession", cellValue.get("MaxCurrentSession"));
+				valuemap.put("AllowDiscount", cellValue.get("AllowDiscount"));
 				valuemap.put("Description", cellValue.get("Description"));
 
 				valuemap.put("QuotaType", cellValue.get("QuotaType"));
@@ -131,6 +133,7 @@ public class PrepaidPlan extends RestExecution {
 		try {
 
 			CommonGetAPI commonGetAPI = new CommonGetAPI();
+			CommonList commonList = new CommonList();
 			JSONObject planJson = new JSONObject();
 
 			// -- Prepaid Plan Information
@@ -142,17 +145,19 @@ public class PrepaidPlan extends RestExecution {
 
 			planJson.put("category", planDetails.get("Category"));
 			planJson.put("mode", planDetails.get("Mode").toUpperCase());
-			planJson.put("planGroup", planDetails.get("Group"));
-
+			planJson.put("planGroup", commonList.getCommonPlanGroup(planDetails.get("Group")));
+			
 			planJson.put("serviceId", commonGetAPI.getServiceIdList(planDetails.get("Service")).get(0));
 			planJson.put("serviceAreaIds", commonGetAPI.getServiceAreaIdList(planDetails.get("ServiceArea")));
 
 			String accessibility = planDetails.get("Accessibility");
-			if ("".equals(accessibility)) {
+			if(("".equals(accessibility)) || (accessibility == null)) {
 				accessibility = null;
-			}
+			} else {
+				accessibility = commonList.getCommonPlanAccessibility(accessibility);
+			}			
 			planJson.put("accessibility", accessibility);
-
+			
 			String startDate = planDetails.get("StartDate");
 			String endDate = planDetails.get("EndDate");
 			startDate = Utility.getDateTimeInRequiredFormatFromProvidedDateTime(startDate, "dd-MMM-yyyy", "yyyy-MM-dd");
@@ -160,12 +165,21 @@ public class PrepaidPlan extends RestExecution {
 			planJson.put("startDate", startDate);
 			planJson.put("endDate", endDate);
 
-			planJson.put("validity", Float.valueOf(planDetails.get("Validity")).intValue());
+			planJson.put("validity", Integer.parseInt(planDetails.get("Validity")));
 			planJson.put("unitsOfValidity", planDetails.get("ValidityUnit"));
 			planJson.put("status", planDetails.get("Status").toUpperCase());
 
 			planJson.put("allowOverUsage", Boolean.valueOf(planDetails.get("AllowOverUsage")));
-			planJson.put("maxconcurrentsession", Float.valueOf(planDetails.get("MaxCurrentSession")).intValue());
+			planJson.put("maxconcurrentsession", Integer.parseInt(planDetails.get("MaxCurrentSession")));
+			
+			String allowDiscount = planDetails.get("AllowDiscount");
+			boolean allowDiscount1 = false;
+			if((!"".equals(allowDiscount)) && (allowDiscount != null)) {
+				if(allowDiscount.equalsIgnoreCase("Yes")) {
+					allowDiscount1 = true;
+				}
+			}
+			planJson.put("allowdiscount", allowDiscount1);
 			planJson.put("desc", planDetails.get("Description"));
 
 			// -- PrepaidPlan Quota Details
@@ -174,12 +188,12 @@ public class PrepaidPlan extends RestExecution {
 			planJson.put("quotatype", quotaType);
 
 			if ((quotaType.equalsIgnoreCase("Time")) || (quotaType.equalsIgnoreCase("Both"))) {
-				planJson.put("quotatime", Float.valueOf(planDetails.get("QuotaTime")).intValue());
-				planJson.put("quotaunittime", planDetails.get("QuotaUnitTime"));
+				planJson.put("quotatime", Integer.parseInt(planDetails.get("QuotaTime")));
+				planJson.put("quotaunittime", planDetails.get("QuotaUnitTime").toUpperCase());
 			}
 
 			if ((quotaType.equalsIgnoreCase("Data")) || (quotaType.equalsIgnoreCase("Both"))) {
-				planJson.put("quota", Float.valueOf(planDetails.get("QuotaData")).intValue());
+				planJson.put("quota", Integer.parseInt(planDetails.get("QuotaData")));
 				planJson.put("quotaUnit", planDetails.get("QuotaUnitData"));
 			}
 			planJson.put("quotaResetInterval", planDetails.get("QuotaResetInterval"));
